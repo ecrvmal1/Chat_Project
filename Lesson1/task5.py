@@ -22,20 +22,24 @@ import chardet
 from googletrans import Translator
 translator = Translator()
 
-ARGS = ['ping', 'yandex.ru']
-YA_PING = subprocess.Popen(ARGS, stdout=subprocess.PIPE)
-for line in YA_PING.stdout:
-    print(f'   Type of ping answer: {type(line)}')
-    result = chardet.detect(line)
-    print(f"   Detected encoding       : {result['encoding']}")
-    line = line.decode(result['encoding']).encode('utf-8')
-    print(f"   Original ping answer : {line} ")
-    print('-----------------------------------')
-    translated_obj = translator.translate(line, src='en', dest='ru')
-    translated_string = translated_obj.text
-    print(f'    Cyrillic Output   : {translated_string}')
-    print(f'    Type of Cyr_Output: {type(translated_string)}')
-    print('***********************************\n')
+cmd_list = ['ping -c 5 yandex.ru',
+            'ping -c 5 google.com'
+            ]
+
+for cmd in cmd_list:
+    YA_PING = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+    for line in YA_PING.stdout:
+        print(f'   Type of ping answer: {type(line)}')
+        result = chardet.detect(line)
+        print(f"   Detected encoding       : {result['encoding']}")
+        line = line.decode(result['encoding']).encode('utf-8')
+        print(f"   Original ping answer : {line} ")
+        print('-----------------------------------')
+        translated_obj = translator.translate(line, src='en', dest='ru')
+        translated_string = translated_obj.text
+        print(f'    Cyrillic Output   : {translated_string}')
+        print(f'    Type of Cyr_Output: {type(translated_string)}')
+        print('***********************************\n')
 
 
 """
