@@ -1,1 +1,60 @@
-{"orders": []}
+{
+    "orders": [
+        {
+            "item": "Processor",
+            "quantity": "5",
+            "price": "530",
+            "buyer": "Иванов",
+            "data": "2023-05-22"
+        },
+        {
+            "item": "Memory",
+            "quantity": "1000",
+            "price": "250",
+            "buyer": "Петров",
+            "data": "2023-05-22"
+        },
+        {
+            "item": "Storage",
+            "quantity": "2000",
+            "price": "150",
+            "buyer": "Сидоров",
+            "data": "1994-01-01"
+        },
+        {
+            "item": "Cooler",
+            "quantity": "1",
+            "price": "5",
+            "buyer": "Козлов",
+            "data": "1993-12-31"
+        },
+        {
+            "item": "Processor",
+            "quantity": "5",
+            "price": "530",
+            "buyer": "Иванов",
+            "data": "2023-05-22"
+        },
+        {
+            "item": "Memory",
+            "quantity": "1000",
+            "price": "250",
+            "buyer": "Петров",
+            "data": "2023-05-22"
+        },
+        {
+            "item": "Storage",
+            "quantity": "2000",
+            "price": "150",
+            "buyer": "Сидоров",
+            "data": "1994-01-01"
+        },
+        {
+            "item": "Cooler",
+            "quantity": "1",
+            "price": "5",
+            "buyer": "Козлов",
+            "data": "1993-12-31"
+        }
+    ]
+}
