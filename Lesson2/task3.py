@@ -36,6 +36,7 @@ print("\n data written correctly : ", data_to_write == content)
 output listing:
 {'drink_price': {'cognac': '150₿', 'gin': '16₿', 'rum': '5₿', 'tequila': '8₿', 'vodka': '25₿', 'whisky': '10₿'}, 'drinks': ['rum', 'whisky', 'tequila', 'gin', 'vodka', 'cognac'], 'total_drinks': 6}
 
+
  data written correctly :  True
 """
 
