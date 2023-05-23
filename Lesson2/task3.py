@@ -20,7 +20,7 @@ import yaml
 data_to_write = {
     "drinks": ['rum', 'whisky', 'tequila', 'gin', 'vodka', 'cognac'],
     "total_drinks": 6,
-    "drink_price": {'rum': '5£', 'whisky': '10£', 'tequila': '8£', 'gin': '16£', 'vodka': '25£', 'cognac': '150£'}
+    "drink_price": {'rum': '5\u20bf', 'whisky': '10\u20bf', 'tequila': '8\u20bf', 'gin': '16\u20bf', 'vodka': '25\u20bf', 'cognac': '150\u20bf'}
 }
 
 with open('file.yaml','w',encoding='utf-8') as output_file:
@@ -34,9 +34,8 @@ print("\n data written correctly : ", data_to_write == content)
 
 """
 output listing:
-{'drink_price': {'cognac': '150£', 'gin': '16£', 'rum': '5£', 'tequila': '8£', 'vodka': '25£', 'whisky': '10£'}, 'drinks': ['rum', 'whisky', 'tequila', 'gin', 'vodka', 'cognac'], 'total_drinks': 6}
+{'drink_price': {'cognac': '150₿', 'gin': '16₿', 'rum': '5₿', 'tequila': '8₿', 'vodka': '25₿', 'whisky': '10₿'}, 'drinks': ['rum', 'whisky', 'tequila', 'gin', 'vodka', 'cognac'], 'total_drinks': 6}
 
  data written correctly :  True
- 
 """
 
