@@ -43,9 +43,9 @@ if __name__ == '__main__':
 
         elif action == 2:
             if connection is True:
-                # msg = user_msg()
-                msg = presence_msg()
-                print(f'user_msg = {msg}')
+                msg = user_msg()
+                # msg = presence_msg()
+                # print(f'user_msg = {msg}')
                 send_message(transport, msg)
                 try:
                     message = process_ans(get_message(transport))
@@ -56,8 +56,12 @@ if __name__ == '__main__':
 
         elif action == 3:
             if connection is True:
+                msg = {'action': 'quit'}
+                send_message(transport, msg)
                 connection = client_disconnection(transport)
-                action = terminal_info(connection, message)
+                print('***********************************')
+                print('        Server disconnected        ')
+                print('***********************************')
                 time.sleep(2)
                 sys.exit(0)
         elif action == 4:
