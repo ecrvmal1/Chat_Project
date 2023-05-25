@@ -1,6 +1,7 @@
-from socket import *
+import socket
 import sys
 import json
+from datetime import datetime
 
 
 from common.server_variables import DEFAULT_SERVER_IP_ADDRESS, DEFAULT_SERVER_PORT, MAX_CONNECTIONS
@@ -17,22 +18,28 @@ def main():
     if server_port is None:
         server_port = DEFAULT_SERVER_PORT
 
-    transport = socket(AF_INET, SOCK_STREAM)
+    transport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     transport.bind((server_ip_address, server_port))
 
     # Listen the port
     transport.listen(MAX_CONNECTIONS)
-
+    client, client_address = transport.accept()
+    print(f'client from IP {client_address} connected')
 
     while True:
-        client, client_address = transport.accept()
         try:
             message_from_client = get_message(client)
-            print(message_from_client)
+            print(f'{datetime.now()} message_from_client: {message_from_client}')
             # {'action': 'presence', 'time': 1573760672.167031, 'user': {'account_name': 'Guest'}}
-            response = process_incoming_message(message_from_client)
-            send_message(client, response)
-            # client.close()
+            actions = process_incoming_message(message_from_client)
+            # print (f'processing incoming message : {actions}')
+            if "response" in actions:
+                send_message(client, actions['response'])
+            if 'quit' in actions:
+                # send_message(client, actions['response'])
+                print(f'client {client_address} closed')
+                client.close()
+                break
         except (ValueError, json.JSONDecodeError):
             print('Принято некорретное сообщение от клиента.')
             client.close()
