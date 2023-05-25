@@ -55,24 +55,29 @@ def process_incoming_message(message):
             and 'user' in message \
             and message['user']['account_name'] == 'Guest':
         print('RESPONSE: 200')
-        return {RESPONSE: 200}
+        return {'response': {RESPONSE: 200}}
     if ACTION in message \
             and message[ACTION] == 'msg' \
             and TIME in message \
             and 'to' in message \
             and message['from'] == 'Guest':
         print('RESPONSE: 201')
-        return {RESPONSE: 201}
-    print('RESPONSE: 400, "Bad Request')
-    return {
-        RESPONSE: 400,
-        ERROR: 'Bad Request'
-    }
+        return {'response': {RESPONSE: 201}}
+    if ACTION in message \
+            and message[ACTION] == 'quit':
+        print('Quit , RESPONSE: 202')
+        return {'quit': ""}
+    print('RESPONSE: 400, error: Bad Request')
+    return {'response', {
+        'response': 400,
+        'error': 'Bad Request'
+    }}
 
 
 def send_message(sock, message):
     json_msg = json.dumps(message)
     encoded_msg = json_msg.encode(ENCODING)
+    # print(f'sending message:  {encoded_msg}')
     sock.send(encoded_msg)
 
 
@@ -85,7 +90,7 @@ def get_message(client) -> dict:
     :return: dict
     """
     encoded_response = client.recv(MAX_PACKAGE_LENGTH)
-    print(f'encoded response : {encoded_response}')
+    # print(f'encoded response : {encoded_response}')
     if isinstance(encoded_response, bytes):
         json_response = encoded_response.decode(ENCODING)
         response = json.loads(json_response)

@@ -1,0 +1,65 @@
+(venv) user1@ubuntu:~/Desktop/chat/Lesson3$ python3 client.py
+port : 7777
+IP Address : 127.0.0.1
+
+==================================
+ status Disconnected
+==================================
+Message : please connect to server
+==================================
+Main menu:  1 - connect to server
+            2 - message
+            3 - quit
+            4 - join to chat
+            5 - leave chat
+
+enter code of action: 1
+==================================
+ status Connected
+==================================
+Message : 200 : OK
+==================================
+Main menu:  1 - connect to server
+            2 - message
+            3 - quit
+            4 - join to chat
+            5 - leave chat
+
+enter code of action: 2
+Please enter message (500 char max) : Initial Message
+Please enter receiver User_ID :  123
+==================================
+ status Connected
+==================================
+Message : 201 : OK
+==================================
+Main menu:  1 - connect to server
+            2 - message
+            3 - quit
+            4 - join to chat
+            5 - leave chat
+
+enter code of action: 3
+***********************************
+        Server disconnected
+***********************************
+(venv) user1@ubuntu:~/Desktop/chat/Lesson3$ ^C
+(venv) user1@ubuntu:~/Desktop/chat/Lesson3$ ^C
+(venv) user1@ubuntu:~/Desktop/chat/Lesson3$ python3 client.py
+port : 7777
+IP Address : 127.0.0.1
+
+==================================
+ status Disconnected
+==================================
+Message : please connect to server
+==================================
+Main menu:  1 - connect to server
+            2 - message
+            3 - quit
+            4 - join to chat
+            5 - leave chat
+
+enter code of action: 1
+Server not responding
+(venv) user1@ubuntu:~/Desktop/chat/Lesson3$

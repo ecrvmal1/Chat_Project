@@ -3,7 +3,7 @@ import re
 import os
 import time
 import json
-from socket import *
+import socket
 
 from common.client_variables import ENCODING, RESPONSE, ERROR, MAX_PACKAGE_LENGTH, USER
 
@@ -53,7 +53,7 @@ def menu_action():
 
 
 def client_connection(ipaddress, port):
-    s = socket(AF_INET, SOCK_STREAM)
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
         s.connect((ipaddress, port))
     except Exception:
@@ -63,9 +63,9 @@ def client_connection(ipaddress, port):
 
 
 def terminal_info(status, message):
-    print(f"terminal : staus : {status}, message {message} ")
+    # print(f"terminal : status : {status}, message {message} ")
     # os.system('clear')
-    print(f"terminal : staus : {status}, message {message} ")
+    # print(f"terminal : status : {status}, message {message} ")
     conn = "Connected" if status is True else "Disconnected"
     print('==================================')
     print( f' status {conn}')
@@ -115,22 +115,28 @@ def get_message(client) -> dict:
 def send_message(sock, message):
     json_msg = json.dumps(message)
     encoded_msg = json_msg.encode(ENCODING)
-    print(f'encoded msg = {encoded_msg}')
+    # print(f'encoded msg = {encoded_msg}')
     sock.send(encoded_msg)
-    print('message sent to server')
+    # print('message sent to server')
 
 
 def process_ans(message):
+
     """
     The function check server response
     :param message:
     :return: string :  '200 : OK'  or  '400 : {message[ERROR]}
     """
+    # print(f'process incoming message {message}')
     if RESPONSE in message:
         if message[RESPONSE] == 200:
             return f'200 : OK'
-        return f'400 : {message[ERROR]}'
-    raise ValueError
+        elif message[RESPONSE] == 201:
+            return f'201 : OK'
+        elif message[RESPONSE] == 400:
+            return f'400 : Error '
+        else:
+            raise ValueError
 
 
 def client_disconnection(sock):
