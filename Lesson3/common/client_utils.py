@@ -41,13 +41,16 @@ def get_port(args_list) -> int:
 
 def menu_action():
     while True:
-        print('Main menu:  1 - connect to server \n'
-              '            2 - message  \n'
-              '            3 - quit \n'
-              '            4 - join to chat \n'
-              '            5 - leave chat \n')
+        print('Main menu:  1 - Connect to server \n'
+              '            2 - Send Message  \n'
+              '            3 - Disconnect from server \n'
+              '            4 - Join to chat \n'
+              '            5 - Leave chat \n'
+              '            6 - Quit \n'
+              )
+
         action = int(input("enter code of action: "))
-        if action in range(1, 5):
+        if action in range(1, 7):
             break
     return action
 
@@ -62,17 +65,16 @@ def client_connection(ipaddress, port):
     return True, s
 
 
-def terminal_info(status, message):
+def terminal_info(message):
     # print(f"terminal : status : {status}, message {message} ")
     # os.system('clear')
     # print(f"terminal : status : {status}, message {message} ")
-    conn = "Connected" if status is True else "Disconnected"
     print('==================================')
-    print( f' status {conn}')
-    print('==================================')
-    print(f'Message : {message}')
+    print(f' Message : {message}')
     print('==================================')
     action = menu_action()
+    print('==================================')
+
     return action
 
 
@@ -133,6 +135,8 @@ def process_ans(message):
             return f'200 : OK'
         elif message[RESPONSE] == 201:
             return f'201 : OK'
+        elif message[RESPONSE] == 202:
+            return f'202 : OK'
         elif message[RESPONSE] == 400:
             return f'400 : Error '
         else:
@@ -141,7 +145,7 @@ def process_ans(message):
 
 def client_disconnection(sock):
     sock.close()
-    return False
+
 
 def user_msg() -> dict:
     """
