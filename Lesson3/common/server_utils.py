@@ -65,8 +65,9 @@ def process_incoming_message(message):
         return {'response': {RESPONSE: 201}}
     if ACTION in message \
             and message[ACTION] == 'quit':
-        print('Quit , RESPONSE: 202')
-        return {'quit': ""}
+        print('quit , RESPONSE: 202')
+        return {'response': {RESPONSE: 202},
+                'quit': " "}
     print('RESPONSE: 400, error: Bad Request')
     return {'response', {
         'response': 400,
