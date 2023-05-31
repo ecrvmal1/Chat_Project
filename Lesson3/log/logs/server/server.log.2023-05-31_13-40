@@ -1,0 +1,18 @@
+2023-05-31 13:40:02,451 INFO       server.py              main server Server got IP ADDRESS 127.0.0.1
+2023-05-31 13:40:02,451 INFO       server.py              main server Server got TCP Port 7777
+2023-05-31 13:40:16,400 INFO       server.py              main server client from IP ('127.0.0.1', 39652) connected
+2023-05-31 13:40:16,400 INFO       server_utils.py        get_message server_utils got message from client
+2023-05-31 13:40:16,400 INFO       server.py              main server message_from_client: {'action': 'presence', 'time': 1685565616.4000015, 'type': 'status', 'user': {'account_name': 'Guest', 'status': 'connected'}}
+2023-05-31 13:40:16,400 INFO       server_utils.py        process_incoming_message server_utils RESPONSE: 200
+2023-05-31 13:40:16,401 INFO       server_utils.py        send_message server_utils message has been sent
+2023-05-31 13:40:22,287 INFO       server.py              main server client from IP ('127.0.0.1', 37090) connected
+2023-05-31 13:40:29,239 INFO       server_utils.py        get_message server_utils got message from client
+2023-05-31 13:40:29,239 INFO       server.py              main server message_from_client: {'action': 'msg', 'time': 1685565629.239216, 'to': '123', 'from': 'Guest', 'encoding': 'utf-8', 'message': '123'}
+2023-05-31 13:40:29,239 INFO       server_utils.py        process_incoming_message server_utils RESPONSE: 201
+2023-05-31 13:40:29,240 INFO       server_utils.py        send_message server_utils message has been sent
+2023-05-31 13:40:34,839 INFO       server.py              main server client from IP ('127.0.0.1', 59810) connected
+2023-05-31 13:40:34,839 INFO       server_utils.py        get_message server_utils got message from client
+2023-05-31 13:40:34,839 INFO       server.py              main server message_from_client: {'action': 'quit'}
+2023-05-31 13:40:34,839 INFO       server_utils.py        process_incoming_message server_utils RESPONSE: 202
+2023-05-31 13:40:34,839 INFO       server_utils.py        send_message server_utils message has been sent
+2023-05-31 13:40:34,840 INFO       server.py              main server Client Disconnected
