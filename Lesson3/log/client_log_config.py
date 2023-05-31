@@ -1,4 +1,4 @@
-# server_log_config #
+# client_log_config #
 
 import sys
 import os
