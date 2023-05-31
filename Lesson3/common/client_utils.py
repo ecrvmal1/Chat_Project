@@ -61,6 +61,7 @@ def client_connection(ipaddress, port):
         s.connect((ipaddress, port))
     except Exception:
         print('Server not responding')
+        s.close()
         sys.exit(1)
     return True, s
 
@@ -131,16 +132,23 @@ def process_ans(message):
     """
     # print(f'process incoming message {message}')
     if RESPONSE in message:
-        if message[RESPONSE] == 200:
-            return f'200 : OK'
-        elif message[RESPONSE] == 201:
-            return f'201 : OK'
-        elif message[RESPONSE] == 202:
-            return f'202 : OK'
-        elif message[RESPONSE] == 400:
-            return f'400 : Error '
+        code = message[RESPONSE]
+        try:
+            code = int(code)
+        except ValueError:
+            raise ValueError
+        if code in range (200, 211):
+            return f'{code}: OK'
+        elif code in range (100, 111):
+            return f'{code}: INFO'
+        elif code in range(400, 411):
+            return f'{code}: Error'
+        elif code in range(500, 511):
+            return f'{code}: Server Error '
         else:
             raise ValueError
+    raise ValueError
+
 
 
 def client_disconnection(sock):
