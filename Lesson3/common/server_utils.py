@@ -3,11 +3,13 @@ import re
 import os
 import time
 import json
+import logging
 from socket import *
 
 from common.server_variables import ENCODING, RESPONSE, ERROR, MAX_PACKAGE_LENGTH, USER, \
     ACTION, PRESENCE, TIME, ACCOUNT_NAME
 
+LOGGER = logging.getLogger('server_logger')
 
 def get_ip_address(args_list) -> str:
     ip_addr = None
@@ -54,22 +56,26 @@ def process_incoming_message(message):
             and TIME in message \
             and 'user' in message \
             and message['user']['account_name'] == 'Guest':
-        print('RESPONSE: 200')
+        # print('RESPONSE: 200')
+        LOGGER.info('RESPONSE: 200')
         return {'response': {RESPONSE: 200}}
     if ACTION in message \
             and message[ACTION] == 'msg' \
             and TIME in message \
             and 'to' in message \
             and message['from'] == 'Guest':
-        print('RESPONSE: 201')
+        # print('RESPONSE: 201')
+        LOGGER.info('RESPONSE: 201')
         return {'response': {RESPONSE: 201}}
     if ACTION in message \
             and message[ACTION] == 'quit':
-        print('quit , RESPONSE: 202')
+        # print('quit , RESPONSE: 202')
+        LOGGER.info('RESPONSE: 202')
         return {'response': {RESPONSE: 202},
                 'quit': " "}
     print('RESPONSE: 400, error: Bad Request')
-    return {'response', {
+    LOGGER.error('RESPONSE: 400, error: Bad Request')
+    return {'response': {
         'response': 400,
         'error': 'Bad Request'
     }}
@@ -80,6 +86,7 @@ def send_message(sock, message):
     encoded_msg = json_msg.encode(ENCODING)
     # print(f'sending message:  {encoded_msg}')
     sock.send(encoded_msg)
+    LOGGER.info('message has been sent')
 
 
 def get_message(client) -> dict:
@@ -96,8 +103,11 @@ def get_message(client) -> dict:
         json_response = encoded_response.decode(ENCODING)
         response = json.loads(json_response)
         if isinstance(response, dict):
+            LOGGER.info('got message from client')
             return response
+    LOGGER.error('got message from client with incorrect encoding')
     raise ValueError
+
 
 
 

@@ -1,0 +1,66 @@
+2023-05-31 13:23:11,140 ERROR      client_log_config.py <module> client_log_config test error message
+2023-05-31 13:23:11,140 CRITICAL   client_log_config.py <module> client_log_config test critical message
+2023-05-31 13:30:10,403 ERROR      client_log_config.py <module> client_log_config test error message
+2023-05-31 13:30:10,403 CRITICAL   client_log_config.py <module> client_log_config test critical message
+2023-05-31 13:31:49,896 DEBUG      client_log_config.py <module> client_log_config test debug message
+2023-05-31 13:31:49,896 INFO       client_log_config.py <module> client_log_config test info message
+2023-05-31 13:31:49,896 ERROR      client_log_config.py <module> client_log_config test error message
+2023-05-31 13:31:49,896 CRITICAL   client_log_config.py <module> client_log_config test critical message
+2023-05-31 13:33:05,036 INFO       client.py <module> client Client got IP Address 127.0.0.1
+2023-05-31 13:33:05,037 INFO       client.py <module> client Client got TCP Port 7777
+2023-05-31 13:33:05,037 INFO       client.py <module> client Starting Client
+2023-05-31 13:33:07,120 INFO       client.py <module> client Presence message sent
+2023-05-31 13:33:28,416 INFO       client.py <module> client MESSAGE message sent
+2023-05-31 13:33:42,211 INFO       client.py <module> client QUIT message sent
+2023-05-31 13:33:47,729 INFO       client.py <module> client Trying use function 4
+2023-05-31 13:33:52,953 INFO       client.py <module> client Trying use function 4
+2023-05-31 13:33:56,949 INFO       client.py <module> client Client Exiting
+2023-05-31 13:40:13,191 INFO       client.py              <module> client Client got IP Address 127.0.0.1
+2023-05-31 13:40:13,191 INFO       client.py              <module> client Client got TCP Port 7777
+2023-05-31 13:40:13,191 INFO       client.py              <module> client Starting Client
+2023-05-31 13:40:16,400 INFO       client.py              <module> client Presence message sent
+2023-05-31 13:40:29,239 INFO       client.py              <module> client MESSAGE message sent
+2023-05-31 13:40:34,839 INFO       client.py              <module> client QUIT message sent
+2023-05-31 13:40:40,012 INFO       client.py              <module> client Trying use function 4
+2023-05-31 13:40:41,584 INFO       client.py              <module> client Trying use function 5
+2023-05-31 13:40:46,689 INFO       client.py              <module> client Client Exiting
+2023-05-31 13:41:11,612 INFO       client.py              <module> client Client got IP Address 127.0.0.1
+2023-05-31 13:41:11,612 INFO       client.py              <module> client Client got TCP Port 7777
+2023-05-31 13:41:11,613 INFO       client.py              <module> client Starting Client
+2023-05-31 13:41:13,735 INFO       client.py              <module> client Presence message sent
+2023-05-31 13:41:19,372 INFO       client.py              <module> client MESSAGE message sent
+2023-05-31 13:41:21,622 INFO       client.py              <module> client QUIT message sent
+2023-05-31 13:41:22,979 INFO       client.py              <module> client Trying use function 4
+2023-05-31 13:41:23,771 INFO       client.py              <module> client Trying use function 5
+2023-05-31 13:41:27,485 INFO       client.py              <module> client Client Exiting
+2023-05-31 13:47:25,205 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-05-31 13:47:25,205 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-05-31 13:47:25,205 INFO       client.py              client         <module> Starting Client
+2023-05-31 13:47:27,210 INFO       client.py              client         <module> Presence message sent
+2023-05-31 13:47:28,901 INFO       client.py              client         <module> Presence message sent
+2023-05-31 13:47:34,141 INFO       client.py              client         <module> MESSAGE message sent
+2023-05-31 13:47:56,178 INFO       client.py              client         <module> QUIT message sent
+2023-05-31 13:47:59,735 INFO       client.py              client         <module> Trying use function 4
+2023-05-31 13:48:02,202 INFO       client.py              client         <module> Trying use function 5
+2023-05-31 13:48:05,583 INFO       client.py              client         <module> Client Exiting
+2023-05-31 13:53:29,609 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-05-31 13:53:29,610 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-05-31 13:53:29,610 INFO       client.py              client         <module> Starting Client
+2023-05-31 13:53:32,841 INFO       client.py              client         <module> Presence message sent
+2023-05-31 13:53:32,842 INFO       client.py              client         <module> RESPONSE got : 200: OK
+2023-05-31 13:53:32,842 INFO       client.py              client         <module> Client Disconnected
+2023-05-31 13:53:35,258 INFO       client.py              client         <module> Presence message sent
+2023-05-31 13:53:35,259 INFO       client.py              client         <module> RESPONSE got : 200: OK
+2023-05-31 13:53:35,259 INFO       client.py              client         <module> Client Disconnected
+2023-05-31 13:53:40,885 INFO       client.py              client         <module> MESSAGE message sent
+2023-05-31 13:53:40,886 INFO       client.py              client         <module> RESPONSE got : 201: OK
+2023-05-31 13:53:40,887 INFO       client.py              client         <module> Client Disconnected
+2023-05-31 13:53:42,831 INFO       client.py              client         <module> Presence message sent
+2023-05-31 13:53:42,832 INFO       client.py              client         <module> RESPONSE got : 200: OK
+2023-05-31 13:53:42,832 INFO       client.py              client         <module> Client Disconnected
+2023-05-31 13:53:44,423 INFO       client.py              client         <module> QUIT message sent
+2023-05-31 13:53:44,424 INFO       client.py              client         <module> RESPONSE got : 202: OK
+2023-05-31 13:53:44,424 INFO       client.py              client         <module> Client Disconnected
+2023-05-31 13:53:46,372 INFO       client.py              client         <module> Trying use function 4
+2023-05-31 13:53:47,138 INFO       client.py              client         <module> Trying use function 5
+2023-05-31 13:53:50,265 INFO       client.py              client         <module> Client Exiting

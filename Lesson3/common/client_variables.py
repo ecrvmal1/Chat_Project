@@ -1,8 +1,10 @@
 """ Constants """
 
+import logging
+
 DEFAULT_CLIENT_PORT = 7777
 DEFAULT_CLIENT_IP_ADDRESS = '127.0.0.1'
-CLIENT_NAME = "user"
+CLIENT_NAME = "Guest"
 # Максимальная очередь подключений
 MAX_CONNECTIONS = 5
 # Максимальная длинна сообщения в байтах
@@ -22,4 +24,9 @@ RESPONSE = 'response'
 ERROR = 'error'
 STATUS = 'status'
 TYPE = 'type'
+
+# Logging
+# Logging levels
+FILE_LOGGING_LEVEL = logging.DEBUG
+TERMINAL_LOGGING_LEVEL = logging.DEBUG
 

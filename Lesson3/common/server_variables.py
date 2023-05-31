@@ -1,5 +1,7 @@
 """ Constants """
 
+import logging
+
 DEFAULT_SERVER_PORT = 7777
 DEFAULT_SERVER_IP_ADDRESS = '127.0.0.1'
 # Максимальная очередь подключений
@@ -21,4 +23,9 @@ RESPONSE = 'response'
 ERROR = 'error'
 STATUS = 'status'
 TYPE = 'type'
+
+# Logging
+# Logging levels
+FILE_LOGGING_LEVEL = logging.DEBUG
+TERMINAL_LOGGING_LEVEL = logging.DEBUG
 

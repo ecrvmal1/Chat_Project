@@ -1,0 +1,28 @@
+2023-05-31 13:53:21,891 INFO       server.py              server         main Server got IP ADDRESS 127.0.0.1
+2023-05-31 13:53:21,892 INFO       server.py              server         main Server got TCP Port 7777
+2023-05-31 13:53:32,841 INFO       server.py              server         main client from IP ('127.0.0.1', 43554) connected
+2023-05-31 13:53:32,841 INFO       server_utils.py        server_utils   get_message got message from client
+2023-05-31 13:53:32,842 INFO       server.py              server         main message_from_client: {'action': 'presence', 'time': 1685566412.841207, 'type': 'status', 'user': {'account_name': 'Guest', 'status': 'connected'}}
+2023-05-31 13:53:32,842 INFO       server_utils.py        server_utils   process_incoming_message RESPONSE: 200
+2023-05-31 13:53:32,842 INFO       server_utils.py        server_utils   send_message message has been sent
+2023-05-31 13:53:35,258 INFO       server.py              server         main client from IP ('127.0.0.1', 43562) connected
+2023-05-31 13:53:35,259 INFO       server_utils.py        server_utils   get_message got message from client
+2023-05-31 13:53:35,259 INFO       server.py              server         main message_from_client: {'action': 'presence', 'time': 1685566415.2585661, 'type': 'status', 'user': {'account_name': 'Guest', 'status': 'connected'}}
+2023-05-31 13:53:35,259 INFO       server_utils.py        server_utils   process_incoming_message RESPONSE: 200
+2023-05-31 13:53:35,259 INFO       server_utils.py        server_utils   send_message message has been sent
+2023-05-31 13:53:37,273 INFO       server.py              server         main client from IP ('127.0.0.1', 43566) connected
+2023-05-31 13:53:40,886 INFO       server_utils.py        server_utils   get_message got message from client
+2023-05-31 13:53:40,886 INFO       server.py              server         main message_from_client: {'action': 'msg', 'time': 1685566420.8857656, 'to': '123', 'from': 'Guest', 'encoding': 'utf-8', 'message': '123'}
+2023-05-31 13:53:40,886 INFO       server_utils.py        server_utils   process_incoming_message RESPONSE: 201
+2023-05-31 13:53:40,886 INFO       server_utils.py        server_utils   send_message message has been sent
+2023-05-31 13:53:42,831 INFO       server.py              server         main client from IP ('127.0.0.1', 36620) connected
+2023-05-31 13:53:42,831 INFO       server_utils.py        server_utils   get_message got message from client
+2023-05-31 13:53:42,831 INFO       server.py              server         main message_from_client: {'action': 'presence', 'time': 1685566422.8311343, 'type': 'status', 'user': {'account_name': 'Guest', 'status': 'connected'}}
+2023-05-31 13:53:42,831 INFO       server_utils.py        server_utils   process_incoming_message RESPONSE: 200
+2023-05-31 13:53:42,831 INFO       server_utils.py        server_utils   send_message message has been sent
+2023-05-31 13:53:44,424 INFO       server.py              server         main client from IP ('127.0.0.1', 36628) connected
+2023-05-31 13:53:44,424 INFO       server_utils.py        server_utils   get_message got message from client
+2023-05-31 13:53:44,424 INFO       server.py              server         main message_from_client: {'action': 'quit'}
+2023-05-31 13:53:44,424 INFO       server_utils.py        server_utils   process_incoming_message RESPONSE: 202
+2023-05-31 13:53:44,424 INFO       server_utils.py        server_utils   send_message message has been sent
+2023-05-31 13:53:44,424 INFO       server.py              server         main Client Disconnected
