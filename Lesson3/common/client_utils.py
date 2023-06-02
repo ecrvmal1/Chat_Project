@@ -4,10 +4,12 @@ import os
 import time
 import json
 import socket
+from deco_log import log_debug
 
 from common.client_variables import ENCODING, RESPONSE, ERROR, MAX_PACKAGE_LENGTH, USER
 
 
+@log_debug
 def get_ip_address(args_list) -> str:
     ip_addr = None
     if '-a' in args_list:
@@ -25,6 +27,7 @@ def get_ip_address(args_list) -> str:
     return ip_addr
 
 
+@log_debug
 def get_port(args_list) -> int:
     port_number = None
     if '-p' in args_list:
@@ -39,6 +42,7 @@ def get_port(args_list) -> int:
     return port_number
 
 
+@log_debug
 def menu_action():
     while True:
         print('Main menu:  1 - Connect to server \n'
@@ -55,6 +59,7 @@ def menu_action():
     return action
 
 
+@log_debug
 def client_connection(ipaddress, port):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
@@ -66,6 +71,7 @@ def client_connection(ipaddress, port):
     return True, s
 
 
+@log_debug
 def terminal_info(message):
     # print(f"terminal : status : {status}, message {message} ")
     # os.system('clear')
@@ -79,6 +85,7 @@ def terminal_info(message):
     return action
 
 
+@log_debug
 def presence_msg(account_name='Guest'):
     """
     Функция генерирует запрос о присутствии клиента
@@ -97,7 +104,7 @@ def presence_msg(account_name='Guest'):
     }
     return out
 
-
+@log_debug
 def get_message(client) -> dict:
     """
     Утилита приёма и декодирования сообщения
@@ -114,7 +121,7 @@ def get_message(client) -> dict:
             return response
     raise ValueError
 
-
+@log_debug
 def send_message(sock, message):
     json_msg = json.dumps(message)
     encoded_msg = json_msg.encode(ENCODING)
@@ -122,7 +129,7 @@ def send_message(sock, message):
     sock.send(encoded_msg)
     # print('message sent to server')
 
-
+@log_debug
 def process_ans(message):
 
     """
@@ -150,11 +157,12 @@ def process_ans(message):
     raise ValueError
 
 
-
+@log_debug
 def client_disconnection(sock):
     sock.close()
 
 
+@log_debug
 def user_msg() -> dict:
     """
     Функция генерирует cooбщение клиента

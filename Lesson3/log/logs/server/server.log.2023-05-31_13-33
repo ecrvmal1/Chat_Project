@@ -1,6 +1,0 @@
-2023-05-31 13:33:42,211 INFO       server.py main server client from IP ('127.0.0.1', 53250) connected
-2023-05-31 13:33:42,212 INFO       server_utils.py get_message server_utils got message from client
-2023-05-31 13:33:42,213 INFO       server.py main server message_from_client: {'action': 'quit'}
-2023-05-31 13:33:42,213 INFO       server_utils.py process_incoming_message server_utils RESPONSE: 202
-2023-05-31 13:33:42,213 INFO       server_utils.py send_message server_utils message has been sent
-2023-05-31 13:33:42,213 INFO       server.py main server Client Disconnected
