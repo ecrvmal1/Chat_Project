@@ -1,0 +1,28 @@
+2023-06-02 15:11:02,144 INFO       server.py              server         main client from IP ('127.0.0.1', 33628) connected
+2023-06-02 15:11:02,144 INFO       server_utils.py        server_utils   get_message got message from client
+2023-06-02 15:11:02,145 DEBUG      Была вызвана функция get_message c параметрами (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 33628)>,), {}. Вызов из модуля  common.server_utils. Вызов из функции main().
+2023-06-02 15:11:02,145 INFO       server.py              server         main message_from_client: {'action': 'presence', 'time': 1685743862.143897, 'type': 'status', 'user': {'account_name': 'Guest', 'status': 'connected'}}
+2023-06-02 15:11:02,145 INFO       server_utils.py        server_utils   process_incoming_message RESPONSE: 200
+2023-06-02 15:11:02,145 DEBUG      Была вызвана функция process_incoming_message c параметрами ({'action': 'presence', 'time': 1685743862.143897, 'type': 'status', 'user': {'account_name': 'Guest', 'status': 'connected'}},), {}. Вызов из модуля  common.server_utils. Вызов из функции main().
+2023-06-02 15:11:02,145 INFO       server_utils.py        server_utils   send_message message has been sent
+2023-06-02 15:11:02,145 DEBUG      Была вызвана функция send_message c параметрами (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 33628)>, {'response': 200}), {}. Вызов из модуля  common.server_utils. Вызов из функции main().
+2023-06-02 15:11:13,791 DEBUG      Из функции main().Из модуля  common.server_utils. Вызвана функция get_ip_address c параметрами (['server.py'],), {}. 
+2023-06-02 15:11:13,792 INFO       server.py              server         main Server got IP ADDRESS 127.0.0.1
+2023-06-02 15:11:13,792 DEBUG      Из функции main().Из модуля  common.server_utils. Вызвана функция get_port c параметрами (['server.py'],), {}. 
+2023-06-02 15:11:13,792 INFO       server.py              server         main Server got TCP Port 7777
+2023-06-02 15:11:35,684 DEBUG      Из функции main().Из модуля  common.server_utils. Вызвана функция get_ip_address c параметрами (['server.py'],), {}. 
+2023-06-02 15:11:35,684 INFO       server.py              server         main Server got IP ADDRESS 127.0.0.1
+2023-06-02 15:11:35,684 DEBUG      Из функции main().Из модуля  common.server_utils. Вызвана функция get_port c параметрами (['server.py'],), {}. 
+2023-06-02 15:11:35,684 INFO       server.py              server         main Server got TCP Port 7777
+2023-06-02 15:12:08,809 DEBUG      Из функции main().Из модуля  common.server_utils. Вызвана функция get_ip_address c параметрами (['server.py'],), {}. 
+2023-06-02 15:12:08,809 INFO       server.py              server         main Server got IP ADDRESS 127.0.0.1
+2023-06-02 15:12:08,810 DEBUG      Из функции main().Из модуля  common.server_utils. Вызвана функция get_port c параметрами (['server.py'],), {}. 
+2023-06-02 15:12:08,810 INFO       server.py              server         main Server got TCP Port 7777
+2023-06-02 15:12:19,293 INFO       server.py              server         main client from IP ('127.0.0.1', 54656) connected
+2023-06-02 15:12:19,293 INFO       server_utils.py        server_utils   get_message got message from client
+2023-06-02 15:12:19,293 DEBUG      Из функции main().Из модуля  common.server_utils. Вызвана функция get_message c параметрами (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 54656)>,), {}. 
+2023-06-02 15:12:19,294 INFO       server.py              server         main message_from_client: {'action': 'presence', 'time': 1685743939.2928154, 'type': 'status', 'user': {'account_name': 'Guest', 'status': 'connected'}}
+2023-06-02 15:12:19,294 INFO       server_utils.py        server_utils   process_incoming_message RESPONSE: 200
+2023-06-02 15:12:19,294 DEBUG      Из функции main().Из модуля  common.server_utils. Вызвана функция process_incoming_message c параметрами ({'action': 'presence', 'time': 1685743939.2928154, 'type': 'status', 'user': {'account_name': 'Guest', 'status': 'connected'}},), {}. 
+2023-06-02 15:12:19,294 INFO       server_utils.py        server_utils   send_message message has been sent
+2023-06-02 15:12:19,294 DEBUG      Из функции main().Из модуля  common.server_utils. Вызвана функция send_message c параметрами (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 54656)>, {'response': 200}), {}. 

@@ -5,12 +5,15 @@ import time
 import json
 import logging
 from socket import *
+from deco_log import log_debug
 
 from common.server_variables import ENCODING, RESPONSE, ERROR, MAX_PACKAGE_LENGTH, USER, \
     ACTION, PRESENCE, TIME, ACCOUNT_NAME
 
 LOGGER = logging.getLogger('server_logger')
 
+
+@log_debug
 def get_ip_address(args_list) -> str:
     ip_addr = None
     if '-a' in args_list:
@@ -28,6 +31,7 @@ def get_ip_address(args_list) -> str:
     return ip_addr
 
 
+@log_debug
 def get_port(args_list) -> int:
     port_number = None
     if '-p' in args_list:
@@ -42,6 +46,7 @@ def get_port(args_list) -> int:
     return port_number
 
 
+@log_debug
 def process_incoming_message(message):
     """
     Обработчик сообщений от клиентов, принимает словарь -
@@ -81,6 +86,7 @@ def process_incoming_message(message):
     }}
 
 
+@log_debug
 def send_message(sock, message):
     json_msg = json.dumps(message)
     encoded_msg = json_msg.encode(ENCODING)
@@ -89,6 +95,7 @@ def send_message(sock, message):
     LOGGER.info('message has been sent')
 
 
+@log_debug
 def get_message(client) -> dict:
     """
     Утилита приёма и декодирования сообщения

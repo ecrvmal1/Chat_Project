@@ -1,2 +1,0 @@
-2023-05-31 13:20:53,361 ERROR      server_log_config.py <module> server_log_config test error message
-2023-05-31 13:20:53,361 CRITICAL   server_log_config.py <module> server_log_config test critical message

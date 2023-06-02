@@ -64,3 +64,267 @@
 2023-05-31 13:53:46,372 INFO       client.py              client         <module> Trying use function 4
 2023-05-31 13:53:47,138 INFO       client.py              client         <module> Trying use function 5
 2023-05-31 13:53:50,265 INFO       client.py              client         <module> Client Exiting
+2023-06-02 12:38:37,661 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции get_ip_address(sys.argv).
+2023-06-02 12:38:37,662 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-02 12:38:37,662 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-02 12:38:37,662 INFO       client.py              client         <module> Starting Client
+2023-06-02 12:48:34,692 INFO       client.py              client         <module> Client Exiting
+2023-06-02 13:09:08,493 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции get_ip_address(sys.argv).
+2023-06-02 13:09:08,494 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-02 13:09:08,494 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция get_port c параметрами (['client.py'],), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции get_port(sys.argv).
+2023-06-02 13:09:08,494 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-02 13:09:08,494 INFO       client.py              client         <module> Starting Client
+2023-06-02 13:09:11,350 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция menu_action c параметрами (), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции terminal_info(message).
+2023-06-02 13:09:11,351 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция terminal_info c параметрами ('',), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции terminal_info(message).
+2023-06-02 13:09:11,351 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция client_connection c параметрами ('127.0.0.1', 7777), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции client_port).
+2023-06-02 13:09:11,351 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция presence_msg c параметрами (), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции presence_msg().
+2023-06-02 13:09:11,352 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция send_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 37978), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1685736551.3517787, 'type': 'status', 'user': {'account_name': 'Guest', 'status': 'connected'}}), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции msg).
+2023-06-02 13:09:11,352 INFO       client.py              client         <module> Presence message sent
+2023-06-02 13:09:11,354 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция get_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 37978), raddr=('127.0.0.1', 7777)>,), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции process_ans(get_message(transport)).
+2023-06-02 13:09:11,354 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция process_ans c параметрами ({'response': 200},), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции process_ans(get_message(transport)).
+2023-06-02 13:09:11,354 INFO       client.py              client         <module> RESPONSE got : 200: OK
+2023-06-02 13:09:11,355 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция client_disconnection c параметрами (<socket.socket [closed] fd=-1, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0>,), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции client_disconnection(transport).
+2023-06-02 13:09:11,355 INFO       client.py              client         <module> Client Disconnected
+2023-06-02 13:09:19,923 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция menu_action c параметрами (), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции terminal_info(message).
+2023-06-02 13:09:19,923 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция terminal_info c параметрами ('200: OK',), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции terminal_info(message).
+2023-06-02 13:09:19,923 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция client_connection c параметрами ('127.0.0.1', 7777), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции client_port).
+2023-06-02 13:09:35,176 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция user_msg c параметрами (), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции user_msg().
+2023-06-02 13:09:35,177 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция send_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55336), raddr=('127.0.0.1', 7777)>, {'action': 'msg', 'time': 1685736575.1766918, 'to': '123', 'from': 'Guest', 'encoding': 'utf-8', 'message': '123'}), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции msg).
+2023-06-02 13:09:35,177 INFO       client.py              client         <module> MESSAGE message sent
+2023-06-02 13:09:35,178 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция get_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 55336), raddr=('127.0.0.1', 7777)>,), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции process_ans(get_message(transport)).
+2023-06-02 13:09:35,179 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция process_ans c параметрами ({'response': 201},), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции process_ans(get_message(transport)).
+2023-06-02 13:09:35,179 INFO       client.py              client         <module> RESPONSE got : 201: OK
+2023-06-02 13:09:35,179 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция client_disconnection c параметрами (<socket.socket [closed] fd=-1, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0>,), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции client_disconnection(transport).
+2023-06-02 13:09:35,179 INFO       client.py              client         <module> Client Disconnected
+2023-06-02 13:09:39,322 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция menu_action c параметрами (), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции terminal_info(message).
+2023-06-02 13:09:39,322 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция terminal_info c параметрами ('201: OK',), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции terminal_info(message).
+2023-06-02 13:09:39,323 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция client_connection c параметрами ('127.0.0.1', 7777), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции client_port).
+2023-06-02 13:09:39,323 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция send_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 35374), raddr=('127.0.0.1', 7777)>, {'action': 'quit'}), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции msg).
+2023-06-02 13:09:39,323 INFO       client.py              client         <module> QUIT message sent
+2023-06-02 13:09:39,324 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция get_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 35374), raddr=('127.0.0.1', 7777)>,), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции process_ans(get_message(transport)).
+2023-06-02 13:09:39,324 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция process_ans c параметрами ({'response': 202},), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции process_ans(get_message(transport)).
+2023-06-02 13:09:39,324 INFO       client.py              client         <module> RESPONSE got : 202: OK
+2023-06-02 13:09:39,325 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция client_disconnection c параметрами (<socket.socket [closed] fd=-1, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0>,), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции client_disconnection(transport).
+2023-06-02 13:09:39,325 INFO       client.py              client         <module> Client Disconnected
+2023-06-02 13:09:47,825 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция menu_action c параметрами (), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции terminal_info(message).
+2023-06-02 13:09:47,825 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция terminal_info c параметрами ('202: OK',), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции terminal_info(message).
+2023-06-02 13:09:47,825 INFO       client.py              client         <module> Trying use function 4
+2023-06-02 13:09:49,054 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция menu_action c параметрами (), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции terminal_info(message).
+2023-06-02 13:09:49,055 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция terminal_info c параметрами ('202: OK',), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции terminal_info(message).
+2023-06-02 13:09:49,055 INFO       client.py              client         <module> Trying use function 5
+2023-06-02 13:09:52,700 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция menu_action c параметрами (), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции terminal_info(message).
+2023-06-02 13:09:52,700 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция terminal_info c параметрами ('202: OK',), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции terminal_info(message).
+2023-06-02 13:09:54,703 INFO       client.py              client         <module> Client Exiting
+2023-06-02 13:25:53,193 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции get_ip_address(sys.argv).
+2023-06-02 13:25:53,193 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-02 13:25:53,193 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция get_port c параметрами (['client.py'],), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции get_port(sys.argv).
+2023-06-02 13:25:53,193 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-02 13:25:53,193 INFO       client.py              client         <module> Starting Client
+2023-06-02 13:25:55,946 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция menu_action c параметрами (), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции terminal_info(message).
+2023-06-02 13:25:55,946 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция terminal_info c параметрами ('',), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции terminal_info(message).
+2023-06-02 13:27:30,025 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции get_ip_address(sys.argv).
+2023-06-02 13:27:30,025 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-02 13:27:30,026 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция get_port c параметрами (['client.py'],), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции get_port(sys.argv).
+2023-06-02 13:27:30,026 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-02 13:27:30,026 INFO       client.py              client         <module> Starting Client
+2023-06-02 13:27:32,387 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция menu_action c параметрами (), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции terminal_info(message).
+2023-06-02 13:27:32,387 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция terminal_info c параметрами ('',), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции terminal_info(message).
+2023-06-02 13:27:32,388 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция client_connection c параметрами ('127.0.0.1', 7777), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции client_port).
+2023-06-02 13:27:32,388 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция presence_msg c параметрами (), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции presence_msg().
+2023-06-02 13:27:32,388 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция send_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 45854), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1685737652.3881881, 'type': 'status', 'user': {'account_name': 'Guest', 'status': 'connected'}}), {}. 
+                                                          Вызов из модуля  common.client_utils. Вызов из функции msg).
+2023-06-02 13:27:32,388 INFO       client.py              client         <module> Presence message sent
+2023-06-02 15:11:00,190 DEBUG      Из функции get_ip_address(sys.argv).Из модуля  common.client_utils. Вызвана функция get_ip_address c параметрами (['client.py'],), {}. 
+2023-06-02 15:11:00,190 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-02 15:11:00,190 DEBUG      Из функции get_port(sys.argv).Из модуля  common.client_utils. Вызвана функция get_port c параметрами (['client.py'],), {}. 
+2023-06-02 15:11:00,191 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-02 15:11:00,191 INFO       client.py              client         <module> Starting Client
+2023-06-02 15:11:02,143 DEBUG      Из функции terminal_info(message).Из модуля  common.client_utils. Вызвана функция menu_action c параметрами (), {}. 
+2023-06-02 15:11:02,143 DEBUG      Из функции terminal_info(message).Из модуля  common.client_utils. Вызвана функция terminal_info c параметрами ('',), {}. 
+2023-06-02 15:11:02,143 DEBUG      Из функции client_port).Из модуля  common.client_utils. Вызвана функция client_connection c параметрами ('127.0.0.1', 7777), {}. 
+2023-06-02 15:11:02,143 DEBUG      Из функции presence_msg().Из модуля  common.client_utils. Вызвана функция presence_msg c параметрами (), {}. 
+2023-06-02 15:11:02,144 DEBUG      Из функции msg).Из модуля  common.client_utils. Вызвана функция send_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 33628), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1685743862.143897, 'type': 'status', 'user': {'account_name': 'Guest', 'status': 'connected'}}), {}. 
+2023-06-02 15:11:02,144 INFO       client.py              client         <module> Presence message sent
+2023-06-02 15:11:02,145 DEBUG      Из функции process_ans(get_message(transport)).Из модуля  common.client_utils. Вызвана функция get_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 33628), raddr=('127.0.0.1', 7777)>,), {}. 
+2023-06-02 15:11:02,146 DEBUG      Из функции process_ans(get_message(transport)).Из модуля  common.client_utils. Вызвана функция process_ans c параметрами ({'response': 200},), {}. 
+2023-06-02 15:11:02,146 INFO       client.py              client         <module> RESPONSE got : 200: OK
+2023-06-02 15:11:02,146 DEBUG      Из функции client_disconnection(transport).Из модуля  common.client_utils. Вызвана функция client_disconnection c параметрами (<socket.socket [closed] fd=-1, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0>,), {}. 
+2023-06-02 15:11:02,146 INFO       client.py              client         <module> Client Disconnected
+2023-06-02 15:11:18,785 DEBUG      Из функции terminal_info(message).Из модуля  common.client_utils. Вызвана функция menu_action c параметрами (), {}. 
+2023-06-02 15:11:18,785 DEBUG      Из функции terminal_info(message).Из модуля  common.client_utils. Вызвана функция terminal_info c параметрами ('200: OK',), {}. 
+2023-06-02 15:12:16,880 DEBUG      Из функции get_ip_address(sys.argv).Из модуля  common.client_utils. Вызвана функция get_ip_address c параметрами (['client.py'],), {}. 
+2023-06-02 15:12:16,880 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-02 15:12:16,880 DEBUG      Из функции get_port(sys.argv).Из модуля  common.client_utils. Вызвана функция get_port c параметрами (['client.py'],), {}. 
+2023-06-02 15:12:16,880 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-02 15:12:16,880 INFO       client.py              client         <module> Starting Client
+2023-06-02 15:12:19,292 DEBUG      Из функции terminal_info(message).Из модуля  common.client_utils. Вызвана функция menu_action c параметрами (), {}. 
+2023-06-02 15:12:19,292 DEBUG      Из функции terminal_info(message).Из модуля  common.client_utils. Вызвана функция terminal_info c параметрами ('',), {}. 
+2023-06-02 15:12:19,292 DEBUG      Из функции client_port).Из модуля  common.client_utils. Вызвана функция client_connection c параметрами ('127.0.0.1', 7777), {}. 
+2023-06-02 15:12:19,292 DEBUG      Из функции presence_msg().Из модуля  common.client_utils. Вызвана функция presence_msg c параметрами (), {}. 
+2023-06-02 15:12:19,293 DEBUG      Из функции msg).Из модуля  common.client_utils. Вызвана функция send_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54656), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1685743939.2928154, 'type': 'status', 'user': {'account_name': 'Guest', 'status': 'connected'}}), {}. 
+2023-06-02 15:12:19,293 INFO       client.py              client         <module> Presence message sent
+2023-06-02 15:12:19,294 DEBUG      Из функции process_ans(get_message(transport)).Из модуля  common.client_utils. Вызвана функция get_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 54656), raddr=('127.0.0.1', 7777)>,), {}. 
+2023-06-02 15:12:19,294 DEBUG      Из функции process_ans(get_message(transport)).Из модуля  common.client_utils. Вызвана функция process_ans c параметрами ({'response': 200},), {}. 
+2023-06-02 15:12:19,295 INFO       client.py              client         <module> RESPONSE got : 200: OK
+2023-06-02 15:12:19,295 DEBUG      Из функции client_disconnection(transport).Из модуля  common.client_utils. Вызвана функция client_disconnection c параметрами (<socket.socket [closed] fd=-1, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0>,), {}. 
+2023-06-02 15:12:19,295 INFO       client.py              client         <module> Client Disconnected
+2023-06-02 15:12:37,604 DEBUG      Из функции terminal_info(message).Из модуля  common.client_utils. Вызвана функция menu_action c параметрами (), {}. 
+2023-06-02 15:12:37,604 DEBUG      Из функции terminal_info(message).Из модуля  common.client_utils. Вызвана функция terminal_info c параметрами ('200: OK',), {}. 
+2023-06-02 15:12:37,604 DEBUG      Из функции client_port).Из модуля  common.client_utils. Вызвана функция client_connection c параметрами ('127.0.0.1', 7777), {}. 
+2023-06-02 15:12:44,419 DEBUG      Из функции user_msg().Из модуля  common.client_utils. Вызвана функция user_msg c параметрами (), {}. 
+2023-06-02 15:12:44,419 DEBUG      Из функции msg).Из модуля  common.client_utils. Вызвана функция send_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 44164), raddr=('127.0.0.1', 7777)>, {'action': 'msg', 'time': 1685743964.4192095, 'to': '234', 'from': 'Guest', 'encoding': 'utf-8', 'message': '123'}), {}. 
+2023-06-02 15:12:44,420 INFO       client.py              client         <module> MESSAGE message sent
+2023-06-02 15:12:44,421 DEBUG      Из функции process_ans(get_message(transport)).Из модуля  common.client_utils. Вызвана функция get_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 44164), raddr=('127.0.0.1', 7777)>,), {}. 
+2023-06-02 15:12:44,421 DEBUG      Из функции process_ans(get_message(transport)).Из модуля  common.client_utils. Вызвана функция process_ans c параметрами ({'response': 201},), {}. 
+2023-06-02 15:12:44,421 INFO       client.py              client         <module> RESPONSE got : 201: OK
+2023-06-02 15:12:44,421 DEBUG      Из функции client_disconnection(transport).Из модуля  common.client_utils. Вызвана функция client_disconnection c параметрами (<socket.socket [closed] fd=-1, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0>,), {}. 
+2023-06-02 15:12:44,421 INFO       client.py              client         <module> Client Disconnected
+2023-06-02 15:12:46,927 DEBUG      Из функции terminal_info(message).Из модуля  common.client_utils. Вызвана функция menu_action c параметрами (), {}. 
+2023-06-02 15:12:46,927 DEBUG      Из функции terminal_info(message).Из модуля  common.client_utils. Вызвана функция terminal_info c параметрами ('201: OK',), {}. 
+2023-06-02 15:12:46,927 DEBUG      Из функции client_port).Из модуля  common.client_utils. Вызвана функция client_connection c параметрами ('127.0.0.1', 7777), {}. 
+2023-06-02 15:12:46,928 DEBUG      Из функции msg).Из модуля  common.client_utils. Вызвана функция send_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 59108), raddr=('127.0.0.1', 7777)>, {'action': 'quit'}), {}. 
+2023-06-02 15:12:46,928 INFO       client.py              client         <module> QUIT message sent
+2023-06-02 15:12:46,929 DEBUG      Из функции process_ans(get_message(transport)).Из модуля  common.client_utils. Вызвана функция get_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 59108), raddr=('127.0.0.1', 7777)>,), {}. 
+2023-06-02 15:12:46,929 DEBUG      Из функции process_ans(get_message(transport)).Из модуля  common.client_utils. Вызвана функция process_ans c параметрами ({'response': 202},), {}. 
+2023-06-02 15:12:46,930 INFO       client.py              client         <module> RESPONSE got : 202: OK
+2023-06-02 15:12:46,930 DEBUG      Из функции client_disconnection(transport).Из модуля  common.client_utils. Вызвана функция client_disconnection c параметрами (<socket.socket [closed] fd=-1, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0>,), {}. 
+2023-06-02 15:12:46,930 INFO       client.py              client         <module> Client Disconnected
+2023-06-02 15:12:50,942 DEBUG      Из функции terminal_info(message).Из модуля  common.client_utils. Вызвана функция menu_action c параметрами (), {}. 
+2023-06-02 15:12:50,943 DEBUG      Из функции terminal_info(message).Из модуля  common.client_utils. Вызвана функция terminal_info c параметрами ('202: OK',), {}. 
+2023-06-02 15:12:50,943 DEBUG      Из функции client_port).Из модуля  common.client_utils. Вызвана функция client_connection c параметрами ('127.0.0.1', 7777), {}. 
+2023-06-02 15:12:50,943 DEBUG      Из функции presence_msg().Из модуля  common.client_utils. Вызвана функция presence_msg c параметрами (), {}. 
+2023-06-02 15:12:50,944 DEBUG      Из функции msg).Из модуля  common.client_utils. Вызвана функция send_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 59120), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1685743970.9438877, 'type': 'status', 'user': {'account_name': 'Guest', 'status': 'connected'}}), {}. 
+2023-06-02 15:12:50,944 INFO       client.py              client         <module> Presence message sent
+2023-06-02 15:12:50,945 DEBUG      Из функции process_ans(get_message(transport)).Из модуля  common.client_utils. Вызвана функция get_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 59120), raddr=('127.0.0.1', 7777)>,), {}. 
+2023-06-02 15:12:50,945 DEBUG      Из функции process_ans(get_message(transport)).Из модуля  common.client_utils. Вызвана функция process_ans c параметрами ({'response': 200},), {}. 
+2023-06-02 15:12:50,945 INFO       client.py              client         <module> RESPONSE got : 200: OK
+2023-06-02 15:12:50,946 DEBUG      Из функции client_disconnection(transport).Из модуля  common.client_utils. Вызвана функция client_disconnection c параметрами (<socket.socket [closed] fd=-1, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0>,), {}. 
+2023-06-02 15:12:50,946 INFO       client.py              client         <module> Client Disconnected
+2023-06-02 15:12:52,558 DEBUG      Из функции terminal_info(message).Из модуля  common.client_utils. Вызвана функция menu_action c параметрами (), {}. 
+2023-06-02 15:12:52,559 DEBUG      Из функции terminal_info(message).Из модуля  common.client_utils. Вызвана функция terminal_info c параметрами ('200: OK',), {}. 
+2023-06-02 15:12:52,559 DEBUG      Из функции client_port).Из модуля  common.client_utils. Вызвана функция client_connection c параметрами ('127.0.0.1', 7777), {}. 
+2023-06-02 15:12:56,147 DEBUG      Из функции user_msg().Из модуля  common.client_utils. Вызвана функция user_msg c параметрами (), {}. 
+2023-06-02 15:12:56,147 DEBUG      Из функции msg).Из модуля  common.client_utils. Вызвана функция send_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 59128), raddr=('127.0.0.1', 7777)>, {'action': 'msg', 'time': 1685743976.1470613, 'to': '234', 'from': 'Guest', 'encoding': 'utf-8', 'message': '123'}), {}. 
+2023-06-02 15:12:56,147 INFO       client.py              client         <module> MESSAGE message sent
+2023-06-02 15:12:56,148 DEBUG      Из функции process_ans(get_message(transport)).Из модуля  common.client_utils. Вызвана функция get_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 59128), raddr=('127.0.0.1', 7777)>,), {}. 
+2023-06-02 15:12:56,149 DEBUG      Из функции process_ans(get_message(transport)).Из модуля  common.client_utils. Вызвана функция process_ans c параметрами ({'response': 201},), {}. 
+2023-06-02 15:12:56,149 INFO       client.py              client         <module> RESPONSE got : 201: OK
+2023-06-02 15:12:56,149 DEBUG      Из функции client_disconnection(transport).Из модуля  common.client_utils. Вызвана функция client_disconnection c параметрами (<socket.socket [closed] fd=-1, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0>,), {}. 
+2023-06-02 15:12:56,149 INFO       client.py              client         <module> Client Disconnected
+2023-06-02 15:12:58,673 DEBUG      Из функции terminal_info(message).Из модуля  common.client_utils. Вызвана функция menu_action c параметрами (), {}. 
+2023-06-02 15:12:58,674 DEBUG      Из функции terminal_info(message).Из модуля  common.client_utils. Вызвана функция terminal_info c параметрами ('201: OK',), {}. 
+2023-06-02 15:12:58,674 DEBUG      Из функции client_port).Из модуля  common.client_utils. Вызвана функция client_connection c параметрами ('127.0.0.1', 7777), {}. 
+2023-06-02 15:12:58,675 DEBUG      Из функции msg).Из модуля  common.client_utils. Вызвана функция send_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 35744), raddr=('127.0.0.1', 7777)>, {'action': 'quit'}), {}. 
+2023-06-02 15:12:58,675 INFO       client.py              client         <module> QUIT message sent
+2023-06-02 15:12:58,676 DEBUG      Из функции process_ans(get_message(transport)).Из модуля  common.client_utils. Вызвана функция get_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 35744), raddr=('127.0.0.1', 7777)>,), {}. 
+2023-06-02 15:12:58,676 DEBUG      Из функции process_ans(get_message(transport)).Из модуля  common.client_utils. Вызвана функция process_ans c параметрами ({'response': 202},), {}. 
+2023-06-02 15:12:58,676 INFO       client.py              client         <module> RESPONSE got : 202: OK
+2023-06-02 15:12:58,676 DEBUG      Из функции client_disconnection(transport).Из модуля  common.client_utils. Вызвана функция client_disconnection c параметрами (<socket.socket [closed] fd=-1, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0>,), {}. 
+2023-06-02 15:12:58,676 INFO       client.py              client         <module> Client Disconnected
+2023-06-02 15:13:00,434 DEBUG      Из функции terminal_info(message).Из модуля  common.client_utils. Вызвана функция menu_action c параметрами (), {}. 
+2023-06-02 15:13:00,435 DEBUG      Из функции terminal_info(message).Из модуля  common.client_utils. Вызвана функция terminal_info c параметрами ('202: OK',), {}. 
+2023-06-02 15:13:02,438 INFO       client.py              client         <module> Client Exiting
+2023-06-02 15:18:43,847 DEBUG      Из модуля  common.client_utils.    Из функции get_ip_address(sys.argv).    Вызвана функция get_ip_address c параметрами (['client.py'],), {}.  
+2023-06-02 15:18:43,848 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-02 15:18:43,848 DEBUG      Из модуля  common.client_utils.    Из функции get_port(sys.argv).    Вызвана функция get_port c параметрами (['client.py'],), {}.  
+2023-06-02 15:18:43,848 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-02 15:18:43,848 INFO       client.py              client         <module> Starting Client
+2023-06-02 15:18:45,692 DEBUG      Из модуля  common.client_utils.    Из функции terminal_info(message).    Вызвана функция menu_action c параметрами (), {}.  
+2023-06-02 15:18:45,692 DEBUG      Из модуля  common.client_utils.    Из функции terminal_info(message).    Вызвана функция terminal_info c параметрами ('',), {}.  
+2023-06-02 15:18:45,693 DEBUG      Из модуля  common.client_utils.    Из функции client_port).    Вызвана функция client_connection c параметрами ('127.0.0.1', 7777), {}.  
+2023-06-02 15:18:45,693 DEBUG      Из модуля  common.client_utils.    Из функции presence_msg().    Вызвана функция presence_msg c параметрами (), {}.  
+2023-06-02 15:18:45,693 DEBUG      Из модуля  common.client_utils.    Из функции msg).    Вызвана функция send_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 43034), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1685744325.6931088, 'type': 'status', 'user': {'account_name': 'Guest', 'status': 'connected'}}), {}.  
+2023-06-02 15:18:45,693 INFO       client.py              client         <module> Presence message sent
+2023-06-02 15:18:45,694 DEBUG      Из модуля  common.client_utils.    Из функции process_ans(get_message(transport)).    Вызвана функция get_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 43034), raddr=('127.0.0.1', 7777)>,), {}.  
+2023-06-02 15:18:45,694 DEBUG      Из модуля  common.client_utils.    Из функции process_ans(get_message(transport)).    Вызвана функция process_ans c параметрами ({'response': 200},), {}.  
+2023-06-02 15:18:45,694 INFO       client.py              client         <module> RESPONSE got : 200: OK
+2023-06-02 15:18:45,694 DEBUG      Из модуля  common.client_utils.    Из функции client_disconnection(transport).    Вызвана функция client_disconnection c параметрами (<socket.socket [closed] fd=-1, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0>,), {}.  
+2023-06-02 15:18:45,694 INFO       client.py              client         <module> Client Disconnected
+2023-06-02 15:18:48,820 DEBUG      Из модуля  common.client_utils.    Из функции terminal_info(message).    Вызвана функция menu_action c параметрами (), {}.  
+2023-06-02 15:18:48,821 DEBUG      Из модуля  common.client_utils.    Из функции terminal_info(message).    Вызвана функция terminal_info c параметрами ('200: OK',), {}.  
+2023-06-02 15:18:48,822 DEBUG      Из модуля  common.client_utils.    Из функции client_port).    Вызвана функция client_connection c параметрами ('127.0.0.1', 7777), {}.  
+2023-06-02 15:18:54,866 DEBUG      Из модуля  common.client_utils.    Из функции user_msg().    Вызвана функция user_msg c параметрами (), {}.  
+2023-06-02 15:18:54,866 DEBUG      Из модуля  common.client_utils.    Из функции msg).    Вызвана функция send_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 43044), raddr=('127.0.0.1', 7777)>, {'action': 'msg', 'time': 1685744334.8663213, 'to': '1', 'from': 'Guest', 'encoding': 'utf-8', 'message': '3'}), {}.  
+2023-06-02 15:18:54,867 INFO       client.py              client         <module> MESSAGE message sent
+2023-06-02 15:18:54,868 DEBUG      Из модуля  common.client_utils.    Из функции process_ans(get_message(transport)).    Вызвана функция get_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 43044), raddr=('127.0.0.1', 7777)>,), {}.  
+2023-06-02 15:18:54,868 DEBUG      Из модуля  common.client_utils.    Из функции process_ans(get_message(transport)).    Вызвана функция process_ans c параметрами ({'response': 201},), {}.  
+2023-06-02 15:18:54,868 INFO       client.py              client         <module> RESPONSE got : 201: OK
+2023-06-02 15:18:54,869 DEBUG      Из модуля  common.client_utils.    Из функции client_disconnection(transport).    Вызвана функция client_disconnection c параметрами (<socket.socket [closed] fd=-1, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0>,), {}.  
+2023-06-02 15:18:54,869 INFO       client.py              client         <module> Client Disconnected
+2023-06-02 15:18:57,596 DEBUG      Из модуля  common.client_utils.    Из функции terminal_info(message).    Вызвана функция menu_action c параметрами (), {}.  
+2023-06-02 15:18:57,596 DEBUG      Из модуля  common.client_utils.    Из функции terminal_info(message).    Вызвана функция terminal_info c параметрами ('201: OK',), {}.  
+2023-06-02 15:18:57,597 DEBUG      Из модуля  common.client_utils.    Из функции client_port).    Вызвана функция client_connection c параметрами ('127.0.0.1', 7777), {}.  
+2023-06-02 15:18:57,597 DEBUG      Из модуля  common.client_utils.    Из функции presence_msg().    Вызвана функция presence_msg c параметрами (), {}.  
+2023-06-02 15:18:57,598 DEBUG      Из модуля  common.client_utils.    Из функции msg).    Вызвана функция send_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 48306), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1685744337.5975626, 'type': 'status', 'user': {'account_name': 'Guest', 'status': 'connected'}}), {}.  
+2023-06-02 15:18:57,598 INFO       client.py              client         <module> Presence message sent
+2023-06-02 15:18:57,599 DEBUG      Из модуля  common.client_utils.    Из функции process_ans(get_message(transport)).    Вызвана функция get_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 48306), raddr=('127.0.0.1', 7777)>,), {}.  
+2023-06-02 15:18:57,599 DEBUG      Из модуля  common.client_utils.    Из функции process_ans(get_message(transport)).    Вызвана функция process_ans c параметрами ({'response': 200},), {}.  
+2023-06-02 15:18:57,599 INFO       client.py              client         <module> RESPONSE got : 200: OK
+2023-06-02 15:18:57,599 DEBUG      Из модуля  common.client_utils.    Из функции client_disconnection(transport).    Вызвана функция client_disconnection c параметрами (<socket.socket [closed] fd=-1, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0>,), {}.  
+2023-06-02 15:18:57,599 INFO       client.py              client         <module> Client Disconnected
+2023-06-02 15:18:59,577 DEBUG      Из модуля  common.client_utils.    Из функции terminal_info(message).    Вызвана функция menu_action c параметрами (), {}.  
+2023-06-02 15:18:59,577 DEBUG      Из модуля  common.client_utils.    Из функции terminal_info(message).    Вызвана функция terminal_info c параметрами ('200: OK',), {}.  
+2023-06-02 15:18:59,578 DEBUG      Из модуля  common.client_utils.    Из функции client_port).    Вызвана функция client_connection c параметрами ('127.0.0.1', 7777), {}.  
+2023-06-02 15:19:03,064 DEBUG      Из модуля  common.client_utils.    Из функции user_msg().    Вызвана функция user_msg c параметрами (), {}.  
+2023-06-02 15:19:03,064 DEBUG      Из модуля  common.client_utils.    Из функции msg).    Вызвана функция send_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 48312), raddr=('127.0.0.1', 7777)>, {'action': 'msg', 'time': 1685744343.0641754, 'to': '\tйц', 'from': 'Guest', 'encoding': 'utf-8', 'message': '\tйц'}), {}.  
+2023-06-02 15:19:03,064 INFO       client.py              client         <module> MESSAGE message sent
+2023-06-02 15:19:03,065 DEBUG      Из модуля  common.client_utils.    Из функции process_ans(get_message(transport)).    Вызвана функция get_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 48312), raddr=('127.0.0.1', 7777)>,), {}.  
+2023-06-02 15:19:03,065 DEBUG      Из модуля  common.client_utils.    Из функции process_ans(get_message(transport)).    Вызвана функция process_ans c параметрами ({'response': 201},), {}.  
+2023-06-02 15:19:03,066 INFO       client.py              client         <module> RESPONSE got : 201: OK
+2023-06-02 15:19:03,066 DEBUG      Из модуля  common.client_utils.    Из функции client_disconnection(transport).    Вызвана функция client_disconnection c параметрами (<socket.socket [closed] fd=-1, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0>,), {}.  
+2023-06-02 15:19:03,066 INFO       client.py              client         <module> Client Disconnected
+2023-06-02 15:19:09,343 DEBUG      Из модуля  common.client_utils.    Из функции terminal_info(message).    Вызвана функция menu_action c параметрами (), {}.  
+2023-06-02 15:19:09,343 DEBUG      Из модуля  common.client_utils.    Из функции terminal_info(message).    Вызвана функция terminal_info c параметрами ('201: OK',), {}.  
+2023-06-02 15:19:09,343 DEBUG      Из модуля  common.client_utils.    Из функции client_port).    Вызвана функция client_connection c параметрами ('127.0.0.1', 7777), {}.  
+2023-06-02 15:19:09,344 DEBUG      Из модуля  common.client_utils.    Из функции msg).    Вызвана функция send_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 51400), raddr=('127.0.0.1', 7777)>, {'action': 'quit'}), {}.  
+2023-06-02 15:19:09,344 INFO       client.py              client         <module> QUIT message sent
+2023-06-02 15:19:09,344 DEBUG      Из модуля  common.client_utils.    Из функции process_ans(get_message(transport)).    Вызвана функция get_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 51400), raddr=('127.0.0.1', 7777)>,), {}.  
+2023-06-02 15:19:09,345 DEBUG      Из модуля  common.client_utils.    Из функции process_ans(get_message(transport)).    Вызвана функция process_ans c параметрами ({'response': 202},), {}.  
+2023-06-02 15:19:09,345 INFO       client.py              client         <module> RESPONSE got : 202: OK
+2023-06-02 15:19:09,345 DEBUG      Из модуля  common.client_utils.    Из функции client_disconnection(transport).    Вызвана функция client_disconnection c параметрами (<socket.socket [closed] fd=-1, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0>,), {}.  
+2023-06-02 15:19:09,345 INFO       client.py              client         <module> Client Disconnected
+2023-06-02 15:19:12,263 DEBUG      Из модуля  common.client_utils.    Из функции terminal_info(message).    Вызвана функция menu_action c параметрами (), {}.  
+2023-06-02 15:19:12,263 DEBUG      Из модуля  common.client_utils.    Из функции terminal_info(message).    Вызвана функция terminal_info c параметрами ('202: OK',), {}.  
+2023-06-02 15:19:14,265 INFO       client.py              client         <module> Client Exiting
