@@ -3,6 +3,7 @@ import sys
 import json
 import logging
 from datetime import datetime
+from deco_log import log_debug
 
 import log.server_log_config
 from common.server_variables import DEFAULT_SERVER_IP_ADDRESS, DEFAULT_SERVER_PORT, MAX_CONNECTIONS
@@ -10,8 +11,10 @@ from common.server_variables import DEFAULT_SERVER_IP_ADDRESS, DEFAULT_SERVER_PO
 from common.server_utils import get_ip_address, get_port, process_incoming_message, send_message, \
     get_message
 
-
+@log_debug
 def main():
+    # printname()
+
     LOGGER = logging.getLogger('server_logger')
 
     server_ip_address = get_ip_address(sys.argv)
