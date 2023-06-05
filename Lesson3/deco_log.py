@@ -27,11 +27,9 @@ def log_debug(func):
         result = func(*args, **kwargs)
         # print(f'traceback : {traceback.format_stack()}')
         # print(f'stack : {inspect.stack()}')
-        LOGGER.debug(f'Из модуля  {func.__module__}.    '
-                     f'Из функции {traceback.format_stack()[0].strip().split()[-1]}.    '
-                     f'Вызвана функция {func.__name__} c параметрами {args}, {kwargs}.  '
-                     # Ниже : повторение
-                     # f'Вызов из функции {inspect.stack()[1][3]}'
-                     )
+        LOGGER.debug(f'Была вызвана функция {func.__name__} c параметрами {args}, {kwargs}. '
+                     f'Вызов из модуля {func.__module__}. Вызов из'
+                     f' функции {traceback.format_stack()[0].strip().split()[-1]}.'
+                     f'Вызов из функции {inspect.stack()[1][3]}', stacklevel=2)
         return result
     return log_saver
