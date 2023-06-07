@@ -1,104 +1,77 @@
 from socket import *
 import sys
 import json
-import time
 import logging
 
 import log.client_log_config
+from common.errors import ServerError, ReqFieldMissingError
+from deco_log import log
 
-from common.client_variables import DEFAULT_CLIENT_PORT, DEFAULT_CLIENT_IP_ADDRESS, CLIENT_NAME
 
-from common.client_utils import get_ip_address, get_port, client_connection, terminal_info, \
-    presence_msg, send_message, process_ans, get_message, client_disconnection, user_msg
+from common.client_utils import arg_parser, send_message, process_server_message, process_response, \
+    create_message_presence, create_message_message, get_message
 
-transport = None
-connection = False
-message = ""
+LOGGER = logging.getLogger('client_logger')
+
+
+def main():
+    """Загружаем параметы коммандной строки"""
+    server_address, server_port, client_mode = arg_parser()
+
+    LOGGER.info(
+        f'Запущен клиент с парамертами: адрес сервера: {server_address}, '
+        f'порт: {server_port}, режим работы: {client_mode}')
+
+    # Инициализация сокета и сообщение серверу о нашем появлении
+    try:
+        transport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        transport.connect((server_address, server_port))
+        send_message(transport, create_message_presence())
+        answer = process_response(get_message(transport))
+        LOGGER.info(f'Установлено соединение с сервером. Ответ сервера: {answer}')
+        print(f'Установлено соединение с сервером.')
+    except json.JSONDecodeError:
+        LOGGER.error('Не удалось декодировать полученную Json строку.')
+        sys.exit(1)
+    except ServerError as error:
+        LOGGER.error(f'При установке соединения сервер вернул ошибку: {error.text}')
+        sys.exit(1)
+    except ReqFieldMissingError as missing_error:
+        LOGGER.error(f'В ответе сервера отсутствует необходимое поле {missing_error.missing_field}')
+        sys.exit(1)
+    except ConnectionRefusedError:
+        LOGGER.critical(
+            f'Не удалось подключиться к серверу {server_address}:{server_port}, '
+            f'конечный компьютер отверг запрос на подключение.')
+        sys.exit(1)
+    else:
+        # Если соединение с сервером установлено корректно,
+        # начинаем обмен с ним, согласно требуемому режиму.
+        # основной цикл прогрммы:
+        if client_mode == 'send':
+            print('Режим работы - отправка сообщений.')
+        else:
+            print('Режим работы - приём сообщений.')
+        while True:
+            # режим работы - отправка сообщений
+            if client_mode == 'send':
+                try:
+                    send_message(transport, create_message_message(transport))
+                except (ConnectionResetError, ConnectionError, ConnectionAbortedError):
+                    LOGGER.error(f'Соединение с сервером {server_address} было потеряно.')
+                    sys.exit(1)
+
+            # Режим работы приём:
+            if client_mode == 'listen':
+                try:
+                    process_server_message(get_message(transport))
+                except (ConnectionResetError, ConnectionError, ConnectionAbortedError):
+                    LOGGER.error(f'Соединение с сервером {server_address} было потеряно.')
+                    sys.exit(1)
+
 
 if __name__ == '__main__':
-
-    LOGGER = logging.getLogger('client_logger')
-
-    client_ip_address = get_ip_address(sys.argv)
-    if client_ip_address is None:
-        client_ip_address = DEFAULT_CLIENT_IP_ADDRESS
-    LOGGER.info(f'Client got IP Address {client_ip_address}')
-
-    client_port = get_port(sys.argv)
-    if client_port is None:
-        client_port = DEFAULT_CLIENT_PORT
-    LOGGER.info(f'Client got TCP Port {client_port}')
-
-    # print(f'port : {client_port} \n'
-    #       f'IP Address : {client_ip_address}\n')
-
-    LOGGER.info(f'Starting Client',)
-    message = ""
-    while True:
-        action = terminal_info(message)
-        if action == 1:
-            connection, transport = client_connection(client_ip_address, client_port)
-            msg = presence_msg()
-            send_message(transport, msg)
-            LOGGER.info(f'Presence message sent')
-            try:
-                message = process_ans(get_message(transport))
-                LOGGER.info(f'RESPONSE got : {message}')
-                client_disconnection(transport)
-                LOGGER.info('Client Disconnected')
-            except (ValueError, json.JSONDecodeError):
-                message = 'Not able to decode from SERVER'
-                LOGGER.error(f'Not able to decode from SERVER')
-
-        elif action == 2:
-            connection, transport = client_connection(client_ip_address, client_port)
-            msg = user_msg()
-            send_message(transport, msg)
-            LOGGER.info(f'MESSAGE message sent')
-            try:
-                message = process_ans(get_message(transport))
-                LOGGER.info(f'RESPONSE got : {message}')
-                client_disconnection(transport)
-                LOGGER.info('Client Disconnected')
-            except (ValueError, json.JSONDecodeError):
-                message = 'Not able to decode from SERVER'
-                LOGGER.error(f'Not able to decode from SERVER')
-
-        elif action == 3:
-            if connection is True:
-                connection, transport = client_connection(client_ip_address, client_port)
-                msg = {'action': 'quit'}
-                send_message(transport, msg)
-                LOGGER.info(f'QUIT message sent')
-                try:
-                    message = process_ans(get_message(transport))
-                    LOGGER.info(f'RESPONSE got : {message}')
-                    client_disconnection(transport)
-                    LOGGER.info('Client Disconnected')
-                except (ValueError, json.JSONDecodeError):
-                    message = 'Not able to decode from SERVER'
-                    LOGGER.error(f'Not able to decode from SERVER')
-
-        elif action == 4:
-            LOGGER.info(f'Trying use function 4')
-            pass
-
-        elif action == 5:
-            LOGGER.info(f'Trying use function 5')
-            pass
-
-        elif action == 6:
-            print('******************************')
-            print('        program closing       ')
-            print('******************************')
-            time.sleep(2)
-            LOGGER.info(f'Client Exiting')
-            sys.exit(0)
-        else:
-            message = " Please enter menu item 1...6"
-
-
-
+    main()
 
 
 

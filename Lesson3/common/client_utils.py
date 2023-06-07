@@ -1,117 +1,119 @@
-import sys
-import re
-import os
+import logging
 import time
-import json
-import socket
-from deco_log import log_debug
 
-from common.client_variables import ENCODING, RESPONSE, ERROR, MAX_PACKAGE_LENGTH, USER
+from errors import ReqFieldMissingError, ServerError
 
 
-@log_debug
-def get_ip_address(args_list) -> str:
-    ip_addr = None
-    if '-a' in args_list:
-        try:
-            ip_addr = str(args_list[args_list.index('-a') + 1])
-        except IndexError:
-            print('after "-a", Server IP address must be indicated')
-            sys.exit(1)
-        reg_exp = re.compile(r'([0-9]{1,3}[\.]){3}[0-9]{1,3}')
-        if reg_exp.match(ip_addr):
-            pass
-        else:
-            print(' IP address value must be in format "xxx.xxx.xxx.xxx" ')
-            sys.exit(1)
-    return ip_addr
+from client_variables import ACTION, MESSAGE, MESSAGE_TEXT, SENDER, TIME, ACCOUNT_NAME, PRESENCE
+
+sys.path.append('../')
+from deco_log import log
+
+LOGGER = logging.getLogger('client_logger')
 
 
-@log_debug
-def get_port(args_list) -> int:
-    port_number = None
-    if '-p' in args_list:
-        try:
-            port_number = int(sys.argv[sys.argv.index('-p') + 1])
-        except IndexError:
-            print('after "-p", server port value must be indicated')
-            sys.exit(1)
-        if port_number < 1024 or port_number > 65535:
-            print(' Server port number must be in interval 1024...65535')
-            exit(1)
-    return port_number
+@log
+def process_server_message(message):
+    """Функция - обработчик сообщений других пользователей, поступающих с сервера"""
+    if ACTION in message \
+            and message[ACTION] == MESSAGE \
+            and SENDER in message \
+            and MESSAGE_TEXT in message:
+        print(f'От пользователя    : {message[SENDER]} \n'
+              f'получено сообщение : {message.[MESSAGE_TEXT]}')
+        LOGGER.info(f'Получено сообщение от пользователя '
+                    f'{message[SENDER]}:\n{message[MESSAGE_TEXT]}')
+    else:
+        LOGGER.error(f'Получено некорректное сообщение с сервера: {message}')
 
 
-@log_debug
-def menu_action():
-    while True:
-        print('Main menu:  1 - Connect to server \n'
-              '            2 - Send Message  \n'
-              '            3 - Disconnect from server \n'
-              '            4 - Join to chat \n'
-              '            5 - Leave chat \n'
-              '            6 - Quit \n'
-              )
-
-        action = int(input("enter code of action: "))
-        if action in range(1, 7):
-            break
-    return action
-
-
-@log_debug
-def client_connection(ipaddress, port):
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    try:
-        s.connect((ipaddress, port))
-    except Exception:
-        print('Server not responding')
-        s.close()
-        sys.exit(1)
-    return True, s
-
-
-@log_debug
-def terminal_info(message):
-    # print(f"terminal : status : {status}, message {message} ")
-    # os.system('clear')
-    # print(f"terminal : status : {status}, message {message} ")
-    print('==================================')
-    print(f' Message : {message}')
-    print('==================================')
-    action = menu_action()
-    print('==================================')
-
-    return action
-
-
-@log_debug
-def presence_msg(account_name='Guest'):
+@log
+def create_message_message(sock, account_name='Guest'):
+    """Функция запрашивает текст сообщения и возвращает его.
+    Так же завершает работу при вводе подобной комманды
     """
-    Функция генерирует запрос о присутствии клиента
-    :param account_name:
-    :return:
-    """
-    # {'action': 'presence', 'time': 1573760672.167031, 'user': {'account_name': 'Guest'}}
+    message = input('Введите сообщение для отправки или \'!!!\' для завершения работы: ')
+    if message == '!!!':
+        sock.close()
+        LOGGER.info('Завершение работы по команде пользователя.')
+        print('Спасибо за использование нашего сервиса!')
+        sys.exit(0)
+    message_dict = {
+        ACTION: MESSAGE,
+        TIME: time.time(),
+        ACCOUNT_NAME: account_name,
+        MESSAGE_TEXT: message
+    }
+    LOGGER.debug(f'Сформирован словарь сообщения: {message_dict}')
+    return message_dict
+
+
+@log
+def create_message_presence(account_name='Guest'):
+    """Функция генерирует запрос о присутствии клиента"""
     out = {
-        'action': 'presence',
-        'time': time.time(),
-        'type': 'status',
-        'user': {
-            "account_name": account_name,
-            "status": "connected"
+        ACTION: PRESENCE,
+        TIME: time.time(),
+        USER: {
+            ACCOUNT_NAME: account_name
         }
     }
+    LOGGER.debug(f'Сформировано {PRESENCE} сообщение для пользователя {account_name}')
     return out
 
-@log_debug
-def get_message(client) -> dict:
+
+@log
+def process_response(message):
     """
-    Утилита приёма и декодирования сообщения
-    The function receives and decodes messages from Server
-    if received unexpected responce, the function raise error
-    :param client: bytes
-    :return: dict
+    Функция разбирает ответ сервера на сообщение о присутствии,
+    возращает 200 если все ОК или генерирует исключение при ошибке
+    """
+    LOGGER.debug(f'Разбор приветственного сообщения от сервера: {message}')
+    if RESPONSE in message:
+        if message[RESPONSE] == 200:
+            return '200 : OK'
+        elif message[RESPONSE] == 400:
+            raise ServerError(f'400 : {message[ERROR]}')
+    raise ReqFieldMissingError(RESPONSE)
+
+
+@log
+def arg_parser():
+    """Создаём парсер аргументов коммандной строки
+    и читаем параметры, возвращаем 3 параметра
+    """
+    parser = argparse.ArgumentParser()
+    parser.add_argument('addr', default=DEFAULT_IP_ADDRESS, nargs='?')
+    parser.add_argument('port', default=DEFAULT_PORT, type=int, nargs='?')
+    parser.add_argument('-m', '--mode', default='listen', nargs='?')
+    namespace = parser.parse_args(sys.argv[1:])
+    server_address = namespace.addr
+    server_port = namespace.port
+    client_mode = namespace.mode
+
+    # проверим подходящий номер порта
+    if not 1023 < server_port < 65536:
+        LOGGER.critical(
+            f'Попытка запуска клиента с неподходящим номером порта: {server_port}. '
+            f'Допустимы адреса с 1024 до 65535. Клиент завершается.')
+        sys.exit(1)
+
+    # Проверим допустим ли выбранный режим работы клиента
+    if client_mode not in ('listen', 'send'):
+        LOGGER.critical(f'Указан недопустимый режим работы {client_mode}, '
+                        f'допустимые режимы: listen , send')
+        sys.exit(1)
+
+    return server_address, server_port, client_mode
+
+
+@log
+def get_message(client):
+    """
+    Утилита приёма и декодирования сообщения принимает байты выдаёт словарь,
+    если приняточто-то другое отдаёт ошибку значения
+    :param client:
+    :return:
     """
     encoded_response = client.recv(MAX_PACKAGE_LENGTH)
     if isinstance(encoded_response, bytes):
@@ -119,82 +121,22 @@ def get_message(client) -> dict:
         response = json.loads(json_response)
         if isinstance(response, dict):
             return response
-    raise ValueError
+        raise IncorrectDataRecivedError
+    raise IncorrectDataRecivedError
 
-@log_debug
+
+@log
 def send_message(sock, message):
-    json_msg = json.dumps(message)
-    encoded_msg = json_msg.encode(ENCODING)
-    # print(f'encoded msg = {encoded_msg}')
-    sock.send(encoded_msg)
-    # print('message sent to server')
-
-@log_debug
-def process_ans(message):
-
     """
-    The function check server response
+    Утилита кодирования и отправки сообщения
+    принимает словарь и отправляет его
+    :param sock:
     :param message:
-    :return: string :  '200 : OK'  or  '400 : {message[ERROR]}
+    :return:
     """
-    # print(f'process incoming message {message}')
-    if RESPONSE in message:
-        code = message[RESPONSE]
-        try:
-            code = int(code)
-        except ValueError:
-            raise ValueError
-        if code in range (200, 211):
-            return f'{code}: OK'
-        elif code in range (100, 111):
-            return f'{code}: INFO'
-        elif code in range(400, 411):
-            return f'{code}: Error'
-        elif code in range(500, 511):
-            return f'{code}: Server Error '
-        else:
-            raise ValueError
-    raise ValueError
-
-
-@log_debug
-def client_disconnection(sock):
-    sock.close()
-
-
-@log_debug
-def user_msg() -> dict:
-    """
-    Функция генерирует cooбщение клиента
-    :param account_name:
-    :return: dict
-    """
-    # {
-    # "action": "msg",
-    # "time": <unix timestamp>,
-    # "to": "account_name",
-    # "from": "account_name",
-    # "encoding": "ascii",
-    # "message": "message"
-    # }
-    while True:
-        user_message = str(input("Please enter message (500 char max) : "))
-        if len(user_message) < 500:
-            break
-    while True:
-        user_to = str(input("Please enter receiver User_ID :  "))
-        if len(user_message) < 25:
-            break
-    out = {
-        'action': "msg",
-        'time': time.time(),
-        'to': user_to,
-        'from': 'Guest',
-        'encoding': ENCODING,
-        'message': user_message
-        }
-    return out
-
-
-
+    if not isinstance(message, dict):
+        raise NonDictInputError
+    js_message = json.dumps(message)
+    encoded_message = js_message.encode(ENCODING)
+    sock.send(encoded_message)
 

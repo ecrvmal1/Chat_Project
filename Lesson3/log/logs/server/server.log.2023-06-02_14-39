@@ -1,6 +1,0 @@
-2023-06-02 14:39:10,829 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция get_ip_address c параметрами (['server.py'],), {}. 
-                                                          Вызов из модуля  common.server_utils. Вызов из функции main().
-2023-06-02 14:39:10,830 INFO       server.py              server         main Server got IP ADDRESS 127.0.0.1
-2023-06-02 14:39:10,830 DEBUG      deco_log.py            deco_log       log_saver Была вызвана функция get_port c параметрами (['server.py'],), {}. 
-                                                          Вызов из модуля  common.server_utils. Вызов из функции main().
-2023-06-02 14:39:10,830 INFO       server.py              server         main Server got TCP Port 7777
