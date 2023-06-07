@@ -13,14 +13,8 @@ else:
     LOGGER = logging.getLogger('client_logger')
 
 
-@wraps
-def printname():
-    print(a)
-
-
-def log_debug(func):
+def log(func):
     """Функция-декоратор"""
-    @wraps(func)
     def log_saver(*args, **kwargs):
         """Обертка"""
         spaces = 57 * " "

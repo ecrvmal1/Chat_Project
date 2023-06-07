@@ -377,3 +377,645 @@
 2023-06-05 12:42:07,600 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
 2023-06-05 12:42:07,601 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('201: OK',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
 2023-06-05 12:42:09,603 INFO       client.py              client         <module> Client Exiting
+2023-06-07 00:49:36,620 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 00:49:36,621 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 00:49:36,621 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 00:49:36,621 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 00:49:36,621 INFO       client.py              client         <module> Starting Client
+2023-06-07 00:49:49,668 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 00:49:49,669 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 00:49:49,871 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 00:49:49,872 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 00:49:49,872 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 00:49:49,872 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 00:49:49,872 INFO       client.py              client         <module> Starting Client
+2023-06-07 00:50:05,100 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 00:50:05,101 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 00:50:05,315 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 00:50:05,316 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 00:50:05,317 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 00:50:05,317 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 00:50:05,317 INFO       client.py              client         <module> Starting Client
+2023-06-07 00:50:07,817 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 00:50:07,817 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 00:50:08,020 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 00:50:08,020 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 00:50:08,020 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 00:50:08,021 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 00:50:08,021 INFO       client.py              client         <module> Starting Client
+2023-06-07 00:50:08,880 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 00:50:08,881 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 00:50:09,109 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 00:50:09,110 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 00:50:09,110 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 00:50:09,110 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 00:50:09,110 INFO       client.py              client         <module> Starting Client
+2023-06-07 00:50:09,896 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 00:50:09,896 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 00:50:10,124 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 00:50:10,124 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 00:50:10,125 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 00:50:10,125 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 00:50:10,125 INFO       client.py              client         <module> Starting Client
+2023-06-07 00:50:10,936 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 00:50:10,937 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 00:50:11,152 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 00:50:11,152 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 00:50:11,153 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 00:50:11,153 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 00:50:11,153 INFO       client.py              client         <module> Starting Client
+2023-06-07 00:50:11,880 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 00:50:11,881 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 00:50:12,067 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 00:50:12,068 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 00:50:12,068 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 00:50:12,068 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 00:50:12,068 INFO       client.py              client         <module> Starting Client
+2023-06-07 00:50:12,850 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 00:50:12,851 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 00:50:13,068 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 00:50:13,068 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 00:50:13,069 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 00:50:13,069 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 00:50:13,070 INFO       client.py              client         <module> Starting Client
+2023-06-07 00:50:13,770 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 00:50:13,771 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 00:50:13,957 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 00:50:13,957 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 00:50:13,958 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 00:50:13,958 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 00:50:13,958 INFO       client.py              client         <module> Starting Client
+2023-06-07 00:50:14,675 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 00:50:14,676 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 00:52:23,201 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 00:52:23,202 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 00:52:23,203 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 00:52:23,203 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 00:52:23,203 INFO       client.py              client         <module> Starting Client
+2023-06-07 00:52:33,886 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 00:52:33,886 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 00:52:34,122 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 00:52:34,123 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 00:52:34,123 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 00:52:34,123 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 00:52:34,123 INFO       client.py              client         <module> Starting Client
+2023-06-07 00:52:40,933 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 00:52:40,933 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 00:52:41,121 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 00:52:41,121 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 00:52:41,122 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 00:52:41,122 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 00:52:41,122 INFO       client.py              client         <module> Starting Client
+2023-06-07 00:52:52,347 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 00:52:52,347 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 00:52:52,535 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 00:52:52,535 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 00:52:52,536 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 00:52:52,536 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 00:52:52,536 INFO       client.py              client         <module> Starting Client
+2023-06-07 00:52:58,886 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 00:52:58,886 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 00:52:59,113 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 00:52:59,114 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 00:52:59,114 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 00:52:59,114 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 00:52:59,115 INFO       client.py              client         <module> Starting Client
+2023-06-07 00:52:59,880 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 00:52:59,880 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 00:53:00,068 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 00:53:00,068 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 00:53:00,069 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 00:53:00,070 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 00:53:00,070 INFO       client.py              client         <module> Starting Client
+2023-06-07 00:53:00,800 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 00:53:00,801 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 00:53:01,004 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 00:53:01,005 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 00:53:01,005 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 00:53:01,005 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 00:53:01,005 INFO       client.py              client         <module> Starting Client
+2023-06-07 00:53:01,969 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 00:53:01,969 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 00:53:02,182 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 00:53:02,182 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 00:53:02,183 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 00:53:02,183 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 00:53:02,183 INFO       client.py              client         <module> Starting Client
+2023-06-07 00:53:02,979 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 00:53:02,980 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 00:53:03,207 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 00:53:03,207 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 00:53:03,208 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 00:53:03,208 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 00:53:03,208 INFO       client.py              client         <module> Starting Client
+2023-06-07 00:53:04,634 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 00:53:04,635 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 00:53:04,843 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 00:53:04,843 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 00:53:04,844 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 00:53:04,844 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 00:53:04,844 INFO       client.py              client         <module> Starting Client
+2023-06-07 00:53:15,183 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 00:53:15,183 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 01:01:39,772 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:01:39,772 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:01:39,773 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:01:39,773 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:01:39,773 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:01:40,052 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:01:40,052 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:01:40,053 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:01:40,053 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:01:40,053 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:01:40,389 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:01:40,389 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:01:40,389 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:01:40,389 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:01:40,389 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:01:40,697 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:01:40,698 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:01:40,698 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:01:40,698 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:01:40,699 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:01:41,033 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:01:41,034 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:01:41,034 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:01:41,034 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:01:41,034 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:01:41,280 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:01:41,280 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:01:41,280 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:01:41,280 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:01:41,280 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:01:41,538 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:01:41,539 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:01:41,540 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:01:41,541 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:01:41,541 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:01:41,883 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:01:41,883 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:01:41,884 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:01:41,884 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:01:41,884 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:01:42,104 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:01:42,104 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:01:42,104 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:01:42,104 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:01:42,104 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:01:42,352 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:01:42,352 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:01:42,352 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:01:42,352 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:01:42,352 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:01:52,241 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 01:01:52,241 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 01:05:53,752 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 01:05:53,753 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 01:05:55,755 INFO       client.py              client         <module> Client Exiting
+2023-06-07 01:06:51,615 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:06:51,615 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:06:51,615 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:06:51,615 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:06:51,615 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:06:51,898 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:06:51,898 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:06:51,899 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:06:51,899 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:06:51,899 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:06:52,165 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:06:52,166 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:06:52,167 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:06:52,167 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:06:52,167 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:06:52,516 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:06:52,517 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:06:52,518 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:06:52,518 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:06:52,518 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:06:52,801 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:06:52,802 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:06:52,802 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:06:52,802 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:06:52,802 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:06:53,043 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:06:53,043 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:06:53,043 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:06:53,043 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:06:53,043 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:06:53,232 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:06:53,232 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:06:53,233 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:06:53,233 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:06:53,233 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:06:53,508 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:06:53,509 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:06:53,509 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:06:53,509 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:06:53,509 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:06:53,822 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:06:53,822 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:06:53,823 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:06:53,823 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:06:53,823 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:06:54,117 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:06:54,118 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:06:54,118 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:06:54,119 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:06:54,119 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:08:29,315 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 01:08:29,315 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 01:08:31,318 INFO       client.py              client         <module> Client Exiting
+2023-06-07 01:08:40,740 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 01:08:40,741 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 01:08:42,744 INFO       client.py              client         <module> Client Exiting
+2023-06-07 01:08:50,105 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 01:08:50,105 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 01:08:52,106 INFO       client.py              client         <module> Client Exiting
+2023-06-07 01:08:55,612 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 01:08:55,612 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 01:08:57,615 INFO       client.py              client         <module> Client Exiting
+2023-06-07 01:09:04,782 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 01:09:04,782 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 01:09:06,783 INFO       client.py              client         <module> Client Exiting
+2023-06-07 01:09:18,678 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 01:09:18,678 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 01:09:20,681 INFO       client.py              client         <module> Client Exiting
+2023-06-07 01:09:23,233 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 01:09:23,234 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 01:09:25,236 INFO       client.py              client         <module> Client Exiting
+2023-06-07 01:09:32,618 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 01:09:32,618 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 01:09:34,619 INFO       client.py              client         <module> Client Exiting
+2023-06-07 01:09:37,174 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 01:09:37,175 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 01:09:39,175 INFO       client.py              client         <module> Client Exiting
+2023-06-07 01:09:43,595 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 01:09:43,595 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 01:09:45,598 INFO       client.py              client         <module> Client Exiting
+2023-06-07 01:14:58,453 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:14:58,454 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:14:58,454 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:14:58,454 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:14:58,454 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:14:58,731 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:14:58,731 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:14:58,731 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:14:58,732 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:14:58,732 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:25:35,029 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:25:35,029 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:25:35,030 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:25:35,030 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:25:35,030 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:25:35,267 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:25:35,267 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:25:35,267 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:25:35,267 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:25:35,267 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:28:03,353 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:28:03,353 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:28:03,353 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:28:03,353 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:28:03,354 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:28:03,667 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:28:03,668 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:28:03,668 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:28:03,668 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:28:03,668 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:28:47,061 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 01:28:47,062 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 01:53:28,083 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:53:28,083 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:53:28,083 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:53:28,083 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:53:28,083 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:53:36,182 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 01:53:36,182 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 01:53:36,183 DEBUG      client.py              client         <module> Была вызвана функция client_connection c параметрами ('127.0.0.1', 7777), {}. Вызов из модуля common.client_utils. Вызов из функции client_port).Вызов из функции <module>
+2023-06-07 01:53:36,183 DEBUG      client.py              client         <module> Была вызвана функция presence_msg c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции presence_msg().Вызов из функции <module>
+2023-06-07 01:53:36,184 DEBUG      client.py              client         <module> Была вызвана функция send_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 47588), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686128016.1834068, 'type': 'status', 'user': {'account_name': 'Guest', 'status': 'connected'}}), {}. Вызов из модуля common.client_utils. Вызов из функции msg).Вызов из функции <module>
+2023-06-07 01:53:36,184 INFO       client.py              client         <module> Presence message sent
+2023-06-07 01:53:36,185 DEBUG      client.py              client         <module> Была вызвана функция get_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 47588), raddr=('127.0.0.1', 7777)>,), {}. Вызов из модуля common.client_utils. Вызов из функции process_ans(get_message(transport)).Вызов из функции <module>
+2023-06-07 01:53:36,186 DEBUG      client.py              client         <module> Была вызвана функция process_ans c параметрами ({'response': 200},), {}. Вызов из модуля common.client_utils. Вызов из функции process_ans(get_message(transport)).Вызов из функции <module>
+2023-06-07 01:53:36,186 INFO       client.py              client         <module> RESPONSE got : 200: OK
+2023-06-07 01:53:36,186 DEBUG      client.py              client         <module> Была вызвана функция client_disconnection c параметрами (<socket.socket [closed] fd=-1, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0>,), {}. Вызов из модуля common.client_utils. Вызов из функции client_disconnection(transport).Вызов из функции <module>
+2023-06-07 01:53:36,186 INFO       client.py              client         <module> Client Disconnected
+2023-06-07 01:54:02,401 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 01:54:02,401 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 01:54:02,402 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 01:54:02,402 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 01:54:02,402 INFO       client.py              client         <module> Starting Client
+2023-06-07 01:54:07,791 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 01:54:07,791 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 01:54:07,792 DEBUG      client.py              client         <module> Была вызвана функция client_connection c параметрами ('127.0.0.1', 7777), {}. Вызов из модуля common.client_utils. Вызов из функции client_port).Вызов из функции <module>
+2023-06-07 01:54:07,792 DEBUG      client.py              client         <module> Была вызвана функция presence_msg c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции presence_msg().Вызов из функции <module>
+2023-06-07 01:54:07,793 DEBUG      client.py              client         <module> Была вызвана функция send_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 47656), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1686128047.792507, 'type': 'status', 'user': {'account_name': 'Guest', 'status': 'connected'}}), {}. Вызов из модуля common.client_utils. Вызов из функции msg).Вызов из функции <module>
+2023-06-07 01:54:07,793 INFO       client.py              client         <module> Presence message sent
+2023-06-07 01:54:07,794 DEBUG      client.py              client         <module> Была вызвана функция get_message c параметрами (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 47656), raddr=('127.0.0.1', 7777)>,), {}. Вызов из модуля common.client_utils. Вызов из функции process_ans(get_message(transport)).Вызов из функции <module>
+2023-06-07 01:54:07,795 DEBUG      client.py              client         <module> Была вызвана функция process_ans c параметрами ({'response': 200},), {}. Вызов из модуля common.client_utils. Вызов из функции process_ans(get_message(transport)).Вызов из функции <module>
+2023-06-07 01:54:07,795 INFO       client.py              client         <module> RESPONSE got : 200: OK
+2023-06-07 01:54:07,795 DEBUG      client.py              client         <module> Была вызвана функция client_disconnection c параметрами (<socket.socket [closed] fd=-1, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0>,), {}. Вызов из модуля common.client_utils. Вызов из функции client_disconnection(transport).Вызов из функции <module>
+2023-06-07 01:54:07,795 INFO       client.py              client         <module> Client Disconnected
+2023-06-07 02:21:30,866 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 02:21:30,867 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 02:21:30,867 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 02:21:30,867 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 02:21:30,867 INFO       client.py              client         <module> Starting Client
+2023-06-07 02:21:31,172 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 02:21:31,173 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 02:21:31,174 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 02:21:31,174 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 02:21:31,175 INFO       client.py              client         <module> Starting Client
+2023-06-07 02:32:27,390 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 02:32:27,390 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 02:32:27,391 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 02:32:27,391 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 02:32:27,391 INFO       client.py              client         <module> Starting Client
+2023-06-07 02:32:27,717 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 02:32:27,717 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 02:32:27,718 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 02:32:27,718 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 02:32:27,718 INFO       client.py              client         <module> Starting Client
+2023-06-07 02:52:12,547 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 02:52:12,548 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 02:52:12,549 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 02:52:12,549 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 02:52:12,549 INFO       client.py              client         <module> Starting Client
+2023-06-07 02:52:12,879 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 02:52:12,880 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 02:52:12,881 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 02:52:12,881 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 02:52:12,881 INFO       client.py              client         <module> Starting Client
+2023-06-07 02:53:15,100 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 02:53:15,101 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 02:53:15,101 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 02:53:15,101 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 02:53:15,101 INFO       client.py              client         <module> Starting Client
+2023-06-07 02:53:15,357 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 02:53:15,360 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 02:53:15,361 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 02:53:15,361 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 02:53:15,363 INFO       client.py              client         <module> Starting Client
+2023-06-07 02:53:39,318 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 02:53:39,319 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 02:53:41,321 INFO       client.py              client         <module> Client Exiting
+2023-06-07 02:59:39,562 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 02:59:39,562 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 02:59:39,563 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 02:59:39,563 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 02:59:39,563 INFO       client.py              client         <module> Starting Client
+2023-06-07 02:59:39,824 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 02:59:39,825 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 02:59:39,825 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 02:59:39,825 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 02:59:39,825 INFO       client.py              client         <module> Starting Client
+2023-06-07 02:59:56,965 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 02:59:56,966 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 02:59:58,968 INFO       client.py              client         <module> Client Exiting
+2023-06-07 03:02:10,997 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:02:10,998 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:02:10,998 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:02:10,998 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:02:10,998 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:02:11,329 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:02:11,330 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:02:11,330 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:02:11,330 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:02:11,330 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:04:03,329 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py', '--name=gnome'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:04:03,329 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:04:03,330 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py', '--name=gnome'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:04:03,330 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:04:03,330 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:04:03,678 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py', '--name=gnome'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:04:03,678 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:04:03,679 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py', '--name=gnome'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:04:03,679 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:04:03,679 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:04:22,234 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 03:04:22,235 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 03:04:24,235 INFO       client.py              client         <module> Client Exiting
+2023-06-07 03:05:09,469 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:05:09,469 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:05:09,470 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:05:09,470 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:05:09,470 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:05:09,843 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:05:09,843 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:05:09,843 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:05:09,843 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:05:09,844 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:10:48,837 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:10:48,837 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:10:48,837 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:10:48,837 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:10:48,838 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:10:49,136 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:10:49,136 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:10:49,136 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:10:49,136 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:10:49,137 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:11:11,214 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 03:11:11,214 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 03:11:13,215 INFO       client.py              client         <module> Client Exiting
+2023-06-07 03:14:43,941 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:14:43,941 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:14:43,942 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:14:43,942 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:14:43,942 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:14:44,269 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:14:44,269 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:14:44,270 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:14:44,270 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:14:44,270 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:15:58,397 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:15:58,398 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:15:58,398 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:15:58,398 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:15:58,398 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:15:58,725 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:15:58,725 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:15:58,725 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:15:58,725 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:15:58,726 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:17:00,484 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:17:00,484 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:17:00,485 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:17:00,485 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:17:00,485 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:17:00,769 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:17:00,769 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:17:00,769 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:17:00,769 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:17:00,769 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:36:28,805 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:36:28,805 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:36:28,805 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:36:28,805 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:36:28,805 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:36:29,119 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:36:29,123 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:36:29,123 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:36:29,123 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:36:29,124 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:38:05,727 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:38:05,727 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:38:05,728 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:38:05,728 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:38:05,728 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:38:06,089 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:38:06,089 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:38:06,090 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:38:06,090 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:38:06,090 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:49:48,619 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:49:48,620 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:49:48,620 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:49:48,620 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:49:48,621 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:49:49,118 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:49:49,118 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:49:49,118 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:49:49,118 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:49:49,118 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:49:55,052 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 03:49:55,052 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 03:49:57,055 INFO       client.py              client         <module> Client Exiting
+2023-06-07 03:51:53,275 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:51:53,275 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:51:53,275 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:51:53,276 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:51:53,276 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:51:53,584 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:51:53,584 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:51:53,585 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:51:53,585 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:51:53,585 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:56:23,531 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:56:23,531 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:56:23,531 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:56:23,532 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:56:23,532 INFO       client.py              client         <module> Starting Client
+2023-06-07 03:56:23,790 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 03:56:23,790 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 03:56:23,790 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 03:56:23,790 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 03:56:23,790 INFO       client.py              client         <module> Starting Client
+2023-06-07 04:01:04,062 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 04:01:04,062 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 04:01:04,062 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 04:01:04,063 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 04:01:04,063 INFO       client.py              client         <module> Starting Client
+2023-06-07 04:01:04,396 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 04:01:04,397 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 04:01:04,398 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 04:01:04,398 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 04:01:04,398 INFO       client.py              client         <module> Starting Client
+2023-06-07 04:07:37,898 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 04:07:37,898 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 04:07:37,899 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 04:07:37,899 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 04:07:37,899 INFO       client.py              client         <module> Starting Client
+2023-06-07 04:07:38,272 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 04:07:38,273 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 04:07:38,273 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 04:07:38,273 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 04:07:38,274 INFO       client.py              client         <module> Starting Client
+2023-06-07 04:11:59,042 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 04:11:59,043 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 04:11:59,043 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 04:11:59,043 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 04:11:59,043 INFO       client.py              client         <module> Starting Client
+2023-06-07 04:11:59,269 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 04:11:59,270 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 04:11:59,271 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 04:11:59,271 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 04:11:59,271 INFO       client.py              client         <module> Starting Client
+2023-06-07 04:19:05,748 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 04:19:05,748 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 04:19:05,748 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 04:19:05,749 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 04:19:05,749 INFO       client.py              client         <module> Starting Client
+2023-06-07 04:19:06,050 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 04:19:06,050 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 04:19:06,051 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 04:19:06,051 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 04:19:06,051 INFO       client.py              client         <module> Starting Client
+2023-06-07 04:19:51,123 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 04:19:51,123 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 04:19:51,124 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 04:19:51,124 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 04:19:51,124 INFO       client.py              client         <module> Starting Client
+2023-06-07 04:19:51,391 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 04:19:51,392 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 04:19:51,392 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 04:19:51,392 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 04:19:51,392 INFO       client.py              client         <module> Starting Client
+2023-06-07 04:20:06,111 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 04:20:06,111 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 04:20:08,114 INFO       client.py              client         <module> Client Exiting
+2023-06-07 04:20:13,776 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 04:20:13,777 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 04:20:15,779 INFO       client.py              client         <module> Client Exiting
+2023-06-07 04:20:24,382 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 04:20:24,383 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 04:20:26,383 INFO       client.py              client         <module> Client Exiting
+2023-06-07 04:20:38,537 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 04:20:38,537 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 04:20:38,538 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 04:20:38,538 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 04:20:38,539 INFO       client.py              client         <module> Starting Client
+2023-06-07 04:20:38,760 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 04:20:38,760 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 04:20:38,760 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 04:20:38,760 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 04:20:38,760 INFO       client.py              client         <module> Starting Client
+2023-06-07 04:20:55,999 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 04:20:55,999 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 04:20:58,002 INFO       client.py              client         <module> Client Exiting
+2023-06-07 04:22:30,287 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 04:22:30,287 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 04:22:30,288 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 04:22:30,288 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 04:22:30,288 INFO       client.py              client         <module> Starting Client
+2023-06-07 04:22:30,577 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 04:22:30,578 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 04:22:30,578 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 04:22:30,578 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 04:22:30,578 INFO       client.py              client         <module> Starting Client
+2023-06-07 04:31:09,541 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 04:31:09,541 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 04:31:09,541 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 04:31:09,541 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 04:31:09,541 INFO       client.py              client         <module> Starting Client
+2023-06-07 04:31:09,770 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 04:31:09,771 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 04:31:09,771 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 04:31:09,771 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 04:31:09,771 INFO       client.py              client         <module> Starting Client
+2023-06-07 04:31:33,753 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 04:31:33,754 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 04:31:35,756 INFO       client.py              client         <module> Client Exiting
+2023-06-07 04:31:38,454 DEBUG      client_utils.py        client_utils   terminal_info Была вызвана функция menu_action c параметрами (), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции terminal_info
+2023-06-07 04:31:38,455 DEBUG      client.py              client         <module> Была вызвана функция terminal_info c параметрами ('',), {}. Вызов из модуля common.client_utils. Вызов из функции terminal_info(message).Вызов из функции <module>
+2023-06-07 04:31:40,457 INFO       client.py              client         <module> Client Exiting
+2023-06-07 04:33:57,029 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 04:33:57,029 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 04:33:57,030 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 04:33:57,030 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 04:33:57,030 INFO       client.py              client         <module> Starting Client
+2023-06-07 04:33:57,269 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 04:33:57,270 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 04:33:57,270 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 04:33:57,270 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 04:33:57,270 INFO       client.py              client         <module> Starting Client
+2023-06-07 04:35:52,627 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 04:35:52,627 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 04:35:52,627 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 04:35:52,628 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 04:35:52,628 INFO       client.py              client         <module> Starting Client
+2023-06-07 04:35:52,903 DEBUG      client.py              client         <module> Была вызвана функция get_ip_address c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_ip_address(sys.argv).Вызов из функции <module>
+2023-06-07 04:35:52,903 INFO       client.py              client         <module> Client got IP Address 127.0.0.1
+2023-06-07 04:35:52,903 DEBUG      client.py              client         <module> Была вызвана функция get_port c параметрами (['client.py'],), {}. Вызов из модуля common.client_utils. Вызов из функции get_port(sys.argv).Вызов из функции <module>
+2023-06-07 04:35:52,903 INFO       client.py              client         <module> Client got TCP Port 7777
+2023-06-07 04:35:52,903 INFO       client.py              client         <module> Starting Client
