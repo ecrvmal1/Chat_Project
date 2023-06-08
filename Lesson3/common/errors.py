@@ -29,3 +29,9 @@ class ReqFieldMissingError(Exception):
 
     def __str__(self):
         return f'В принятом словаре отсутствует обязательное поле {self.missing_field}.'
+
+
+class JSONDecodeError(Exception):
+    """Исключение - аргумент функции не словарь"""
+    def __str__(self):
+        return 'Ошибка декодирования JSON.'
