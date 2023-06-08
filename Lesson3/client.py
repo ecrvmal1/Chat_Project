@@ -1,4 +1,4 @@
-from socket import *
+import socket
 import sys
 import json
 import logging
@@ -29,7 +29,7 @@ def main():
         send_message(transport, create_message_presence())
         answer = process_response(get_message(transport))
         LOGGER.info(f'Установлено соединение с сервером. Ответ сервера: {answer}')
-        print(f'Установлено соединение с сервером.')
+        print(f'Установлено соединение с сервером. Ответ сервера: {answer}')
     except json.JSONDecodeError:
         LOGGER.error('Не удалось декодировать полученную Json строку.')
         sys.exit(1)

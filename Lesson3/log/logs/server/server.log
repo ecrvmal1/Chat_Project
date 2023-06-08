@@ -1,4 +1,1 @@
-2023-06-07 02:01:35,494 DEBUG      server.py              server         main Была вызвана функция get_ip_address c параметрами (['server.py'],), {}. Вызов из модуля common.server_utils. Вызов из функции main().Вызов из функции main
-2023-06-07 02:01:35,494 INFO       server.py              server         main Server got IP ADDRESS 127.0.0.1
-2023-06-07 02:01:35,495 DEBUG      server.py              server         main Была вызвана функция get_port c параметрами (['server.py'],), {}. Вызов из модуля common.server_utils. Вызов из функции main().Вызов из функции main
-2023-06-07 02:01:35,495 INFO       server.py              server         main Server got TCP Port 7777
+2023-06-08 03:00:47,768 INFO       server.py              server         main Клиент ('127.0.0.1', 41468) отключился от сервера.

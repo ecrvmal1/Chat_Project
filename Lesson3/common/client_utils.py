@@ -1,10 +1,13 @@
+import argparse
+import json
 import logging
+import sys
 import time
 
-from errors import ReqFieldMissingError, ServerError
+from common.client_variables import ACTION, MESSAGE, MESSAGE_TEXT, SENDER, TIME, ACCOUNT_NAME, PRESENCE, \
+    DEFAULT_CLIENT_IP_ADDRESS, DEFAULT_CLIENT_PORT, USER, ENCODING, MAX_PACKAGE_LENGTH, RESPONSE, ERROR
 
-
-from client_variables import ACTION, MESSAGE, MESSAGE_TEXT, SENDER, TIME, ACCOUNT_NAME, PRESENCE
+from common.errors import IncorrectDataRecivedError, JSONDecodeError, NonDictInputError, ReqFieldMissingError, ServerError
 
 sys.path.append('../')
 from deco_log import log
@@ -20,7 +23,7 @@ def process_server_message(message):
             and SENDER in message \
             and MESSAGE_TEXT in message:
         print(f'От пользователя    : {message[SENDER]} \n'
-              f'получено сообщение : {message.[MESSAGE_TEXT]}')
+              f'получено сообщение : {message[MESSAGE_TEXT]}')
         LOGGER.info(f'Получено сообщение от пользователя '
                     f'{message[SENDER]}:\n{message[MESSAGE_TEXT]}')
     else:
@@ -83,8 +86,8 @@ def arg_parser():
     и читаем параметры, возвращаем 3 параметра
     """
     parser = argparse.ArgumentParser()
-    parser.add_argument('addr', default=DEFAULT_IP_ADDRESS, nargs='?')
-    parser.add_argument('port', default=DEFAULT_PORT, type=int, nargs='?')
+    parser.add_argument('-a', '--addr', default=DEFAULT_CLIENT_IP_ADDRESS, nargs='?')
+    parser.add_argument('-p','--port', default=DEFAULT_CLIENT_PORT, type=int, nargs='?')
     parser.add_argument('-m', '--mode', default='listen', nargs='?')
     namespace = parser.parse_args(sys.argv[1:])
     server_address = namespace.addr
@@ -117,8 +120,11 @@ def get_message(client):
     """
     encoded_response = client.recv(MAX_PACKAGE_LENGTH)
     if isinstance(encoded_response, bytes):
-        json_response = encoded_response.decode(ENCODING)
-        response = json.loads(json_response)
+        try:
+            json_response = encoded_response.decode(ENCODING)
+            response = json.loads(json_response)
+        except  JSONDecodeError:
+            raise IncorrectDataRecivedError
         if isinstance(response, dict):
             return response
         raise IncorrectDataRecivedError

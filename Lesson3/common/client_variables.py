@@ -15,7 +15,7 @@ ENCODING = 'utf-8'
 # Прококол JIM основные ключи:
 ACTION = 'action'
 TIME = 'time'
-USER = 'Guest'
+USER = 'user'
 ACCOUNT_NAME = 'account_name'
 MESSAGE = 'message'
 MESSAGE_TEXT = 'message_text'
@@ -27,6 +27,7 @@ RESPONSE = 'response'
 ERROR = 'error'
 STATUS = 'status'
 TYPE = 'type'
+
 
 # Logging
 # Logging levels
