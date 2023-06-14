@@ -1,18 +1,20 @@
-"""  THE SERVER  """
+"""  THE SERVER SCRIPT """
 
 import socket
 import logging
 import select
 import sys
 import time
+import threading
 
 sys.path.append('../')
 import log.server_log_config
-from common.server_variables import DEFAULT_SERVER_PORT, MAX_CONNECTIONS, ACTION, TIME, USER, \
-    ACCOUNT_NAME, SENDER, PRESENCE, RESPONSE, ERROR, MAX_CONNECTIONS, MESSAGE, MESSAGE_TEXT
+from common.server_variables import DEFAULT_SERVER_PORT, MAX_CONNECTIONS, ACTION, TIME, \
+    FROM, TO, SENDER, PRESENCE, RESPONSE, ERROR, MAX_CONNECTIONS, MESSAGE, MESSAGE_TEXT, RESPONSE_400
 
 
-from common.server_utils import arg_parser, process_client_message, get_message, send_message
+from common.server_utils import arg_parser, process_client_message, get_message, send_message, \
+    server_service
 from deco_log import log
 
 from common.errors import IncorrectDataRecivedError
@@ -25,9 +27,9 @@ def main():
     listen_address, listen_port = arg_parser()
 
     LOGGER.info(
-        f'Запущен сервер, порт для подключений: {listen_port}, '
-        f'адрес с которого принимаются подключения: {listen_address}. '
-        f'Если адрес не указан, принимаются соединения с любых адресов.')
+        f'Server runs, listen port: {listen_port}, '
+        f'incoming IP addresses: {listen_address}. '
+        f'In case incoming IP address is not defined, connections are possible from any IP address.')
 
     # Готовим сокет
     transport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -35,11 +37,20 @@ def main():
     transport.settimeout(0.5)
 
     # список клиентов , очередь сообщений
-    clients = []
-    messages = []
+    clients = list()
+    messages = list()
+    user_list = dict()
 
     # Слушаем порт
     transport.listen(MAX_CONNECTIONS)
+
+    user_interface = threading.Thread(target=server_service)
+    user_interface.daemon = True
+    user_interface.start()
+    LOGGER.debug('Threads run')
+
+    print('For exit from server press "q" key')
+
     # Основной цикл программы сервера
     while True:
         # Ждём подключения, если таймаут вышел, ловим исключение.
@@ -48,7 +59,7 @@ def main():
         except OSError:
             pass
         else:
-            LOGGER.info(f'Установлено соедение с клиентом {client_address}')
+            LOGGER.info(f'Client connected  {client_address}')
             clients.append(client)
 
         recv_data_lst = []
@@ -66,38 +77,43 @@ def main():
         # кладём в словарь, если ошибка, исключаем клиента.
         if recv_data_lst:
             print('recv_data_lst', recv_data_lst)
-            for recv_data in recv_data_lst:
+            for client in recv_data_lst:
                 try:
                     # print(f'trying get message from {client_with_message}')
-                    new_message = get_message(recv_data)
-                    process_client_message(new_message, messages, recv_data)
+                    new_message = get_message(client)
+                    process_client_message(new_message, messages, client, clients, user_list)
                 except ConnectionResetError:
-                    LOGGER.info(f'Клиент {recv_data.getpeername()} '
-                                f'отключился от сервера.')
-                    clients.remove(recv_data)
+                    LOGGER.info(f'Client {client.getpeername()}  disconnected ')
+                    clients.remove(client)
                 except IncorrectDataRecivedError:
-                    LOGGER.info(f'Got Incorrect data from client {recv_data.getpeername()} ')
+                    LOGGER.info(f'Got Incorrect data from client {client.getpeername()} ')
 
 
         # Если есть сообщения для отправки и ожидающие клиенты, отправляем им сообщение.
         # print(f'messages : {messages}')
-        if send_data_lst:
-            print('send_data_lst', send_data_lst)
+
         if messages and send_data_lst:
-            print(f'messages : {messages}')
-            message = {
+            # print(f'messages : {messages}')
+            new_message = {
                 ACTION: MESSAGE,
-                SENDER: messages[0][0],
+                FROM: messages[0][FROM],
+                TO: messages[0][TO],
                 TIME: time.time(),
-                MESSAGE_TEXT: messages[0][1]
+                MESSAGE_TEXT: messages[0][MESSAGE_TEXT]
             }
-            del messages[0]
-            for waiting_client in send_data_lst:
+            destination_name = messages[0][TO]
+            if destination_name not in user_list.keys():
+                sender_sock = user_list[messages[0][FROM]]
+                send_message(sender_sock, RESPONSE_400)
+                del messages[0]
+            else:
+                destination_sock = user_list[destination_name]
+                del messages[0]
                 try:
-                    send_message(waiting_client, message)
+                    send_message(destination_sock, new_message)
                 except OSError:
-                    LOGGER.info(f'Клиент {waiting_client.getpeername()} отключился от сервера.')
-                    clients.remove(waiting_client)
+                    LOGGER.info(f'Client {destination_sock.getpeername()} disconnected from server.')
+                    clients.remove(destination_sock)
 
 
 if __name__ == '__main__':

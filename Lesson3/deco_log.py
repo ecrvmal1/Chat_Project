@@ -21,9 +21,9 @@ def log(func):
         result = func(*args, **kwargs)
         # print(f'traceback : {traceback.format_stack()}')
         # print(f'stack : {inspect.stack()}')
-        LOGGER.debug(f'Была вызвана функция {func.__name__} c параметрами {args}, {kwargs}. '
-                     f'Вызов из модуля {func.__module__}. Вызов из'
-                     f' функции {traceback.format_stack()[0].strip().split()[-1]}.'
-                     f'Вызов из функции {inspect.stack()[1][3]}', stacklevel=2)
+        LOGGER.debug(f' called function {func.__name__} with params: {args}, {kwargs}. '
+                     f' called from module  {func.__module__}.' 
+                     f' called from function {traceback.format_stack()[0].strip().split()[-1]}.'
+                     f' called from function {inspect.stack()[1][3]}', stacklevel=2)
         return result
     return log_saver
