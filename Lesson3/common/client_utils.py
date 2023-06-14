@@ -4,8 +4,8 @@ import logging
 import sys
 import time
 
-from common.client_variables import ACTION, MESSAGE, MESSAGE_TEXT, SENDER, TIME, ACCOUNT_NAME, PRESENCE, \
-    DEFAULT_CLIENT_IP_ADDRESS, DEFAULT_CLIENT_PORT, USER, ENCODING, MAX_PACKAGE_LENGTH, RESPONSE, ERROR
+from common.client_variables import ACTION, MESSAGE, MESSAGE_TEXT, SENDER, TIME, PRESENCE, FROM, TO, \
+    DEFAULT_CLIENT_IP_ADDRESS, DEFAULT_CLIENT_PORT, ENCODING, MAX_PACKAGE_LENGTH, RESPONSE, ERROR, EXIT
 
 from common.errors import IncorrectDataRecivedError, JSONDecodeError, NonDictInputError, ReqFieldMissingError, ServerError
 
@@ -16,53 +16,100 @@ LOGGER = logging.getLogger('client_logger')
 
 
 @log
-def process_server_message(message):
-    """Функция - обработчик сообщений других пользователей, поступающих с сервера"""
-    if ACTION in message \
-            and message[ACTION] == MESSAGE \
-            and SENDER in message \
-            and MESSAGE_TEXT in message:
-        print(f'От пользователя    : {message[SENDER]} \n'
-              f'получено сообщение : {message[MESSAGE_TEXT]}')
-        LOGGER.info(f'Получено сообщение от пользователя '
-                    f'{message[SENDER]}:\n{message[MESSAGE_TEXT]}')
-    else:
-        LOGGER.error(f'Получено некорректное сообщение с сервера: {message}')
+def main_menu(sock, username):
+    """Функция взаимодействия с пользователем, запрашивает команды, отправляет сообщения"""
+    print_help()
+    while True:
+        command = input('Enter letter: ')
+        if command == 's':
+            create_message(sock, username)
+        elif command == 'h':
+            print_help()
+        elif command == 'e':
+            send_message(sock, create_message_exit(username))
+            print('Close connection')
+            LOGGER.info('Close Client program by operator')
+            # Задержка неоходима, чтобы успело уйти сообщение о выходе
+            time.sleep(1.0)
+            break
+        else:
+            print('the command is not correct, try again \n'  
+                  'h - print help message.')
 
 
 @log
-def create_message_message(sock, account_name='Guest'):
-    """Функция запрашивает текст сообщения и возвращает его.
-    Так же завершает работу при вводе подобной комманды
+def display_incoming_message(sock, username):
+    """Функция - обработчик сообщений других пользователей, поступающих с сервера"""
+    while True:
+        try:
+            message = get_message(sock)
+            print(f'message = {message}')
+            if ACTION in message \
+                    and message[ACTION] == MESSAGE \
+                    and FROM in message \
+                    and TO in message \
+                    and MESSAGE_TEXT in message \
+                    and message[TO] == username:
+                print(f'\n Got message from user : {message[FROM]}:'
+                      f'\n{message[MESSAGE_TEXT]}')
+                LOGGER.info(f'Got message from user : {message[FROM]}:'
+                            f'\n{message[MESSAGE_TEXT]}')
+            else:
+                LOGGER.error(f'Got incorrect message from server: {message}')
+        except IncorrectDataRecivedError:
+            LOGGER.error(f'Not able to decode received message.')
+        except (OSError, ConnectionError, ConnectionAbortedError,
+                ConnectionResetError, json.JSONDecodeError):
+            LOGGER.critical(f'Connection to server lost.')
+            break
+
+
+@log
+def create_message(sock, username):
     """
-    message = input('Введите сообщение для отправки или \'!!!\' для завершения работы: ')
-    if message == '!!!':
-        sock.close()
-        LOGGER.info('Завершение работы по команде пользователя.')
-        print('Спасибо за использование нашего сервиса!')
-        sys.exit(0)
+    Функция запрашивает кому отправить сообщение и само сообщение,
+    и отправляет полученные данные на сервер
+    :param sock:
+    :param username:
+    :return:
+    """
+    to_user = input("Enter receiver's Username : ")
+    message = input('Enter message to send     : ')
     message_dict = {
         ACTION: MESSAGE,
+        FROM: username,
+        TO: to_user,
         TIME: time.time(),
-        ACCOUNT_NAME: account_name,
         MESSAGE_TEXT: message
     }
-    LOGGER.debug(f'Сформирован словарь сообщения: {message_dict}')
-    return message_dict
+    LOGGER.debug(f'Created dict to be send: {message_dict}')
+    try:
+        send_message(sock, message_dict)
+        LOGGER.info(f'Messate to user  {to_user} sent')
+    except:
+        LOGGER.critical('Connection to server lost ')
+        sys.exit(1)
 
 
 @log
-def create_message_presence(account_name='Guest'):
+def create_message_presence(username):
     """Функция генерирует запрос о присутствии клиента"""
     out = {
         ACTION: PRESENCE,
         TIME: time.time(),
-        USER: {
-            ACCOUNT_NAME: account_name
-        }
+        FROM: username
     }
-    LOGGER.debug(f'Сформировано {PRESENCE} сообщение для пользователя {account_name}')
+    LOGGER.debug(f'"PRESENCE" message for user {username} created')
     return out
+
+def create_message_exit(username):
+    """Функция создаёт словарь с сообщением о выходе"""
+    LOGGER.debug(f'"EXIT" message for user {username} created')
+    return {
+        ACTION: EXIT,
+        TIME: time.time(),
+        FROM: username
+    }
 
 
 @log
@@ -71,7 +118,7 @@ def process_response(message):
     Функция разбирает ответ сервера на сообщение о присутствии,
     возращает 200 если все ОК или генерирует исключение при ошибке
     """
-    LOGGER.debug(f'Разбор приветственного сообщения от сервера: {message}')
+    LOGGER.debug(f'Processing of server response: {message}')
     if RESPONSE in message:
         if message[RESPONSE] == 200:
             return '200 : OK'
@@ -88,26 +135,31 @@ def arg_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument('-a', '--addr', default=DEFAULT_CLIENT_IP_ADDRESS, nargs='?')
     parser.add_argument('-p','--port', default=DEFAULT_CLIENT_PORT, type=int, nargs='?')
-    parser.add_argument('-m', '--mode', default='listen', nargs='?')
+    # parser.add_argument('-m', '--mode', default='listen', nargs='?')
+    parser.add_argument('-u', '--user', default=None, nargs='?')
     namespace = parser.parse_args(sys.argv[1:])
     server_address = namespace.addr
     server_port = namespace.port
-    client_mode = namespace.mode
+    # client_mode = namespace.mode
+    client_username = namespace.user
 
     # проверим подходящий номер порта
     if not 1023 < server_port < 65536:
+        print(
+            f'Incorrect port number: {server_port}. '
+            f'Port numbers must be in range 1024 ... 65535. Client program closed.')
         LOGGER.critical(
-            f'Попытка запуска клиента с неподходящим номером порта: {server_port}. '
-            f'Допустимы адреса с 1024 до 65535. Клиент завершается.')
+            f'Incorrect port number: {server_port}. '
+            f'Port numbers must be in range 1024 ... 65535. Client program closed.')
         sys.exit(1)
 
-    # Проверим допустим ли выбранный режим работы клиента
-    if client_mode not in ('listen', 'send'):
-        LOGGER.critical(f'Указан недопустимый режим работы {client_mode}, '
-                        f'допустимые режимы: listen , send')
-        sys.exit(1)
+    # # Проверим допустим ли выбранный режим работы клиента
+    # if client_mode not in ('listen', 'send'):
+    #     LOGGER.critical(f'Указан недопустимый режим работы {client_mode}, '
+    #                     f'допустимые режимы: listen , send')
+    #     sys.exit(1)
 
-    return server_address, server_port, client_mode
+    return server_address, server_port, client_username
 
 
 @log
@@ -145,4 +197,12 @@ def send_message(sock, message):
     js_message = json.dumps(message)
     encoded_message = js_message.encode(ENCODING)
     sock.send(encoded_message)
+
+
+def print_help():
+    """Функция выводящяя справку по использованию"""
+    print(' Please enter command:')
+    print('  s - send message.')
+    print('  h - print help')
+    print('  e - disconnect and exit')
 

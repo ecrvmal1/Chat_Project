@@ -1,36 +1,42 @@
-import os
-from subprocess import Popen, call, PIPE
-import psutil
+""" SERVER - CLIENT LAUNCHER FOR LINUX """
 
-p_list = []  # Список клиентских процессов
+
+import os
+import subprocess
+import psutil
+import time
+
+PROCESS = []
 
 while True:
-    user = input("Запустить 10 клиентов (s) \n"
-                 "Закрыть клиентов (x) \n"
-                 "Выйти (q) \n")
+    ACTION = input('Выберите действие:  '
+                   's - запустить сервер ,' 
+                   'c - запустить клиенты,' 
+                   'x - закрыть все окна: '
+                   'q - выход \n')
 
-    if user == 'q':
-        break
-    elif user == 's':
-        for _ in range(2):
-            # Флаг CREATE_NEW_CONSOLE нужен для ОС Windows,
-            # чтобы каждый процесс запускался в отдельном окне консоли
-            # p_list.append(Popen(['python3', 'client.py'],
-                                # creationflags=CREATE_NEW_CONSOLE))
+    if ACTION == 's':
+        catalog = os.getcwd()
+        p = f'python "{catalog}/server.py"'
+        PROCESS.append(subprocess.Popen(["gnome-terminal", "--", "sh", "-c", p]))
+        print(p)
+        time.sleep(0.1)
 
-            My_Cmmnd = "python3 client.py; bash"
-            # p_list.append(os.system("gnome-terminal -e 'bash -c \"" + My_Cmmnd + ";bash\"'"))
-            os.system('gnome-terminal -- bash -c "python3 client.py; bash -i" ')
-        print(' Запущено 10 клиентов')
-    elif user == 'x':
-        # for p in p_list:
-        #     p.kill()
-        # p_list.clear()
+    elif ACTION == 'c':
+        catalog = os.getcwd()
+        for i in range(1, 2):
+            # p = f'python {catalog}/client.py -m send -u userS{i}'
+            p = f'python {catalog}/client.py -u userS{i}'
+            PROCESS.append(subprocess.Popen(["gnome-terminal", "--", "sh", "-c", p]))
+            print(p)
+            time.sleep(0.1)
+
+    elif ACTION == 'x':
         for p in psutil.process_iter():
-            print(p.name)
-            # if 'bash' in p.name():
-            #     print(p.name)
-                # p.terminate()
-                # p.kill()
-                # p.wait()
-                # print(p.name)
+            if 'gnome-terminal' in p.name():
+                print(f'Process ended {p.name} {p.pid}')
+                p.terminate()
+                p.wait()
+
+    elif ACTION == 'q':
+        break
