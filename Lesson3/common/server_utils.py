@@ -19,60 +19,30 @@ LOGGER = logging.getLogger('server_logger')
 
 
 @log
-def process_client_message(message, messages_list, client, clients, user_list):
+def get_message(client):
     """
-    Обработчик сообщений от клиентов, принимает словарь - сообщение от клинта,
-    проверяет корректность, отправляет словарь-ответ для клиента с результатом приёма.
-    :param message:
-    :param messages_list:
-    :param clients:
+    Утилита приёма и декодирования сообщения принимает байты выдаёт словарь,
+    если приняточто-то другое отдаёт ошибку значения
     :param client:
-    :param user_list:
     :return:
     """
-    LOGGER.debug(f'Разбор сообщения от клиента : {message}')
-    print(f'processing message {message} from {client}')
-    # Если это сообщение о присутствии, принимаем и отвечаем, если успех
-    if ACTION in message \
-            and message[ACTION] == PRESENCE \
-            and TIME in message \
-            and FROM in message:
-        if message[FROM] not in user_list.keys():
-            user_list[message[FROM]] = client
-            print(f' user {message[FROM]} added to user_list')
-            send_message(client, {RESPONSE: 200})
+    message_encoded = client.recv(MAX_PACKAGE_LENGTH)
+    if isinstance(message_encoded, bytes):
+        try:
+            print(f'          trying decode {message_encoded}')
+            message_decoded = message_encoded.decode(ENCODING)
+            print(f'          trying make dict from {message_decoded}')
+            message_dict = json.loads(message_decoded)
+            print(f'          dict composed {message_dict}')
+        except JSONDecodeError:
+            message_dict = {"Got Error Message": 404}
+        if isinstance(message_dict, dict):
+            print(f'got message {message_dict} from {client}')
+            return message_dict
         else:
-            response = RESPONSE_400
-            response[ERROR] = 'Имя пользователя уже занято.'
-            send_message(client, response)
-            clients.remove(client)
-            client.close()
-        return
-    # Если это сообщение, то добавляем его в очередь сообщений. Ответ не требуется.
-    elif ACTION in message \
-            and message[ACTION] == MESSAGE \
-            and TIME in message \
-            and FROM in message \
-            and TO in message \
-            and MESSAGE_TEXT in message:
-        messages_list.append(message)
-        print (f'message added to message_list {messages_list}')
-        return
-    elif ACTION in message \
-            and message[ACTION] == EXIT \
-            and FROM in message:
-        clients.remove(user_list[message[FROM]])
-        user_list[message[FROM]].close()
-        del user_list[message[FROM]]
-        return
-    # Иначе отдаём Bad request
+            raise IncorrectDataRecivedError
     else:
-        send_message(client, {
-            RESPONSE: 400,
-            ERROR: 'Bad Request'
-        })
-        print(f'sent error message to {client}')
-        return
+        raise IncorrectDataRecivedError
 
 
 @log
@@ -115,33 +85,6 @@ def send_message(sock, message):
     sock.send(encoded_message)
 
 
-
-@log
-def get_message(client):
-    """
-    Утилита приёма и декодирования сообщения принимает байты выдаёт словарь,
-    если приняточто-то другое отдаёт ошибку значения
-    :param client:
-    :return:
-    """
-    try:
-        encoded_response = client.recv(MAX_PACKAGE_LENGTH)
-    except ConnectionResetError:
-        raise ConnectionResetError
-    if isinstance(encoded_response, bytes):
-        try:
-            json_response = encoded_response.decode(ENCODING)
-            print(f'json_response = {json_response}')
-            response = json.loads(json_response)
-        except JSONDecodeError:
-            raise IncorrectDataRecivedError
-        if isinstance(response, dict):
-            print(f'got message {response} from {client}')
-            return response
-        raise IncorrectDataRecivedError
-    raise IncorrectDataRecivedError
-
-
 def server_service():
     print_command_help()
     while True:
@@ -151,7 +94,7 @@ def server_service():
             LOGGER.info('Exiting Server after operator command')
             time.sleep(1.0)
             os._exit(0)
-
+            # sys.exit()
 
 
 def print_command_help():
