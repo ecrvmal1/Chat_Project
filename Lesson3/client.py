@@ -26,7 +26,8 @@ def print_help():
     print('  e - disconnect and exit')
 
 
-class MessageSender(threading.Thread, metaclass=ClientMaker):
+class MessageSender(threading.Thread):
+# class MessageSender(threading.Thread, metaclass=ClientMaker):
     def __init__(self, client_username, sock):
         self.client_username = client_username
         self.sock = sock
