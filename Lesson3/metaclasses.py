@@ -18,11 +18,13 @@ class ServerMaker(type):
 
         # Список методов, которые используются в функциях класса:
         methods = []
+        methods_func =[]
         # Атрибуты, используемые в функциях классов
         attrs = []
         # перебираем ключи
         for func in clsdict:
             # Пробуем
+            methods_func.append(func)
             try:
                 # Возвращает итератор по инструкциям в предоставленной функции
                 # , методе, строке исходного кода или объекте кода.
@@ -49,7 +51,8 @@ class ServerMaker(type):
                         if i.argval not in attrs:
                             # заполняем список атрибутами, использующимися в функциях класса
                             attrs.append(i.argval)
-        print(methods)
+        print(f'methods_argval : {methods}')
+        print(f'methods_func : {methods_func}')
         # Если обнаружено использование недопустимого метода connect, бросаем исключение:
         if 'connect' in methods:
             raise TypeError('Использование метода connect недопустимо в серверном классе')
