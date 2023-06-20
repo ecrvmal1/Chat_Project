@@ -5,14 +5,15 @@ import logging
 import threading
 import time
 
-sys.path.append('../')
+# sys.path.append('../')
 
 import log.client_log_config
 from common.errors import ServerError, ReqFieldMissingError, IncorrectDataRecivedError, JSONDecodeError
 from deco_log import log
 
 from common.client_variables import *
-from common.client_utils import *
+from Lesson3.common.client_utils import send_message, get_message, create_message_presence, arg_parser, \
+    process_server_response
 from metaclasses import ClientMaker
 
 LOGGER = logging.getLogger('client_logger')
@@ -24,6 +25,39 @@ def print_help():
     print('  s - send message.')
     print('  h - print help')
     print('  e - disconnect and exit')
+
+
+
+class MessageReader(threading.Thread, metaclass=ClientMaker):
+    def __init__(self, client_username, sock):
+        self.client_username = client_username
+        self.sock = sock
+        super().__init__()
+
+    def run(self):
+        while True:
+            try:
+                message = get_message(self.sock)
+                print(f'message = {message}')
+                if ACTION in message \
+                        and message[ACTION] == MESSAGE \
+                        and FROM in message \
+                        and TO in message \
+                        and MESSAGE_TEXT in message \
+                        and message[TO] == self.client_username:
+                    print(f'\n Got message from user : {message[FROM]}:'
+                          f'\n{message[MESSAGE_TEXT]}')
+                    LOGGER.info(f'Got message from user : {message[FROM]}:'
+                                f'\n{message[MESSAGE_TEXT]}')
+                else:
+                    LOGGER.error(f'Got incorrect message from server: {message}')
+            except IncorrectDataRecivedError:
+                LOGGER.error(f'Not able to decode received message.')
+            except (OSError, ConnectionError, ConnectionAbortedError,
+                    ConnectionResetError, JSONDecodeError):
+                LOGGER.critical(f'Connection to server lost.')
+                break
+
 
 
 class MessageSender(threading.Thread):
@@ -96,37 +130,6 @@ class MessageSender(threading.Thread):
             else:
                 print('the command is not correct, try again \n'
                       'h - print help message.')
-
-
-class MessageReader(threading.Thread, metaclass=ClientMaker):
-    def __init__(self, client_username, sock):
-        self.client_username = client_username
-        self.sock = sock
-        super().__init__()
-
-    def run(self):
-        while True:
-            try:
-                message = get_message(self.sock)
-                print(f'message = {message}')
-                if ACTION in message \
-                        and message[ACTION] == MESSAGE \
-                        and FROM in message \
-                        and TO in message \
-                        and MESSAGE_TEXT in message \
-                        and message[TO] == self.client_username:
-                    print(f'\n Got message from user : {message[FROM]}:'
-                          f'\n{message[MESSAGE_TEXT]}')
-                    LOGGER.info(f'Got message from user : {message[FROM]}:'
-                                f'\n{message[MESSAGE_TEXT]}')
-                else:
-                    LOGGER.error(f'Got incorrect message from server: {message}')
-            except IncorrectDataRecivedError:
-                LOGGER.error(f'Not able to decode received message.')
-            except (OSError, ConnectionError, ConnectionAbortedError,
-                    ConnectionResetError, JSONDecodeError):
-                LOGGER.critical(f'Connection to server lost.')
-                break
 
 
 @log

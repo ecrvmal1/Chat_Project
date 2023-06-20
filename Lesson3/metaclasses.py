@@ -1,5 +1,6 @@
 import dis
 
+
 # Метакласс для проверки соответствия сервера:
 class ServerMaker(type):
     def __init__(self, clsname, bases, clsdict):
@@ -58,12 +59,15 @@ class ServerMaker(type):
         # Обязательно вызываем конструктор предка:
         super().__init__(clsname, bases, clsdict)
 
+
 # Метакласс для проверки корректности клиентов:
 class ClientMaker(type):
     def __init__(self, clsname, bases, clsdict):
         # Список методов, которые используются в функциях класса:
         methods = []
+        methods_func =[]
         for func in clsdict:
+            methods_func.append(func)
             # Пробуем
             try:
                 ret = dis.get_instructions(clsdict[func])
@@ -73,10 +77,11 @@ class ClientMaker(type):
             else:
                 # Раз функция разбираем код, получая используемые методы.
                 for i in ret:
-                    print(f'all_methods : {i}')
                     if i.opname == 'LOAD_GLOBAL':
                         if i.argval not in methods:
                             methods.append(i.argval)
+        print(f'methods : {methods}')
+        print(f'methods_func : {methods_func}')
         # Если обнаружено использование недопустимого метода accept, listen, socket бросаем исключение:
         for command in ('accept', 'listen', 'socket'):
             if command in methods:
@@ -87,4 +92,3 @@ class ClientMaker(type):
         else:
             raise TypeError('Отсутствуют вызовы функций, работающих с сокетами.')
         super().__init__(clsname, bases, clsdict)
-
