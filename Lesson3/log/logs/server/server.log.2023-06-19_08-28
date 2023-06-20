@@ -1,6 +1,0 @@
-2023-06-19 08:28:06,582 INFO       server.py              server         server_service Exiting Server after operator command
-2023-06-19 08:28:11,738 DEBUG      server.py              server         main  called function arg_parser with params: (), {}.  called from module  common.server_utils. called from function main(). called from function main
-2023-06-19 08:28:11,738 INFO       server.py              server         __init__ Server runs, listen port: 7777, incoming IP addresses: 127.0.0.1. In case incoming IP address is not defined, connections are possible from any IP address.
-2023-06-19 08:28:11,739 INFO       server.py              server         init_sock Server runs, Connection port:  7777 Connection address : 127.0.0.1
-2023-06-19 08:28:11,739 DEBUG      server.py              server         init_sock Threads run
-2023-06-19 08:28:14,409 INFO       server.py              server         server_service Exiting Server after operator command

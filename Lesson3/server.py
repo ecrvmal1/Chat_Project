@@ -43,7 +43,7 @@ def print_command_help():
 
 class Server(metaclass=ServerMaker):
 
-    port = Port()
+    listen_port = Port()
 
     def __init__(self, listen_address, listen_port):
         self.listen_address = listen_address
