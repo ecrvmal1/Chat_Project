@@ -1,7 +1,0 @@
-2023-06-20 00:41:43,417 DEBUG      server.py              server         main  called function arg_parser with params: (), {}.  called from module  common.server_utils. called from function main(). called from function main
-2023-06-20 00:41:43,418 INFO       server.py              server         __init__ Server runs, listen port: 7777, incoming IP addresses: 127.0.0.1. In case incoming IP address is not defined, connections are possible from any IP address.
-2023-06-20 00:41:43,418 INFO       server.py              server         init_sock Server runs, Connection port:  7777 Connection address : 127.0.0.1
-2023-06-20 00:42:01,781 DEBUG      server.py              server         main  called function arg_parser with params: (), {}.  called from module  common.server_utils. called from function main(). called from function main
-2023-06-20 00:42:01,781 INFO       server.py              server         __init__ Server runs, listen port: 7777, incoming IP addresses: 127.0.0.1. In case incoming IP address is not defined, connections are possible from any IP address.
-2023-06-20 00:42:01,782 INFO       server.py              server         init_sock Server runs, Connection port:  7777 Connection address : 127.0.0.1
-2023-06-20 00:42:01,783 DEBUG      server.py              server         init_sock Threads run
