@@ -9,49 +9,45 @@ import threading
 import os
 
 sys.path.append('../')
-import log.server_log_config
+import Lesson3.log.server_log_config
 from Lesson3.common.server_variables import DEFAULT_SERVER_PORT, MAX_CONNECTIONS, ACTION, TIME, EXIT, \
     FROM, TO, SENDER, PRESENCE, RESPONSE, ERROR, MAX_CONNECTIONS, MESSAGE, MESSAGE_TEXT, RESPONSE_400
 
 
-from common.server_utils import arg_parser, get_message, send_message
-from deco_log import log
+from Lesson3.common.server_utils import arg_parser, get_message, send_message
+from Lesson3.deco_log import log
 
-from common.errors import IncorrectDataRecivedError
-from descriptors import Port
+from Lesson3.common.errors import IncorrectDataRecivedError
+from Lesson3.descriptors import Port
 from metaclasses import ServerMaker
+from Lesson3.server_database import ServerStorage
 
 LOGGER = logging.getLogger('server_logger')
 
 
-def server_service():
-    print_command_help()
-    while True:
-        command = input('')
-        if command == 'q':
-            print('Exiting Server after operator command')
-            LOGGER.info('Exiting Server after operator command')
-            time.sleep(1.0)
-            os._exit(0)
-            # sys.exit()
+def print_help():
+    print('Поддерживаемые комманды:')
+    print('users - список известных пользователей')
+    print('connected - список подключенных пользователей')
+    print('loghist - история входов пользователя')
+    print('exit - завершение работы сервера.')
+    print('help - вывод справки по поддерживаемым командам')
 
 
-def print_command_help():
-    """Функция выводящяя справку по использованию"""
-    print(' Please enter command "q" for exit from server:')
-
-
-class Server(metaclass=ServerMaker):
+# class Server(metaclass=ServerMaker):
+class Server(threading.Thread):
 
     listen_port = Port()
 
-    def __init__(self, listen_address, listen_port):
+    def __init__(self, listen_address, listen_port, database):
         self.listen_address = listen_address
         self.listen_port = listen_port
+        self.database = database
         self.clients = list()
         self.messages = list()
         self.user_list = dict()
         self.sock = None
+        super().__init__()
 
         LOGGER.info(
             f'Server runs, listen port: {listen_port}, '
@@ -70,21 +66,12 @@ class Server(metaclass=ServerMaker):
         transport.settimeout(0.5)
 
         self.sock = transport
-
         # Listen ports
         self.sock.listen(MAX_CONNECTIONS)
 
-        user_interface = threading.Thread(target=server_service)
-        user_interface.daemon = True
-        user_interface.start()
-        LOGGER.debug('Threads run')
-
-        print('For exit from server press "q" key')
-
     @log
-    def main_loop(self):
+    def run(self):
         # Основной цикл программы сервера
-        print('For exit from server press "q" key')
 
         self.init_sock()
 
@@ -97,6 +84,8 @@ class Server(metaclass=ServerMaker):
             else:
                 LOGGER.info(f'Client connected  {client_address}')
                 self.clients.append(client)
+                # print(f'client connected :  {client}')
+                # print(f'getpeername : {client.getpeername()}')
 
             recv_data_lst = []
             send_data_lst = []
@@ -115,9 +104,9 @@ class Server(metaclass=ServerMaker):
                 print('recv_data_lst', recv_data_lst)
                 for client in recv_data_lst:
                     try:
-                        # print(f'trying get message from {client_with_message}')
+                        # print(f' trying get message from {client_with_message}')
                         new_message = get_message(client)
-                        self.process_client_message(new_message, client)
+                        self.process_incoming_message(new_message, client)
                     except ConnectionResetError:
                         LOGGER.info(f'Client {client.getpeername()}  disconnected ')
                         self.clients.remove(client)
@@ -130,29 +119,18 @@ class Server(metaclass=ServerMaker):
 
             if self.messages and send_data_lst:
                 # print(f'messages : {messages}')
-                new_message = {
-                    ACTION: MESSAGE,
-                    FROM: self.messages[0][FROM],
-                    TO: self.messages[0][TO],
-                    TIME: time.time(),
-                    MESSAGE_TEXT: self.messages[0][MESSAGE_TEXT]
-                }
-                destination_name = self.messages[0][TO]
-                if destination_name not in self.user_list.keys():
-                    sender_sock = self.user_list[self.messages[0][FROM]]
-                    send_message(sender_sock, RESPONSE_400)
-                    del self.messages[0]
-                else:
-                    destination_sock = self.user_list[destination_name]
-                    del self.messages[0]
+                for message in self.messages:
                     try:
-                        send_message(destination_sock, new_message)
-                    except OSError:
-                        LOGGER.info(f'Client {destination_sock.getpeername()} disconnected from server.')
-                        self.clients.remove(destination_sock)
+                        self.forward_text_message(message, send_data_lst)
+                    except:
+                        LOGGER.info(f'Connection to client "{message[TO]}" lost')
+                        self.clients.remove(self.names[message[TO]])
+                        del self.user_list[message[TO]]
+                self.messages.clear()
+
 
     @log
-    def process_client_message(self, message, client):
+    def process_incoming_message(self, message, client):
         """
         Обработчик сообщений от клиентов, принимает словарь - сообщение от клинта,
         проверяет корректность, отправляет словарь-ответ для клиента с результатом приёма.
@@ -173,6 +151,8 @@ class Server(metaclass=ServerMaker):
             if message[FROM] not in self.user_list.keys():
                 self.user_list[message[FROM]] = client
                 print(f' user {message[FROM]} added to user_list')
+                client_ip, client_port = client.getpeername()
+                self.database.db_user_login(message[FROM], client_ip, client_port)
                 send_message(client, {RESPONSE: 200})
             else:
                 response = RESPONSE_400
@@ -197,6 +177,7 @@ class Server(metaclass=ServerMaker):
             self.clients.remove(self.user_list[message[FROM]])
             self.user_list[message[FROM]].close()
             del self.user_list[message[FROM]]
+            self.database.db_user_logout(message[FROM])
             return
         # Иначе отдаём Bad request
         else:
@@ -207,6 +188,17 @@ class Server(metaclass=ServerMaker):
             print(f'sent error message to {client}')
             return
 
+    def forward_text_message(self, message, listen_socks):
+        if message[TO] in self.user_list \
+                and self.user_list[message[TO]] in listen_socks:
+            send_message(self.user_list[message[TO]], message)
+            LOGGER.info(f'The message  forwarded to user "{message[TO]}" from user "{message[FROM]}".')
+        elif message[TO] in self.user_list and self.user_list[message[TO]] not in listen_socks:
+            raise ConnectionError
+        else:
+            LOGGER.error(
+                f'User "{message[TO]}" has not registered, Message can not be sent.')
+
 
 def main():
     """Загрузка параметров командной строки, если нет параметров, то задаём значения по умоланию"""
@@ -216,9 +208,33 @@ def main():
     # user_interface.daemon = True
     # user_interface.start()
     # LOGGER.debug('Threads run')
+    database = ServerStorage()
 
-    server = Server(listen_address, listen_port)
-    server.main_loop()
+    server = Server(listen_address, listen_port, database)
+    server.daemon = True
+    server.start()
+
+    print_help()
+
+    # ----------------------- Main  Cycle ------------------------:
+    while True:
+        command = input('Введите комманду: ')
+        if command == 'help':
+            print_help()
+        elif command == 'exit':
+            os._exit(0)
+        elif command == 'users':
+            for user in sorted(database.db_all_users_list()):
+                print(f'Пользователь {user[0]}, последний вход: {user[1]}')
+        elif command == 'connected':
+            for user in sorted(database.db_active_users_list()):
+                print(f'Пользователь {user[0]}, подключен: {user[1]}:{user[2]}, время установки соединения: {user[3]}')
+        elif command == 'loghist':
+            name = input('Введите имя пользователя для просмотра истории. Для вывода всей истории, просто нажмите Enter: ')
+            for user in sorted(database.db_login_history_list(name)):
+                print(f'Пользователь: {user[0]} время входа: {user[1]}. Вход с: {user[2]}:{user[3]}')
+        else:
+            print('Команда не распознана.')
 
 
 if __name__ == '__main__':

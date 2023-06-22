@@ -85,21 +85,9 @@ def send_message(sock, message):
     sock.send(encoded_message)
 
 
-def server_service():
-    print_command_help()
-    while True:
-        command = input('')
-        if command == 'q':
-            print('Exiting Server after operator command')
-            LOGGER.info('Exiting Server after operator command')
-            time.sleep(1.0)
-            os._exit(0)
-            # sys.exit()
 
 
-def print_command_help():
-    """Функция выводящяя справку по использованию"""
-    print(' Please enter command "q" for exit from server:')
+
 
 
 
