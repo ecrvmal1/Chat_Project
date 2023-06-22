@@ -1,0 +1,16 @@
+2023-06-22 09:25:44,416 DEBUG      server.py              server         forward_text_message  called function send_message with params: (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 56302)>, {'action': 'message', 'from': 'user2', 'to': 'user1', 'time': 1687451143.9493246, 'message_text': 'qwerty2'}), {}.  called from module  Lesson3.common.server_utils. called from function self._bootstrap_inner(). called from function forward_text_message
+2023-06-22 09:25:44,416 INFO       server.py              server         forward_text_message The message  forwarded to user "user1" from user "user2".
+users
+Пользователь user1, последний вход: 2023-06-22 09:24:36.724895
+Пользователь user2, последний вход: 2023-06-22 09:25:27.864700
+Введите комманду: connected
+Пользователь user1, подключен: 127.0.0.1:56302, время установки соединения: 2023-06-22 09:24:36.737739
+Пользователь user2, подключен: 127.0.0.1:46622, время установки соединения: 2023-06-22 09:25:27.870772
+Введите комманду: loghist
+Введите имя пользователя для просмотра истории. Для вывода всей истории, просто нажмите Enter:
+Пользователь: user1 время входа: 2023-06-22 09:24:36.745269. Вход с: 127.0.0.1:56302
+Пользователь: user2 время входа: 2023-06-22 09:25:27.875800. Вход с: 127.0.0.1:46622
+Введите комманду: loghist
+Введите имя пользователя для просмотра истории. Для вывода всей истории, просто нажмите Enter: user1
+Пользователь: user1 время входа: 2023-06-22 09:24:36.745269. Вход с: 127.0.0.1:56302
+Введите комманду:
