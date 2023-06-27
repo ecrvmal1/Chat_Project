@@ -20,6 +20,10 @@ FROM = 'from'
 TO = 'to'
 SENDER = 'sender'
 EXIT = 'exit'
+ADD_CONTACT = 'add_contact'
+REMOVE_CONTACT = 'remove_contact'
+USERS_REQUEST = 'users_request'
+CONTACT = 'contact'
 
 # Прочие ключи, используемые в протоколе
 PRESENCE = 'presence'
@@ -29,15 +33,16 @@ MESSAGE_TEXT = 'message_text'
 ERROR = 'error'
 STATUS = 'status'
 TYPE = 'type'
+GET_CONTACTS = 'get_contacts'
+DATA_LIST = 'data_list'
 
 # Logging
 # Logging levels
 FILE_LOGGING_LEVEL = logging.DEBUG
 TERMINAL_LOGGING_LEVEL = logging.DEBUG
 
-RESPONSE_200 = {RESPONSE: 200}
+RESPONSE_200 = {'action': 'response', 'response': 200}
+RESPONSE_202 = {'action': 'response', 'response': 202}
 # 400
-RESPONSE_400 = {
-    RESPONSE: 400,
-    ERROR: None
-}
+RESPONSE_400 = {'action': 'response', 'response': 400, 'error': 'bad request'}
+
