@@ -4,9 +4,8 @@ import logging
 import sys
 import time
 
-sys.path.append('../Lesson3/')
 
-from common.client_variables import ACTION, TIME, PRESENCE, FROM, DEFAULT_CLIENT_IP_ADDRESS, DEFAULT_CLIENT_PORT, ENCODING, MAX_PACKAGE_LENGTH, RESPONSE, ERROR
+from common.client_variables import *
 
 from common.errors import IncorrectDataRecivedError, JSONDecodeError, NonDictInputError, ReqFieldMissingError, ServerError
 
@@ -19,13 +18,13 @@ LOGGER = logging.getLogger('client_logger')
 @log
 def create_message_presence(username):
     """Функция генерирует запрос о присутствии клиента"""
-    out = {
+    msg_dict = {
         ACTION: PRESENCE,
         TIME: time.time(),
         FROM: username
     }
     LOGGER.debug(f'"PRESENCE" message for user {username} created')
-    return out
+    return msg_dict
 
 
 @log
@@ -35,11 +34,22 @@ def process_server_response(message):
     возращает 200 если все ОК или генерирует исключение при ошибке
     """
     LOGGER.debug(f'Processing of server response: {message}')
-    if RESPONSE in message:
+    print(f"Processing of server response: {message}")
+    if ACTION in message\
+            and message[ACTION] == RESPONSE:
+        print(f'processing response, message: {message}')
         if message[RESPONSE] == 200:
-            return '200 : OK'
+            print(f'response : 200 Ok')
+            return
+        if message[RESPONSE] == 202 and 'user_list' in message:
+            print(f'response : 202 Ok')
+            return {'user_list': message['user_list']}
+        if message[RESPONSE] == 202 and 'contact_list' in message:
+            print(f'response : 202 Ok')
+            return {'contact_list': message['contact_list']}
         elif message[RESPONSE] == 400:
-            raise ServerError(f'400 : {message[ERROR]}')
+            print(f' ServerError : response 400 : {message[ERROR]}')
+            return
     raise ReqFieldMissingError(RESPONSE)
 
 
@@ -90,6 +100,7 @@ def get_message(client):
     if isinstance(encoded_response, bytes):
         try:
             json_response = encoded_response.decode(ENCODING)
+            print(f'got message {json_response}')
             response = json.loads(json_response)
         except JSONDecodeError:
             raise IncorrectDataRecivedError
@@ -110,11 +121,105 @@ def send_message(sock, message):
     """
     if not isinstance(message, dict):
         raise NonDictInputError
+    print(f'sending message {message}')
     js_message = json.dumps(message)
     encoded_message = js_message.encode(ENCODING)
     sock.send(encoded_message)
     print(f'sending message {message} t0 {sock}')
 
 
+# Функция запрос контакт листа
+def sdb_contacts_list_request(sock, name):
+    LOGGER.debug(f'Запрос контакт листа для пользователся {name}')
+    req = {
+        ACTION: 'get_contacts',
+        TIME: time.time(),
+        FROM: name
+    }
+    LOGGER.debug(f'Сформирован запрос {req}')
+    send_message(sock, req)
+    ans = get_message(sock)
+    print(f'got answer : {ans}')
+    LOGGER.debug(f'Получен ответ {ans}')
+    if RESPONSE in ans and ans[RESPONSE] == 202:
+        return ans['contact_list']
+    else:
+        raise ServerError
+
+
+# Функция добавления пользователя в контакт лист
+def sdb_add_contact(sock, username, contact):
+    LOGGER.debug(f'Создание контакта {contact}')
+    req = {
+        ACTION: ADD_CONTACT,
+        TIME: time.time(),
+        FROM: username,
+        CONTACT: contact
+    }
+    send_message(sock, req)
+    ans = get_message(sock)
+    if RESPONSE in ans and ans[RESPONSE] == 200:
+        pass
+    else:
+        raise ServerError('Error at contact ctreation')
+    print('Contact created')
+
+
+# Функция запроса списка известных пользователей
+def sdb_user_list_request(sock, username):
+    LOGGER.debug(f'Запрос списка известных пользователей {username}')
+    req = {
+        ACTION: 'get_users',
+        TIME: time.time(),
+        FROM: username
+    }
+    send_message(sock, req)
+    ans = get_message(sock)
+    print(f'got answer : {ans}')
+    if RESPONSE in ans \
+            and ans[RESPONSE] == 202 \
+            and 'user_list' in ans :
+        return ans['user_list']
+    else:
+        raise ServerError
+
+
+# Функция удаления пользователя из контакт листа
+def sdb_remove_contact(sock, username, contact):
+    LOGGER.debug(f'Deleting contact  {contact}')
+    req = {
+        ACTION: REMOVE_CONTACT,
+        TIME: time.time(),
+        FROM: username,
+        CONTACT: contact
+    }
+    send_message(sock, req)
+    ans = get_message(sock)
+    if RESPONSE in ans and ans[RESPONSE] == 200:
+        pass
+    else:
+        raise ServerError('Ошибка удаления клиента')
+    print('Удачное удаление')
+
+
+# Функция инициализатор базы данных. Запускается при запуске, загружает данные в базу с сервера.
+def sdb_database_load(sock, database, username):
+    # Загружаем список известных пользователей
+    try:
+        users_list = sdb_user_list_request(sock, username)
+    except ServerError:
+        LOGGER.error('Ошибка запроса списка известных пользователей.')
+    else:
+        for user in users_list:
+            database.db_add_known_users(user)
+
+    # Загружаем список контактов
+    try:
+        contacts_list = sdb_contacts_list_request(sock, username)
+    except ServerError:
+        LOGGER.error('Ошибка запроса списка контактов.')
+    else:
+        for contact in contacts_list:
+            database.db_add_contact(contact)
 
 

@@ -22,7 +22,7 @@ class ClientDatabase:
 
     class Contacts:
         def __init__(self, contact):
-            self.id = id
+            self.id = None
             self.contact_name = contact
 
     def __init__(self, name):
@@ -33,7 +33,7 @@ class ClientDatabase:
 
         known_users_table = Table('known_users', self.metadata,
                                   Column('id', Integer, primary_key=True),
-                                  Column('username',String)
+                                  Column('username', String)
                                   )
 
         message_history_table = Table('message_history', self.metadata,
@@ -45,7 +45,7 @@ class ClientDatabase:
                                       )
 
         contacts_table = Table('contacts_table', self.metadata,
-                               Column('id', Integer, primary_key=True,),
+                               Column('id', Integer, primary_key=True),
                                Column('contact_name', String, unique=True)
                                )
 
@@ -100,11 +100,11 @@ class ClientDatabase:
         if to_who:
             query = query.filter_by(message_to=to_who)
 
-        return [(history_row.from_user, history_row.to_user, history_row.message, history_row.date)
+        return [(history_row.message_from, history_row.message_to, history_row.message_text, history_row.message_date)
                 for history_row in query.all()]
 
     def db_add_known_users(self, username):
-        test : int = self.session.query(self.KnownUsers).flter_by(username=username)
+        test = self.session.query(self.KnownUsers).filter_by(username=username).count()
         if test:
             return
         known_user_row = self.KnownUsers(username)
@@ -112,8 +112,10 @@ class ClientDatabase:
         self.session.commit()
 
     def db_get_known_users(self):
-        known_users_items = self.session.query(self.KnownUsers.username).all()
-        return [user[0] for user in known_users_items]
+        # known_users_items = self.session.query(self.KnownUsers.username).all()
+        known_users_items = self.session.query(self.KnownUsers).all()
+        # return [user[0] for user in known_users_items]
+        return [user.username for user in known_users_items]
 
     def db_check_known_user(self, user):
         if self.session.query(self.KnownUsers).filter_by(username=user).count():
@@ -131,22 +133,22 @@ if __name__ == '__main__':
         print(f'db contacts : {test_db.db_get_contacts()}')
     test_db.db_add_contact('test5')
     print(f'db contacts : {test_db.db_get_contacts()}')
-    print(f'db check contacts : {test_db.db_check_contact()}')
-    print(f'db check contacts : {test_db.db_check_contact()}')
+    print(f'db check contacts : {test_db.db_check_contact("test3")}')
+    print(f'db check contacts : {test_db.db_check_contact("test6")}')
 
     # test message part
     test_message1 = {
         ACTION: MESSAGE,
         FROM: "test1",
         TO: "test2",
-        TIME: time.time(),
+        TIME: datetime.datetime.now(),
         MESSAGE_TEXT: 'test message1  from test1 to test2'
     }
     test_message2 = {
         ACTION: MESSAGE,
         FROM: "test3",
         TO: "test1",
-        TIME: time.time(),
+        TIME: datetime.datetime.now(),
         MESSAGE_TEXT: 'test message2  from test3 to test1'
     }
     test_db.db_message_register(test_message1)

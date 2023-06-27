@@ -33,11 +33,15 @@ TYPE = 'type'
 # Logging levels
 FILE_LOGGING_LEVEL = logging.DEBUG
 TERMINAL_LOGGING_LEVEL = logging.DEBUG
+GET_CONTACTS = 'get_contacts'
+ADD_CONTACT = 'add_contact'
+CONTACT = 'contact'
+USERS_REQUEST = 'users_request'
+REMOVE_CONTACT = 'remove_contact'
+DATA_LIST = 'data_list'
 
-RESPONSE_200 = {RESPONSE: 200}
+
+RESPONSE_200 = {'action': 'response', 'response': 200}
+RESPONSE_202 = {'action': 'response', 'response': 202}
 # 400
-RESPONSE_400 = {
-    RESPONSE: 400,
-    ERROR: None
-}
-
+RESPONSE_400 = {'action': 'response', 'response': 400, 'error': 'bad request'}

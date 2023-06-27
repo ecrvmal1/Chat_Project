@@ -5,11 +5,8 @@ import sys
 
 from common.errors import NonDictInputError, IncorrectDataRecivedError, JSONDecodeError
 
-sys.path.append('../Lesson3/')
 
-from common.server_variables import MAX_PACKAGE_LENGTH, \
-    DEFAULT_SERVER_IP_ADDRESS, DEFAULT_SERVER_PORT, ENCODING, \
-    DEFAULT_USERNAME
+from common.server_variables import *
 from deco_log import log
 
 # Инициализация логирования сервера.
@@ -32,8 +29,9 @@ def get_message(client):
             print(f'          trying make dict from {message_decoded}')
             message_dict = json.loads(message_decoded)
             print(f'          dict composed {message_dict}')
-        except JSONDecodeError:
-            message_dict = {"Got Error Message": 404}
+        except json.JSONDecodeError:
+            print(f' got message {message_encoded}, fail to decode the message')
+            return
         if isinstance(message_dict, dict):
             print(f'got message {message_dict} from {client}')
             return message_dict
