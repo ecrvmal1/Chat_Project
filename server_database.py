@@ -6,7 +6,7 @@ from sqlalchemy import create_engine, Table, Column, \
 from sqlalchemy.orm import mapper, sessionmaker
 
 from common.server_variables import SERVER_DATABASE, FROM, TO, ACTION, MESSAGE, TIME, MESSAGE_TEXT
-
+# from common.server_utils import send_message
 
 class ServerStorage:
 
@@ -15,7 +15,7 @@ class ServerStorage:
         def __init__(self, username):
             self.id = None
             self.name = username
-            self.last_login_date = datetime.datetime.now()
+            self.last_login = datetime.datetime.now()
 
     class ActiveUsers():
         def __init__(self, user_id, ip_address, port, login_time):
@@ -39,17 +39,28 @@ class ServerStorage:
             self.user_id = user_id
             self.contact_id = contact
 
-    class UserMessageCounter:
+    class MessageCounter:
         def __init__(self, user_id):
             self.id = None
-            self.user_id = user_id
-            self.messages_sent = 0
-            self.messages_received = 0
+            self.messages_count_user_id = user_id
+            self.messages_count_sent = 0
+            self.messages_count_received = 0
+
+    class MessageRegister:
+        def __init__(self, message):
+            self.id = None
+            self.messages_reg_from_id = message[FROM]
+            self.messages_reg_to_id = message[TO]
+            self.messages_reg_date = datetime.datetime.now()
+            self.messages_reg_text = message[MESSAGE_TEXT]
 
 
-    def __init__(self):
+    def __init__(self, db_path=None):
         # self.db_engine = create_engine(SERVER_DATABASE, echo=False, pool_recycle=7200)
-        self.db_engine = create_engine('sqlite:///server_test_db.db3', echo=False, pool_recycle=7200)
+        if not db_path:
+            db_path = 'server_test_db.db3'
+        self.db_engine = create_engine(f'sqlite:///{db_path}', echo=False, pool_recycle=7200,
+                                       connect_args={'check_same_thread': False})
         self.metadata = MetaData()
 
         # ------------------  Define tables  ------------------------
@@ -57,7 +68,7 @@ class ServerStorage:
         all_users_table = Table('All_users', self.metadata,
                                 Column('id', Integer, primary_key=True),
                                 Column('name', String, unique=True),
-                                Column('last_login_date', DateTime),
+                                Column('last_login', DateTime),
                                 )
 
         active_users_table = Table('Active_users', self.metadata,
@@ -82,12 +93,20 @@ class ServerStorage:
                                     Column('contact_id', ForeignKey('All_users.id')),
                                     )
 
-        user_message_counter_table = Table('User_message_counter_table', self.metadata,
+        message_counter_table = Table('Message_counter_table', self.metadata,
                                     Column('id', Integer, primary_key=True),
-                                    Column('user_id', ForeignKey('All_users.id')),
-                                    Column('messages_sent', Integer),
-                                    Column('messages_received', Integer),
-                                           )
+                                    Column('messages_count_user_id', ForeignKey('All_users.id')),
+                                    Column('messages_count_sent', Integer),
+                                    Column('messages_count_received', Integer)
+                                      )
+
+        message_register_table = Table('Message_register_table', self.metadata,
+                                       Column('id', Integer, primary_key=True),
+                                       Column('messages_reg_from_id', ForeignKey('All_users.id')),
+                                       Column('messages_reg_to_id', ForeignKey('All_users.id')),
+                                       Column('messages_reg_date', DateTime),
+                                       Column('messages_reg_text', String)
+                                       )
 
         # ------------ Create Tables ---------------------
         self.metadata.create_all(self.db_engine)
@@ -98,7 +117,8 @@ class ServerStorage:
         mapper(self.ActiveUsers, active_users_table)
         mapper(self.LoginHistory, user_login_history)
         mapper(self.UserContacts, user_contacts_table)
-        mapper(self.UserMessageCounter, user_message_counter_table)
+        mapper(self.MessageCounter, message_counter_table)
+        mapper(self.MessageRegister, message_register_table)
 
         # -----------------  Create Session -----------------
         Session = sessionmaker(bind=self.db_engine)
@@ -110,23 +130,27 @@ class ServerStorage:
 
     def db_user_login(self, username, ip_address, port):
         print(f'db_login username: {username},  ip: {ip_address},  port : {port}')
-        rez = self.session.query(self.AllUsers).filter_by(name=username)
+        check_all_users = self.session.query(self.AllUsers).filter_by(name=username)
         # if   if_user is in AllUsers
-        if rez.count():
-            user = rez.first()
-            user.last_login_date = datetime.datetime.now()
+        if check_all_users.count():
+            user = check_all_users.first()
+            user.last_login = datetime.datetime.now()
         else:
             # create inctance of AllUsers class
-            user = self.AllUsers(username)
-            self.session.add(user)
+            new_user = self.AllUsers(username)
+            self.session.add(new_user)
             self.session.commit()
 
         #                 functional class here
-        new_active_user = self.ActiveUsers(user.id, ip_address, port, datetime.datetime.now())
-        self.session.add(new_active_user)
-        self.session.commit()
+        check_active_user = self.session.query(self.ActiveUsers).join(self.AllUsers).filter_by(name=username).first()
+        if not check_active_user:
+            user = self.session.query(self.AllUsers).filter_by(name=username).first()
+            new_active_user = self.ActiveUsers(user.id, ip_address, port, datetime.datetime.now())
+            self.session.add(new_active_user)
+            self.session.commit()
 
         # -----------------  create record in logon history -------------
+        user = self.session.query(self.AllUsers).filter_by(name=username).first()
         history = self.LoginHistory(user.id, datetime.datetime.now(), ip_address, port)
         self.session.add(history)
         self.session.commit()
@@ -141,7 +165,7 @@ class ServerStorage:
     def db_all_users_list(self):
         query = self.session.query(
             self.AllUsers.name,
-            self.AllUsers.last_login_date
+            self.AllUsers.last_login
         )
         return query.all()
 
@@ -164,45 +188,71 @@ class ServerStorage:
             query = query.filter(self.AllUsers.name == username)
         return query.all()
 
+
     def db_message_counter_update(self, message):
         sender = self.session.query(self.AllUsers).filter_by(name=message[FROM]).first()
-        sender_raw = self.session.query(self.UserMessageCounter).filter_by(user_id=sender.id).first()
+        sender_raw = self.session.query(self.MessageCounter).\
+            filter_by(messages_count_user_id=sender.id).first()
 
         if sender_raw:
-            sender_raw.messages_sent += 1
+            sender_raw.messages_count_sent += 1
             self.session.commit()
         else:
-            record = self.UserMessageCounter(sender.id)
-            record.messages_sent += 1
+            record = self.MessageCounter(sender.id)
+            record.messages_count_sent += 1
             self.session.add(record)
             self.session.commit()
 
         receiver = self.session.query(self.AllUsers).filter_by(name=message[TO]).first()
-        receiver_raw = self.session.query(self.UserMessageCounter).filter_by(user_id=receiver.id).first()
+        receiver_raw = self.session.query(self.MessageCounter).filter_by(messages_count_user_id=receiver.id).first()
 
         if receiver_raw:
-            receiver_raw.messages_received += 1
+            receiver_raw.messages_count_received += 1
             self.session.commit()
         else:
-            record = self.UserMessageCounter(receiver.id)
-            record.messages_received += 1
+            record = self.MessageCounter(receiver.id)
+            record.messages_count_received += 1
             self.session.add(record)
             self.session.commit()
 
     def db_message_counter_list(self):
         query = self.session.query(
             self.AllUsers.name,
-            self.UserMessageCounter.messages_sent,
-            self.UserMessageCounter.messages_received,
+            self.AllUsers.last_login,
+            self.MessageCounter.messages_count_sent,
+            self.MessageCounter.messages_count_received,
         ).join(self.AllUsers)
+        return query.all()
+
+    def db_message_register_update(self, message):
+        sender = self.session.query(self.AllUsers).filter_by(name=message[FROM]).first()
+        receiver = self.session.query(self.AllUsers).filter_by(name=message[TO]).first()
+        record = self.MessageRegister(message)
+        record.messages_reg_from_id = sender.id
+        record.messages_reg_to_id = receiver.id
+        record.messages_reg_date = datetime.datetime.now()
+        record.messages_reg_text = message['message_text']
+        self.session.add(record)
+        self.session.commit()
+
+    def db_message_register_list(self):
+        query = self.session.query(self.MessageRegister.messages_reg_from_id,
+                                   self.MessageRegister.messages_reg_to_id,
+                                   self.MessageRegister.messages_reg_date,
+                                   self.MessageRegister.messages_reg_text,
+                                   )
         return query.all()
 
     def db_contacts_add(self, user_name, contact_name):
         user = self.session.query(self.AllUsers).filter_by(name=user_name).first()
         contact = self.session.query(self.AllUsers).filter_by(name=contact_name).first()
+        if not user:
+            raise ValueError(f"Server DB : incorect user_name")
+        if not contact:
+            raise ValueError(f"Server DB : incorect contact_name")
         existing_contact = self.session.query(self.UserContacts).filter_by(user_id=user.id, contact_id=contact.id).first()
-        if not contact or existing_contact:
-            return
+        if existing_contact:
+            raise ValueError("Server DB :Contact already exists")
         new_contact = self.UserContacts(user.id, contact.id)
         self.session.add(new_contact)
         self.session.commit()
@@ -223,22 +273,21 @@ class ServerStorage:
         if username:
             user = self.session.query(
                 # self.UserContacts.id,
-                self.AllUsers).filter_by(name=username).first()
+                self.AllUsers).filter_by(name=username).one()
 
-            query = self.session.query(self.UserContacts). \
-                filter_by(user_id=user.id).join(self.AllUsers, self.UserContacts.user_id == self.AllUsers.id)
-            return [contact.contact_id for contact in query.all()]
-
-        
+            query = self.session.query(self.UserContacts, self.AllUsers.name). \
+                filter_by(user_id=user.id).join(self.AllUsers, self.UserContacts.contact_id == self.AllUsers.id)
+            return [contact[1] for contact in query.all()]
         else:
-            # query = self.session.query(
-            #     self.AllUsers.name,
-            #     self.AllUsers.name,
-            # )
-            query = self.session.query(
-                self.UserContacts.user_id,
-                self.UserContacts.contact_id,
-            )
+            query = self.session.query(self.UserContacts, self.AllUsers.name). \
+                join(self.AllUsers, self.UserContacts.contact_id == self.AllUsers.id)
+            return [contact[1] for contact in query.all()]
+
+            # query = self.session.query.(
+            #     self.UserContacts.user_id.name,
+            #     self.UserContacts.contact_id.name,
+            # ).join(self.AllUsers.name)
+
             return query.all()
 
 
@@ -252,6 +301,7 @@ if __name__ == '__main__':
     test_db.db_user_login('user_2', '192.168.1.7', 5555)
     # выводим список кортежей - активных пользователей
     print(f'db_active_users_list : {test_db.db_active_users_list()}')
+    print(f'db_all_users_list : {test_db.db_all_users_list()}')
     # выполянем 'отключение' пользователя
     test_db.db_user_logout('client_1')
     # выводим список активных пользователей
@@ -278,12 +328,30 @@ if __name__ == '__main__':
     test_db.db_message_counter_update(test_message2)
     print(f'DB message_counter :  {test_db.db_message_counter_list()}')
     print(f'DB Contacts :  {test_db.db_contacts_list()}')
-    test_db.db_contacts_add("client_1", 'client_2')
-    test_db.db_contacts_add("client_2", 'client_1')
-    test_db.db_contacts_add("user_1", 'client_1')
-    test_db.db_contacts_add("user_1", 'client_2')
-    test_db.db_contacts_add("user_1", 'user_2')
-    print(f'DB Contacts :  {test_db.db_contacts_list()}')
-    print(f'DB Contacts :  {test_db.db_contacts_list("user_1")}')
+    test_db.db_message_register_update(test_message1)
+    test_db.db_message_register_update(test_message2)
+    print(f'DB message_register :  {test_db.db_message_register_list()}')
+    try:
+        test_db.db_contacts_add("client_1", 'client_2')
+    except ValueError as err:
+        print(f'Adding contact error {err}')
+    try:
+        test_db.db_contacts_add("client_2", 'client_1')
+    except ValueError as err:
+        print(f'Adding contact error {err}')
+    try:
+        test_db.db_contacts_add("user_1", 'client_1')
+    except ValueError as err:
+        print(f'Adding contact error {err}')
+    try:
+        test_db.db_contacts_add("user_1", 'client_2')
+    except ValueError as err:
+        print(f'Adding contact error {err}')
+    try:
+        test_db.db_contacts_add("user_1", 'user_2')
+    except ValueError as err:
+        print(f'Adding contact error {err}')
+    print(f'DB Contacts All :  {test_db.db_contacts_list()}')
+    print(f'DB Contacts for user_1 :  {test_db.db_contacts_list("user_1")}')
 
 
