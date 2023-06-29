@@ -138,9 +138,8 @@ class MessageSender(threading.Thread):
             self.database.db_message_register(message_dict)
         with sock_lock:
             try:
-                LOGGER.debug(f'Create_message Trying to send message {message_dict}')
                 send_message(self.sock, message_dict)
-                LOGGER.info(f'Message to user  {to_user} sent')
+                LOGGER.info(f'Message sent: {message_dict}')
             except OSError as err:
                 if err.errno:
                     LOGGER.critical('Connection to server lost, exiting.')
@@ -251,8 +250,6 @@ class MessageSender(threading.Thread):
             print (f' contacts: {self.database.db_get_contacts()}')
 
 
-
-
 @log
 def main():
     print('********** CHAT CLIENT RUNNING *************' )
@@ -271,7 +268,7 @@ def main():
     # Инициализация сокета и сообщение серверу о нашем появлении
     try:
         transport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        transport.settimeout(10)
+        transport.settimeout(1)
         transport.connect((server_address, server_port))
         send_message(transport, create_message_presence(client_username))
         message = get_message(transport)
@@ -294,32 +291,31 @@ def main():
             f'Server refused correction request')
         sys.exit(1)
 
-    else:
-        # DB initialization
-        database = ClientDatabase(client_username)
-        sdb_database_load(transport, database, client_username)
+    # DB initialization
+    database = ClientDatabase(client_username)
+    sdb_database_load(transport, database, client_username)
 
-        # receiver = threading.Thread(target=display_incoming_message, args=(transport, client_username))
-        msg_reader = MessageReader(client_username, transport, database)
-        msg_reader.daemon = True
-        msg_reader.start()
+    # receiver = threading.Thread(target=display_incoming_message, args=(transport, client_username))
+    msg_reader = MessageReader(client_username, transport, database)
+    msg_reader.daemon = True
+    msg_reader.start()
 
-        # затем запускаем отправку сообщений и взаимодействие с пользователем.
-        msg_sender = MessageSender(client_username , transport, database)
-        # user_interface = threading.Thread(target=main_menu, args=(transport, client_username))
-        msg_sender.daemon = True
-        msg_sender.start()
-        LOGGER.debug('Threads run')
+    # затем запускаем отправку сообщений и взаимодействие с пользователем.
+    msg_sender = MessageSender(client_username , transport, database)
+    # user_interface = threading.Thread(target=main_menu, args=(transport, client_username))
+    msg_sender.daemon = True
+    msg_sender.start()
+    LOGGER.debug('Threads run')
 
-        # Watchdog основной цикл, если один из потоков завершён,
-        # то значит или потеряно соединение или пользователь
-        # ввёл exit. Поскольку все события обработываются в потоках,
-        # достаточно просто завершить цикл.
-        while True:
-            time.sleep(1)
-            if msg_reader.is_alive() and msg_sender.is_alive():
-                continue
-            break
+    # Watchdog основной цикл, если один из потоков завершён,
+    # то значит или потеряно соединение или пользователь
+    # ввёл exit. Поскольку все события обработываются в потоках,
+    # достаточно просто завершить цикл.
+    while True:
+        time.sleep(1)
+        if msg_reader.is_alive() and msg_sender.is_alive():
+            continue
+        break
 
 
 if __name__ == '__main__':
