@@ -24,12 +24,13 @@ while True:
 
     elif ACTION == 'c':
         catalog = os.getcwd()
-        for i in range(1, 2):
+        for i in range(1, 3):
+            # print(i)
             # p = f'python {catalog}/client.py -m send -u userS{i}'
-            p = f'python {catalog}/client.py -u userS{i}'
+            p = f'python {catalog}/client.py -u user{i}'
             PROCESS.append(subprocess.Popen(["gnome-terminal", "--", "sh", "-c", p]))
             print(p)
-            time.sleep(0.1)
+            time.sleep(1)
 
     elif ACTION == 'x':
         for p in psutil.process_iter():
