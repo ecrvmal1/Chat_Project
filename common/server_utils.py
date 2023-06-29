@@ -24,22 +24,22 @@ def get_message(client):
     message_encoded = client.recv(MAX_PACKAGE_LENGTH)
     if isinstance(message_encoded, bytes):
         try:
-            print(f'          trying decode {message_encoded}')
+            # print(f'          trying decode {message_encoded}')
             message_decoded = message_encoded.decode(ENCODING)
-            print(f'          trying make dict from {message_decoded}')
+            # print(f'          trying make dict from {message_decoded}')
             message_dict = json.loads(message_decoded)
-            print(f'          dict composed {message_dict}')
-        except json.JSONDecodeError:
-            print(f' got message {message_encoded}, fail to decode the message')
-            # raise OSError('fail to decode the message')
-            return
+            # print(f'          dict composed {message_dict}')
+        except JSONDecodeError:
+            # print(f' got message {message_encoded}, fail to decode the message')
+            raise JSONDecodeError
+            # return
         if isinstance(message_dict, dict):
-            print(f'got message {message_dict} from {client}')
+            print(f'got message {message_dict} ')
             return message_dict
         else:
-            raise IncorrectDataRecivedError
+            raise IncorrectDataRecivedError('msg is not dict')
     else:
-        raise IncorrectDataRecivedError
+        raise IncorrectDataRecivedError('incoming msg is not bytes')
 
 
 @log

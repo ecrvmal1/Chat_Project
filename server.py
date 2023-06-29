@@ -6,6 +6,7 @@ import select
 import sys
 import threading
 import os
+from json import JSONDecodeError
 
 from PyQt5.QtCore import QTimer
 from PyQt5.QtWidgets import QApplication, QMessageBox
@@ -64,12 +65,12 @@ class Server(threading.Thread):
         LOGGER.info(f'Server runs, Connection port:  {self.listen_port} '
                     f'Connection address : {self.listen_address}')
         transport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        # try:
-        transport.bind((self.listen_address, self.listen_port))
-        # except OSError:
-        #     pid_no = pid_used_port(self.listen_port)
-        #     time.sleep(1)
-        #     sys.exit(0)
+        try:
+            transport.bind((self.listen_address, self.listen_port))
+        except OSError:
+            pid_no = pid_used_port(self.listen_port)
+            time.sleep(1)
+            sys.exit(0)
 
         transport.settimeout(0.5)
 
@@ -114,7 +115,10 @@ class Server(threading.Thread):
                         new_message = get_message(client)
                         if new_message:
                             self.process_incoming_message(new_message, client)
-                    except OSError:
+                    except IncorrectDataRecivedError as err:
+                        print(f'Message decoding Error : {err}')
+                        continue
+                    except (OSError, JSONDecodeError):
                         LOGGER.info(f'Client {client.getpeername} disconnected from server')
                         usr_to_del =""
                         for usr in self.user_list:
@@ -124,7 +128,7 @@ class Server(threading.Thread):
                         self.clients.remove(self.user_list[usr_to_del])
                         del self.user_list[usr_to_del]
                         self.clients.remove(client)
-                    break
+                    continue
 
             # Если есть сообщения для отправки и ожидающие клиенты, отправляем им сообщение.
             # print(f'messages : {messages}')
@@ -223,6 +227,8 @@ class Server(threading.Thread):
             c_list = self.database.db_contacts_list(message[FROM])
             print(f'contact list : {c_list}')
             response['contact_list'] = c_list
+            if "user_list" in response:
+                del response["user_list"]
             send_message(client, response)
 
         # ACTION ADD_CONTACT
@@ -260,6 +266,7 @@ class Server(threading.Thread):
 
             # Else send  Bad request
         else:
+            response = {}
             response = RESPONSE_400
             response[ERROR] = 'Incorrect Query'
             send_message(client, response)
