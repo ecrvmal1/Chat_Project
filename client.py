@@ -4,8 +4,6 @@ import json
 import threading
 import time
 
-# sys.path.append('../')
-
 from common.errors import ServerError, ReqFieldMissingError, IncorrectDataRecivedError, JSONDecodeError
 from deco_log import log
 
@@ -39,11 +37,23 @@ class MessageReader(threading.Thread, metaclass=ClientMaker):
 
     def run(self):
         while True:
-            time.sleep(1.0)
+            time.sleep(0.5)
             with sock_lock:
                 try:
                     message = get_message(self.sock)
-                    # print(f'message = {message}')
+                except IncorrectDataRecivedError:
+                    LOGGER.error(f'Not able to decode received message')
+                except OSError as err:
+                    if err.errno:
+                        LOGGER.critical(f'Connection to server lost')
+                        break
+                    # Проблемы с соединением
+                except (ConnectionError, ConnectionAbortedError, ConnectionResetError, json.JSONDecodeError):
+                    LOGGER.critical(f'Connection to server lost')
+                    break
+
+                else:
+                    # ACTION MESSAGE
                     if ACTION in message \
                             and message[ACTION] == MESSAGE \
                             and FROM in message \
@@ -51,10 +61,15 @@ class MessageReader(threading.Thread, metaclass=ClientMaker):
                             and MESSAGE_TEXT in message \
                             and message[TO] == self.client_username:
                         print(f'\n Got message from user : {message[FROM]}:'
-                              f'\n{message[MESSAGE_TEXT]}')
-                        LOGGER.info(f'Got message from user : {message[FROM]}:'
-                                    f'\n{message[MESSAGE_TEXT]}')
-                    if ACTION in message \
+                              f'\n Message text : {message[MESSAGE_TEXT]}')
+                        with database_lock:
+                            try:
+                                self.database.db_message_register(message)
+                            except:
+                                LOGGER.error('DataBase write error')
+
+                    # ACTION RESPONSE
+                    elif ACTION in message \
                             and message[ACTION] == RESPONSE:
                         print(f'processing response, message: {message}')
                         if message[RESPONSE] == 200:
@@ -72,33 +87,6 @@ class MessageReader(threading.Thread, metaclass=ClientMaker):
                             return
                     else:
                         LOGGER.error(f'Got incorrect message from server: {message}')
-                except IncorrectDataRecivedError:
-                    LOGGER.error(f'Not able to decode received message.')
-                except (OSError, ConnectionError, ConnectionAbortedError,
-                        ConnectionResetError, json.JSONDecodeError):
-                    LOGGER.critical(f'Connection to server lost.')
-                    break
-
-                # if response got correctly, print to console and write to DB
-                else:
-                    if ACTION in message \
-                            and message[ACTION] == MESSAGE \
-                            and FROM in message \
-                            and TO in message \
-                            and MESSAGE_TEXT in message \
-                            and message[TO] == self.client_username:
-                        print(f'\n Got message from user : {message[FROM]}:'
-                              f'\n{message[MESSAGE_TEXT]}')
-                        LOGGER.info(f'Got message from user : {message[FROM]}:'
-                                    f'\n{message[MESSAGE_TEXT]}')
-                        with database_lock:
-                            try:
-                                self.database.db_message_register(message)
-                            except:
-                                logger.error('Interaction with DB fault')
-                    else:
-                        LOGGER.error(f'Got incorrect message from server: {message}')
-
 
 
 class MessageSender(threading.Thread):
@@ -165,9 +153,9 @@ class MessageSender(threading.Thread):
     @log
     # def sender_main_cycle(self):
     def run(self):
+        print_help()
         while True:
             # LOGGER.debug('SENDER_main_cycle')
-            print_help()
             command = input('Enter command letter: ')
             if command == 'message':
                 self.create_message()
@@ -177,6 +165,7 @@ class MessageSender(threading.Thread):
                 with sock_lock:
                     try:
                         send_message(self.sock, self.create_message_exit())
+                        time.sleep(0.2)
                     except OSError as err:
                         pass
                     print('Close connection')
@@ -194,7 +183,7 @@ class MessageSender(threading.Thread):
 
             # Редактирование контактов
             elif command == 'edit':
-                self.edit_contacts()
+                self.sdb_edit_contacts()
 
             # история сообщений.
             elif command == 'history':
@@ -202,7 +191,7 @@ class MessageSender(threading.Thread):
 
             else:
                 print('the command is not correct, try again \n'
-                      'h - print help message.')
+                      'help :  - print help message.')
 
     # function for getting list of messages
     def print_history(self):
@@ -232,28 +221,36 @@ class MessageSender(threading.Thread):
         # Функция изменеия контактов
 
     def sdb_edit_contacts(self):
-        print('Enter what you want :'
-              'del  :   to delete contact' 
-              'add  :   to add contact')
+        print('Enter what you want :\n'
+              'del  :   to delete contact \n' 
+              'add  :   to add contact \n',
+              'list :   for contact list \n')
         ans = input()
         if ans == 'del':
-            contact_to_del = input('Введите имя удаляемного контакта: ')
+            contact_to_del = input('Enter Name of deleting contact: ')
             with database_lock:
                 if self.database.db_check_contact(contact_to_del):
                     self.database.db_del_contact(contact_to_del)
                 else:
-                    LOGGER.error('Попытка удаления несуществующего контакта.')
+                    LOGGER.error("The contact doesn't exist.")
         elif ans == 'add':
             # Проверка на возможность такого контакта
             contact_name = str(input('Введите имя создаваемого контакта: '))
-            if self.database.check_user(contact_name):
-                with database_lock:
-                    self.database.add_contact(contact_name)
-                with sock_lock:
-                    try:
-                        sdb_add_contact(self.sock, self.client_username, contact_name)
-                    except ServerError:
-                        LOGGER.error('Не удалось отправить информацию на сервер.')
+            # if self.database.sdb_user_check_request(self.client_username  , contact_name):
+            with database_lock:
+                try:
+                    self.database.db_add_contact(contact_name)
+                except ValueError as err:
+                    print(f'error adding contact, {err} ')
+            with sock_lock:
+                try:
+                    sdb_add_contact(self.sock, self.client_username, contact_name)
+                except ServerError:
+                    LOGGER.error('Not able to send information to server.')
+        elif ans == 'list':
+            print (f' contacts: {self.database.db_get_contacts()}')
+
+
 
 
 @log
@@ -274,7 +271,7 @@ def main():
     # Инициализация сокета и сообщение серверу о нашем появлении
     try:
         transport = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        transport.settimeout(5)
+        transport.settimeout(10)
         transport.connect((server_address, server_port))
         send_message(transport, create_message_presence(client_username))
         message = get_message(transport)

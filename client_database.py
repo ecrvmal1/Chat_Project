@@ -12,12 +12,12 @@ class ClientDatabase:
             self.id = None
             self.username = user
 
-    class MessageHistory:
+    class MessageRegister:
         def __init__(self, message):
             self.id = None
             self.message_from = message[FROM]
             self.message_to = message[TO]
-            self.message_date = message[TIME]
+            self.message_date = datetime.datetime.now()
             self.message_text = message[MESSAGE_TEXT]
 
     class Contacts:
@@ -36,7 +36,7 @@ class ClientDatabase:
                                   Column('username', String)
                                   )
 
-        message_history_table = Table('message_history', self.metadata,
+        message_register_table = Table('message_history', self.metadata,
                                       Column('id',Integer, primary_key=True),
                                       Column('message_from', String),
                                       Column('message_to', String ),
@@ -52,7 +52,7 @@ class ClientDatabase:
         self.metadata.create_all(self.database_engine)
 
         mapper(self.KnownUsers, known_users_table)
-        mapper(self.MessageHistory, message_history_table)
+        mapper(self.MessageRegister, message_register_table)
         mapper(self.Contacts, contacts_table)
 
         # make session
@@ -60,16 +60,23 @@ class ClientDatabase:
         self.session = Session()
 
         # clear "contacts" table, since they will be downloaded from server
-        # self.session.query(self.Contacts).delete()
-        # self.session.commit()
+        self.session.query(self.Contacts).delete()
+        self.session.commit()
+        # clear "KnownUsers" table, since they will be downloaded from server
+        self.session.query(self.KnownUsers).delete()
+        self.session.commit()
 
     # function add contact
     def db_add_contact(self, contact):
-        test: int = self.session.query(self.Contacts).filter_by(contact_name=contact).count()
-        if not test:
-            contact_row = self.Contacts(contact)
-            self.session.add(contact_row)
-            self.session.commit()
+        contact_exist: int = self.session.query(self.Contacts).filter_by(contact_name=contact).count()
+        known_names = self.session.query(self.KnownUsers.username).filter_by(username=contact).count()
+        if contact_exist:
+            raise ValueError('Contact already exist')
+        if not known_names:
+            raise ValueError('Contact not Known')
+        contact_row = self.Contacts(contact)
+        self.session.add(contact_row)
+        self.session.commit()
 
     def db_del_contact(self, contact):
         test: int = self.session.query(self.Contacts).filter_by(contact_name=contact).count()
@@ -80,7 +87,8 @@ class ClientDatabase:
 
     def db_get_contacts(self):
         contacts_items = self.session.query(self.Contacts.contact_name).all()
-        return [contact[0] for contact in contacts_items  ]
+        # print(f'ocntacts: {contacts_items}')
+        return [contact[0] for contact in contacts_items]
 
     def db_check_contact(self, contact):
         if self.session.query(self.Contacts).filter_by(contact_name=contact).count():
@@ -89,19 +97,19 @@ class ClientDatabase:
             return False
 
     def db_message_register(self, message):
-        message_row = self.MessageHistory(message)
+        message_row = self.MessageRegister(message)
         self.session.add(message_row)
         self.session.commit()
 
     def db_get_message_history(self, from_who=None, to_who=None):
-        query = self.session.query(self.MessageHistory)
+        query = self.session.query(self.MessageRegister)
         if from_who:
             query = query.filter_by(message_from =from_who)
         if to_who:
             query = query.filter_by(message_to=to_who)
 
-        return [(history_row.message_from, history_row.message_to, history_row.message_text, history_row.message_date)
-                for history_row in query.all()]
+        return [(record.message_from, record.message_to, record.message_text, record.message_date)
+                for record in query.all()]
 
     def db_add_known_users(self, username):
         test = self.session.query(self.KnownUsers).filter_by(username=username).count()

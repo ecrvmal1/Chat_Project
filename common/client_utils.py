@@ -167,7 +167,7 @@ def sdb_add_contact(sock, username, contact):
 
 # Функция запроса списка известных пользователей
 def sdb_user_list_request(sock, username):
-    LOGGER.debug(f'Запрос списка известных пользователей {username}')
+    LOGGER.debug(f'sdb_user_list_request {username}')
     req = {
         ACTION: 'get_users',
         TIME: time.time(),
@@ -184,9 +184,29 @@ def sdb_user_list_request(sock, username):
         raise ServerError
 
 
+# Функция проверки пользователя
+def sdb_user_check_request(sock, my_username, his_username):
+    LOGGER.debug(f'sdb_user_check_request {his_username}')
+    req = {
+        ACTION: 'check_user',
+        TIME: time.time(),
+        FROM: my_username,
+        'check': his_username
+    }
+    send_message(sock, req)
+    ans = get_message(sock)
+    print(f'got answer : {ans}')
+    if RESPONSE in ans \
+            and ans[RESPONSE] == 202 \
+            and 'user_checked' in ans:
+        return ans['check_result']
+    else:
+        raise ServerError
+
+
 # Функция удаления пользователя из контакт листа
 def sdb_remove_contact(sock, username, contact):
-    LOGGER.debug(f'Deleting contact  {contact}')
+    LOGGER.debug(f'sdb_remove_contact  {contact}')
     req = {
         ACTION: REMOVE_CONTACT,
         TIME: time.time(),
@@ -204,6 +224,7 @@ def sdb_remove_contact(sock, username, contact):
 
 # Функция инициализатор базы данных. Запускается при запуске, загружает данные в базу с сервера.
 def sdb_database_load(sock, database, username):
+    LOGGER.debug(f'sdb_database_load {username}')
     # Загружаем список известных пользователей
     try:
         users_list = sdb_user_list_request(sock, username)
