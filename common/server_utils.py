@@ -2,10 +2,10 @@ import argparse
 import json
 import logging
 import sys
+import subprocess
 
+sys.path.append('../')
 from common.errors import NonDictInputError, IncorrectDataRecivedError, JSONDecodeError
-
-
 from common.server_variables import *
 from deco_log import log
 
@@ -31,6 +31,7 @@ def get_message(client):
             print(f'          dict composed {message_dict}')
         except json.JSONDecodeError:
             print(f' got message {message_encoded}, fail to decode the message')
+            # raise OSError('fail to decode the message')
             return
         if isinstance(message_dict, dict):
             print(f'got message {message_dict} from {client}')
@@ -42,7 +43,7 @@ def get_message(client):
 
 
 @log
-def arg_parser():
+def arg_parser(default_ip=None, default_port=None):
     """Парсер аргументов коммандной строки"""
     parser = argparse.ArgumentParser()
     parser.add_argument('-p', default=DEFAULT_SERVER_PORT, type=int, nargs='?')
@@ -50,7 +51,11 @@ def arg_parser():
     parser.add_argument('-u', default=DEFAULT_USERNAME, nargs='?')
     namespace = parser.parse_args(sys.argv[1:])
     listen_address = namespace.a
-    listen_port = namespace.p
+    if default_ip:
+        listen_address = default_ip
+    listen_port = int(namespace.p)
+    if default_port:
+        listen_port = int(default_port)
     # listen_username = namespace.u
 
     # проверка получения корретного номера порта для работы сервера.
@@ -60,8 +65,8 @@ def arg_parser():
             f'{listen_port}. Try port in range :  1024 ... 65535.')
         sys.exit(1)
 
-    return listen_address, listen_port\
-        # , listen_username
+    return listen_address, listen_port
+
 
 
 @log
@@ -79,6 +84,32 @@ def send_message(sock, message):
     js_message = json.dumps(message)
     encoded_message = js_message.encode(ENCODING)
     sock.send(encoded_message)
+
+
+def pid_used_port(port_numb):
+    cmd = ['netstat', '-ntlp']
+    param = []
+    subproc = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+    while True:
+        line = subproc.stdout.readline()
+        decoded_line = line.decode('ASCII')
+        if str(port_numb) in decoded_line:
+            params = decoded_line.split()
+            param = params[6].split('/')
+            # print(f' decoded_line: {decoded_line}')
+            # print(f' param[0] : {param[0]}')
+        if not line:
+            break
+        subproc.terminate()
+        print(f'port {port_numb}  is in use, process : {param[0]}')
+    try:
+        return param[0]
+    except IndexError:
+        return
+
+
+if __name__ == '__main__':
+    print(f'pid = {pid_used_port(7777)}')
 
 
 
