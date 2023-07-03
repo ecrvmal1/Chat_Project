@@ -125,9 +125,8 @@ class Server(threading.Thread):
                             if self.user_list[usr] == client:
                                 usr_to_del= usr
                         self.database.db_user_logout(usr_to_del)
-                        self.clients.remove(self.user_list[usr_to_del])
-                        del self.user_list[usr_to_del]
                         self.clients.remove(client)
+                        del self.user_list[usr_to_del]
                     continue
 
             # Если есть сообщения для отправки и ожидающие клиенты, отправляем им сообщение.
@@ -143,6 +142,13 @@ class Server(threading.Thread):
                         self.clients.remove(self.user_list[message[TO]])
                         del self.user_list[message[TO]]
                         self.database.db_user_logout(message[TO])
+                    try:
+                        send_message(self.user_list[message[FROM]], RESPONSE_200)
+                    except (ConnectionAbortedError, ConnectionError, ConnectionResetError, ConnectionRefusedError):
+                        LOGGER.info(f'Connection to client "{message[FROM]}" lost')
+                        self.clients.remove(self.user_list[message[FROM]])
+                        del self.user_list[message[FROM]]
+                        self.database.db_user_logout(message[FROM])
                 self.messages.clear()
 
     def process_incoming_message(self, message, client):
@@ -262,6 +268,8 @@ class Server(threading.Thread):
                 and self.user_list[message[FROM]] == client:
             response = RESPONSE_202
             response['user_list'] = [user.name for user in self.database.db_all_users_list()]
+            if "contact_list" in response:
+                del response["contact_list"]
             send_message(client, response)
 
             # Else send  Bad request
@@ -280,8 +288,17 @@ class Server(threading.Thread):
             LOGGER.info(f'The message  forwarded to user "{message[TO]}" from user "{message[FROM]}".')
         elif message[TO] in self.user_list and self.user_list[message[TO]] not in listen_socks:
             print(f" user {message[TO]}  is inactive")
+            response = {}
+            response = RESPONSE_400
+            response[ERROR] = 'User is inactive'
+            send_message(self.user_list[message[FROM]], response)
+            LOGGER.error(
+                f'User "{message[TO]}" has not registered, Message can not be sent.')
         else:
             print(f" user {message[TO]}  is inactive")
+            response = RESPONSE_400
+            response[ERROR] = 'User is inactive'
+            send_message(self.user_list[message[FROM]], response)
             LOGGER.error(
                 f'User "{message[TO]}" has not registered, Message can not be sent.')
 

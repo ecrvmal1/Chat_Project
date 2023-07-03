@@ -1,10 +1,13 @@
-from datetime import time
-
-from common.client_variables import *
 import datetime
-from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, DateTime
-from sqlalchemy.orm import mapper, sessionmaker
+import os
+import sys
+import logging
 
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, DateTime, or_
+from sqlalchemy.orm import mapper, sessionmaker
+sys.path.append('../')
+from client.client_variables import *
+# from client_variables import *
 
 class ClientDatabase:
     class KnownUsers:
@@ -13,12 +16,12 @@ class ClientDatabase:
             self.username = user
 
     class MessageRegister:
-        def __init__(self, message):
+        def __init__(self, from_user, to_user, message_text):
             self.id = None
-            self.message_from = message[FROM]
-            self.message_to = message[TO]
+            self.message_from = from_user
+            self.message_to = to_user
             self.message_date = datetime.datetime.now()
-            self.message_text = message[MESSAGE_TEXT]
+            self.message_text = message_text
 
     class Contacts:
         def __init__(self, contact):
@@ -26,7 +29,12 @@ class ClientDatabase:
             self.contact_name = contact
 
     def __init__(self, name):
-        self.database_engine = create_engine(f'sqlite:///client_{name}.db3', echo=False, pool_recycle=7200,
+        proj_path=os.path.abspath(os.getcwd())
+
+        db_file = os.path.join(proj_path, 'client', f'client_{name}.db3')
+        print (f'db_file = {db_file}')
+
+        self.database_engine = create_engine(f'sqlite:////{db_file}', echo=False, pool_recycle=7200,
                                              connect_args={'check_same_thread': False})
 
         self.metadata = MetaData()
@@ -40,8 +48,8 @@ class ClientDatabase:
                                       Column('id',Integer, primary_key=True),
                                       Column('message_from', String),
                                       Column('message_to', String ),
-                                      Column('message_date',DateTime),
-                                      Column('message_text',String)
+                                      Column('message_date', DateTime),
+                                      Column('message_text', String)
                                       )
 
         contacts_table = Table('contacts_table', self.metadata,
@@ -96,20 +104,32 @@ class ClientDatabase:
         else:
             return False
 
-    def db_message_register(self, message):
-        message_row = self.MessageRegister(message)
+    def db_message_register(self, from_user, to_user,  message_text):
+        message_row = self.MessageRegister(from_user, to_user, message_text)
         self.session.add(message_row)
         self.session.commit()
 
-    def db_get_message_history(self, from_who=None, to_who=None):
-        query = self.session.query(self.MessageRegister)
-        if from_who:
-            query = query.filter_by(message_from =from_who)
-        if to_who:
-            query = query.filter_by(message_to=to_who)
+    def db_get_message_history(self, user=None):
+        if user:
 
-        return [(record.message_from, record.message_to, record.message_text, record.message_date)
-                for record in query.all()]
+            # msg_history = self.session.query(self.MessageRegister) \
+            #     .filter(or_(self.MessageRegister.message_from == user, self.MessageRegister.message_to == user)).all()
+            # return [(message.message_from, message.message_to, message.message_date, message.message_text)
+            #         for message in msg_history]
+            msg_history_from = self.session.query(self.MessageRegister).filter_by(message_from=user).all()
+            msg_history_list1 = [(msg.message_from, msg.message_to, msg.message_date, msg.message_text)
+                                 for msg in msg_history_from]
+            # print(f'list_from : {msg_history_list1}')
+            msg_history_to = self.session.query(self.MessageRegister).filter_by(message_to=user).all()
+            msg_history_list2 = [(msg.message_from, msg.message_to, msg.message_date, msg.message_text)
+                                 for msg in msg_history_to]
+            # print(f'list_to : {msg_history_list2}')
+            return msg_history_list1 + msg_history_list2
+
+        else:
+            msg_history = self.session.query(self.MessageRegister)
+            return [(msg.message_from, msg.message_to, msg.message_date, msg.message_text) \
+                    for msg in msg_history.all()]
 
     def db_add_known_users(self, username):
         test = self.session.query(self.KnownUsers).filter_by(username=username).count()
@@ -131,10 +151,23 @@ class ClientDatabase:
         else:
             return False
 
+    def db_del_known_users(self, user=None):
+        if user :
+            if self.session.query(self.KnownUsers).filter_by(username=user).first():
+                self.session.query(self.KnownUsers).filter_by(username=user).delete()
+            else:
+                print(f'db_del_known_user: user {user}not found')
+                return False
+        else:
+            self.session.query(self.KnownUsers).delete()
+
+
+
 
 if __name__ == '__main__':
-    test_db = ClientDatabase('test1')
-
+    test_db = ClientDatabase('user1')
+    print(test_db.db_get_message_history('user1'))
+"""
     # test contacts part
     for i in ['test2', 'test3', 'test4']:
         test_db.db_add_contact(i)
@@ -169,6 +202,7 @@ if __name__ == '__main__':
     print(f'get_known_users : {test_db.db_get_known_users()}')
     print(f'check_known_user : {test_db.db_check_known_user("test3")}')
     print(f'check_known_user : {test_db.db_check_known_user("test5")}')
+"""
 
 
 

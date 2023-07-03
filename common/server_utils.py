@@ -87,6 +87,7 @@ def send_message(sock, message):
 
 
 def pid_used_port(port_numb):
+    params = str()
     cmd = ['netstat', '-ntlp']
     param = []
     subproc = subprocess.Popen(cmd, stdout=subprocess.PIPE)
@@ -101,7 +102,7 @@ def pid_used_port(port_numb):
         if not line:
             break
         subproc.terminate()
-        print(f'port {port_numb}  is in use, process : {param[0]}')
+        print(f'port {port_numb}  is in use, process : {params}')
     try:
         return param[0]
     except IndexError:
