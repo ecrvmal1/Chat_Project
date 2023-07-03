@@ -5,7 +5,7 @@ import sys
 import unittest
 
 sys.path.append(os.path.join(os.getcwd(), '../Lesson3'))
-from common.client_utils import get_ip_address, presence_msg, process_ans, client_connection, user_msg
+from client.client_utils import get_ip_address, presence_msg, process_ans, client_connection, user_msg
 
 
 class TestClass(unittest.TestCase):
