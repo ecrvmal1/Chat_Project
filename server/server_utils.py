@@ -1,13 +1,17 @@
 import argparse
+import configparser
 import json
 import logging
+import os
 import sys
 import subprocess
+import socket
 
 sys.path.append('../')
+import log.server_log_config
 from common.errors import NonDictInputError, IncorrectDataRecivedError, JSONDecodeError
-from common.server_variables import *
-from deco_log import log
+from server.server_variables import *
+from server.server_decos import log
 
 # Инициализация логирования сервера.
 LOGGER = logging.getLogger('server_logger')
@@ -107,6 +111,35 @@ def pid_used_port(port_numb):
         return param[0]
     except IndexError:
         return
+
+
+@log
+def config_load():
+    '''Парсер конфигурационного ini файла.'''
+    config = configparser.ConfigParser()
+    config_path = os.path.dirname(os.path.realpath(__file__))
+    config_file = os.path.join(config_path, 'server.ini')
+    config.read(config_file)
+    # Если конфиг файл загружен правильно, запускаемся, иначе конфиг по
+    # умолчанию.
+    if 'SETTINGS' in config:
+        return config
+    else:
+        config.add_section('SETTINGS')
+        config.set('SETTINGS', 'Default_port', str('Default_port'))
+        config.set('SETTINGS', 'Listen_ip', '')
+        config.set('SETTINGS', 'Database_path', '')
+        config.set('SETTINGS', 'Database_file', 'server.db3')
+        return config
+
+
+def print_cli_help():
+    print('Поддерживаемые комманды:')
+    print('users - список известных пользователей')
+    print('connected - список подключенных пользователей')
+    print('loghist - история входов пользователя')
+    print('exit - завершение работы сервера.')
+    print('help - вывод справки по поддерживаемым командам')
 
 
 if __name__ == '__main__':

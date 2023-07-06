@@ -6,24 +6,6 @@ from PyQt5.QtCore import Qt
 import os
 
 
-# GUI - Создание таблицы QModel, для отображения в окне программы.
-def gui_create_model(database):
-    list_users = database.db_active_users_list()
-    list = QStandardItemModel()
-    list.setHorizontalHeaderLabels(['Username', 'IP Address', 'Port', 'Last Login'])
-    for row in list_users:
-        user, ip, port, time = row
-        user = QStandardItem(user)
-        user.setEditable(False)
-        ip = QStandardItem(ip)
-        ip.setEditable(False)
-        port = QStandardItem(str(port))
-        port.setEditable(False)
-        # Уберём милисекунды из строки времени, т.к. такая точность не требуется.
-        time = QStandardItem(str(time.replace(microsecond=0)))
-        time.setEditable(False)
-        list.appendRow([user, ip, port, time])
-    return list
 
 
 # GUI - Функция реализующая заполнение таблицы историей сообщений.
@@ -51,53 +33,7 @@ def create_stat_model(database):
 
 # Класс основного окна
 class MainWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.initUI()
 
-    def initUI(self):
-        # Кнопка выхода
-        exitAction = QAction('Exit', self)
-        exitAction.setShortcut('Ctrl+Q')
-        exitAction.triggered.connect(qApp.quit)
-
-        # Кнопка обновить список клиентов
-        self.refresh_button = QAction('Refresh List', self)
-
-        # Кнопка настроек сервера
-        self.config_button = QAction('Server Settings', self)
-
-        # Кнопка вывести историю сообщений
-        self.history_button = QAction('Users History', self)
-
-        # Статусбар
-        # dock widget
-        self.statusBar()
-
-        # Тулбар
-        self.toolbar = self.addToolBar('MainBar')
-        self.toolbar.addAction(exitAction)
-        self.toolbar.addAction(self.refresh_button)
-        self.toolbar.addAction(self.history_button)
-        self.toolbar.addAction(self.config_button)
-
-        # Настройки геометрии основного окна
-        # Поскольку работать с динамическими размерами мы не умеем, и мало времени на изучение, размер окна фиксирован.
-        self.setFixedSize(800, 600)
-        self.setWindowTitle('Messaging Server alpha release')
-
-        # Надпись о том, что ниже список подключённых клиентов
-        self.label = QLabel('Connected Clients:', self)
-        self.label.setFixedSize(240, 15)
-        self.label.move(10, 25)
-
-        # Окно со списком подключённых клиентов.
-        self.active_clients_table = QTableView(self)
-        self.active_clients_table.move(10, 45)
-        self.active_clients_table.setFixedSize(780, 400)
-
-        # Последним параметром отображаем окно.
-        self.show()
 
 
 # Класс окна с историей пользователей
