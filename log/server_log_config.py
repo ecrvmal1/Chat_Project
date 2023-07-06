@@ -2,11 +2,10 @@
 
 import sys
 import os
-import logging
 import logging.handlers
 
-sys.path.append('../Lesson3/')
-from common.server_variables import FILE_LOGGING_LEVEL, TERMINAL_LOGGING_LEVEL
+sys.path.append('../')
+from server.server_variables import FILE_LOGGING_LEVEL, TERMINAL_LOGGING_LEVEL
 
 
 # formatting depending on logging.LEVEL below:

@@ -1,7 +1,5 @@
-import socket
 import sys
 import threading
-import logging
 import argparse
 from PyQt5.QtWidgets import QApplication
 
@@ -9,7 +7,6 @@ from client.main_window import ClientMainWindow
 from client.start_dialog import UserNameDialog
 from client.transport import ClientTransport
 from common.errors import ServerError
-from metaclasses import ClientMaker
 from client.client_database import ClientDatabase
 from deco_log import log
 

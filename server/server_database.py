@@ -2,20 +2,22 @@ import datetime
 import time
 
 from sqlalchemy import create_engine, Table, Column, \
-    Integer, String, MetaData, ForeignKey, DateTime
+    Integer, String, MetaData, ForeignKey, DateTime, Text
 from sqlalchemy.orm import mapper, sessionmaker
 
-from common.server_variables import SERVER_DATABASE, FROM, TO, ACTION, MESSAGE, TIME, MESSAGE_TEXT
+from server.server_variables import FROM, TO, ACTION, MESSAGE, TIME, MESSAGE_TEXT
 # from common.server_utils import send_message
 
 class ServerStorage:
 
     # ------------------  Create functional classes   ------------------------
     class AllUsers:
-        def __init__(self, username):
+        def __init__(self, username, passwrd_hash):
             self.id = None
             self.name = username
             self.last_login = datetime.datetime.now()
+            self.passwd_hash = passwrd_hash
+            self.pubkey = None
 
     class ActiveUsers():
         def __init__(self, user_id, ip_address, port, login_time):
@@ -42,17 +44,17 @@ class ServerStorage:
     class MessageCounter:
         def __init__(self, user_id):
             self.id = None
-            self.messages_count_user_id = user_id
-            self.messages_count_sent = 0
-            self.messages_count_received = 0
+            self.msgs_counter_user_id = user_id
+            self.msgs_counter_sent = 0
+            self.msgs_counter_received = 0
 
     class MessageRegister:
         def __init__(self, message):
             self.id = None
-            self.messages_reg_from_id = message[FROM]
-            self.messages_reg_to_id = message[TO]
-            self.messages_reg_date = datetime.datetime.now()
-            self.messages_reg_text = message[MESSAGE_TEXT]
+            self.msgs_reg_from_id = message[FROM]
+            self.msgs_reg_to_id = message[TO]
+            self.msgs_reg_date = datetime.datetime.now()
+            self.msgs_reg_text = message[MESSAGE_TEXT]
 
 
     def __init__(self, db_path=None):
@@ -69,6 +71,8 @@ class ServerStorage:
                                 Column('id', Integer, primary_key=True),
                                 Column('name', String, unique=True),
                                 Column('last_login', DateTime),
+                                Column('passwd_hash', String),
+                                Column('pubkey', Text)
                                 )
 
         active_users_table = Table('Active_users', self.metadata,
@@ -95,17 +99,17 @@ class ServerStorage:
 
         message_counter_table = Table('Message_counter_table', self.metadata,
                                     Column('id', Integer, primary_key=True),
-                                    Column('messages_count_user_id', ForeignKey('All_users.id')),
-                                    Column('messages_count_sent', Integer),
-                                    Column('messages_count_received', Integer)
+                                    Column('msgs_counter_user_id', ForeignKey('All_users.id')),
+                                    Column('msgs_counter_sent', Integer),
+                                    Column('msgs_counter_received', Integer)
                                       )
 
         message_register_table = Table('Message_register_table', self.metadata,
                                        Column('id', Integer, primary_key=True),
-                                       Column('messages_reg_from_id', ForeignKey('All_users.id')),
-                                       Column('messages_reg_to_id', ForeignKey('All_users.id')),
-                                       Column('messages_reg_date', DateTime),
-                                       Column('messages_reg_text', String)
+                                       Column('msgs_reg_from_id', ForeignKey('All_users.id')),
+                                       Column('msgs_reg_to_id', ForeignKey('All_users.id')),
+                                       Column('msgs_reg_date', DateTime),
+                                       Column('msgs_reg_text', String)
                                        )
 
         # ------------ Create Tables ---------------------
@@ -128,7 +132,7 @@ class ServerStorage:
         self.session.query(self.ActiveUsers).delete()
         self.session.commit()
 
-    def db_user_login(self, username, ip_address, port):
+    def db_user_login(self, username, ip_address, port, public_key):
         print(f'db_login username: {username},  ip: {ip_address},  port : {port}')
         check_all_users = self.session.query(self.AllUsers).filter_by(name=username)
         # if   if_user is in AllUsers
