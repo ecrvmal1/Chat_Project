@@ -4,7 +4,7 @@ import unittest
 import json
 sys.path.append(os.path.join(os.getcwd(), '../Lesson3'))
 
-from common.server_utils import get_message, send_message
+from server.server_utils import get_message, send_message
 
 
 class Test_Sock():

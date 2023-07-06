@@ -5,8 +5,8 @@ import sys
 import unittest
 
 sys.path.append(os.path.join(os.getcwd(), '../Lesson3'))
-from common.server_utils import get_ip_address, process_incoming_message
-from common.server_variables import RESPONSE, ACTION, PRESENCE, TIME
+from server.server_utils import get_ip_address, process_incoming_message
+from server.server_variables import RESPONSE, ACTION, PRESENCE, TIME
 
 
 class TestClass(unittest.TestCase):
