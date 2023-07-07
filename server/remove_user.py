@@ -3,7 +3,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 
 
-class DelUserDialog(QDialog):
+class RemUserDialog(QDialog):
     '''
     Класс - диалог выбора контакта для удаления.
     '''
@@ -38,18 +38,19 @@ class DelUserDialog(QDialog):
         self.btn_cancel.clicked.connect(self.close)
 
         self.all_users_fill()
+        # self.show()
 
     def all_users_fill(self):
         '''Метод заполняющий список пользователей.'''
         self.selector.addItems([item[0]
-                                for item in self.database.users_list()])
+                                for item in self.database.db_all_users_list()])
 
     def remove_user(self):
         '''Метод - обработчик удаления пользователя.'''
-        self.database.remove_user(self.selector.currentText())
-        if self.selector.currentText() in self.server.names:
-            sock = self.server.names[self.selector.currentText()]
-            del self.server.names[self.selector.currentText()]
+        self.database.db_remove_user(self.selector.currentText())
+        if self.selector.currentText() in self.server.user_list:
+            sock = self.server.user.list[self.selector.currentText()]
+            del self.server.user_list[self.selector.currentText()]
             self.server.remove_client(sock)
         # Рассылаем клиентам сообщение о необходимости обновить справочники
         self.server.service_update_lists()

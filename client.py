@@ -1,20 +1,24 @@
+import os
 import sys
 import threading
 import argparse
-from PyQt5.QtWidgets import QApplication
 
+from Cryptodome.PublicKey import RSA
+from PyQt5.QtWidgets import QApplication, QMessageBox
+
+from client import start_dialog
 from client.main_window import ClientMainWindow
 from client.start_dialog import UserNameDialog
 from client.transport import ClientTransport
 from common.errors import ServerError
 from client.client_database import ClientDatabase
-from deco_log import log
+from client.client_start_dialog import UserNameDialog
+from client.decos import log
 
 from client.client_variables import *
 
 LOGGER = logging.getLogger('client_logger')
-sock_lock = threading.Lock()
-database_lock = threading.Lock()
+
 
 #
 # def print_help():
@@ -29,61 +33,94 @@ database_lock = threading.Lock()
 
 @log
 def arg_parser():
-    """Создаём парсер аргументов коммандной строки
-    и читаем параметры, возвращаем 3 параметра
-    """
+    '''
+    Парсер аргументов командной строки, возвращает кортеж из 4 элементов
+    адрес сервера, порт, имя пользователя, пароль.
+    Выполняет проверку на корректность номера порта.
+    '''
     parser = argparse.ArgumentParser()
-    parser.add_argument('-a', '--addr', default=DEFAULT_CLIENT_IP_ADDRESS, nargs='?')
-    parser.add_argument('-p','--port', default=DEFAULT_CLIENT_PORT, type=int, nargs='?')
-    # parser.add_argument('-m', '--mode', default='listen', nargs='?')
-    parser.add_argument('-u', '--user', default=None, nargs='?')
+    parser.add_argument('addr', default=DEFAULT_CLIENT_IP_ADDRESS, nargs='?')
+    parser.add_argument('port', default=DEFAULT_CLIENT_PORT, type=int, nargs='?')
+    parser.add_argument('-n', '--name', default=None, nargs='?')
+    parser.add_argument('-p', '--password', default='', nargs='?')
     namespace = parser.parse_args(sys.argv[1:])
     server_address = namespace.addr
     server_port = namespace.port
-    # client_mode = namespace.mode
-    client_username = namespace.user
+    client_name = namespace.name
+    client_passwd = namespace.password
 
     # проверим подходящий номер порта
     if not 1023 < server_port < 65536:
         LOGGER.critical(
-            f' Trying to start client on port: {server_port}. Exiting.')
+            f'Попытка запуска клиента с неподходящим номером порта: {server_port}. Допустимы адреса с 1024 до 65535. Клиент завершается.')
         exit(1)
 
-    return server_address, server_port, client_username
+    return server_address, server_port, client_name, client_passwd
 
 
 def main():
-    server_address, server_port, username = arg_parser()
+    # Загружаем параметы коммандной строки
+    server_address, server_port, client_name, client_passwd = arg_parser()
 
+
+    # Создаём клиентокое приложение
     client_app = QApplication(sys.argv)
 
-    # remove in final
-    # username = 'user1'
-    # client_name = 'user1'
-    if not username:
-        start_dialog = UserNameDialog()
+    # Если имя пользователя не было указано в командной строке то запросим его
+    start_dialog = UserNameDialog()
+    if not client_name or not client_passwd:
         client_app.exec_()
-        # Если пользователь ввёл имя и нажал ОК, то сохраняем ведённое и удаляем объект, инааче выходим
+        # Если пользователь ввёл имя и нажал ОК, то сохраняем ведённое и
+        # удаляем объект, инааче выходим
         if start_dialog.ok_pressed:
             client_name = start_dialog.client_name.text()
-            del start_dialog
-            print(f' client name = {client_name}')
+            client_passwd = start_dialog.client_passwd.text()
+            LOGGER.debug(f'Using USERNAME = {client_name}, PASSWD = {client_passwd}.')
         else:
             exit(0)
+
     LOGGER.info(f'client run with ip : {server_address}, '
                 f'port: {server_port}, '
-                f'username: {client_name}')
+                f'username: {client_name}'
+                f'passwrd: {client_passwd}')
 
+    # Загружаем ключи с файла, если же файла нет, то генерируем новую пару.
+    dir_path = os.path.dirname(os.path.realpath(__file__))
+    key_file = os.path.join(dir_path, f'{client_name}.key')
+    if not os.path.exists(key_file):
+        keys = RSA.generate(2048, os.urandom)
+        with open(key_file, 'wb') as key:
+            key.write(keys.export_key())
+    else:
+        with open(key_file, 'rb') as key:
+            keys = RSA.import_key(key.read())
+
+    #!!!keys.publickey().export_key()
+    LOGGER.debug("Keys sucsessfully loaded.")
+    # Создаём объект базы данных
     database = ClientDatabase(client_name)
+    # Создаём объект - транспорт и запускаем транспортный поток
     try:
-        transport = ClientTransport(server_address, server_port, database, client_name)
-    except ServerError as err:
-        print(f'Transport error : {err.text}')
+        transport = ClientTransport(
+            server_port,
+            server_address,
+            database,
+            client_name,
+            client_passwd,
+            keys)
+        LOGGER.debug("Transport ready.")
+    except ServerError as error:
+        message = QMessageBox()
+        message.critical(start_dialog, 'Ошибка сервера', error.text)
         exit(1)
     transport.setDaemon(True)
     transport.start()
 
-    main_window = ClientMainWindow(database,transport)
+    # Удалим объект диалога за ненадобностью
+    del start_dialog
+
+    # Создаём GUI
+    main_window = ClientMainWindow(database, transport, keys)
     main_window.make_connection(transport)
     main_window.setWindowTitle(f'Чат Программа alpha release - {client_name}')
     client_app.exec_()

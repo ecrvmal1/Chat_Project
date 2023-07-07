@@ -45,5 +45,6 @@ TERMINAL_LOGGING_LEVEL = logging.DEBUG
 
 RESPONSE_200 = {'action': 'response', 'response': 200}
 RESPONSE_202 = {'action': 'response', 'response': 202}
+RESPONSE_205 = {'action': 'response', 'response': 205}
 RESPONSE_400 = {'action': 'response', 'response': 400, 'error': 'bad request'}
-RESPONSE_511 = {'action': 'response', 'response': 511, DATA: None }
+RESPONSE_511 = {'action': 'response', 'response': 511}

@@ -1,2 +1,0 @@
-2023-06-22 08:37:17,694 INFO       server.py              server         __init__ Server runs, listen port: 7777, incoming IP addresses: 127.0.0.1. In case incoming IP address is not defined, connections are possible from any IP address.
-2023-06-22 08:37:35,238 INFO       server.py              server         init_sock Server runs, Connection port:  7777 Connection address : 127.0.0.1
