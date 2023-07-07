@@ -35,7 +35,7 @@ class StatWindow(QDialog):
     def create_stat_model(self):
         '''Метод реализующий заполнение таблицы статистикой сообщений.'''
         # Список записей из базы
-        stat_list = self.database.message_history()
+        stat_list = self.database.db_message_counter_list()
 
         # Объект модели данных:
         list = QStandardItemModel()

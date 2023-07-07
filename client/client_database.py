@@ -93,6 +93,10 @@ class ClientDatabase:
             self.session.commit()
             print(f'Contact "{contact}" deleted')
 
+    def db_del_contacts(self):
+        '''Метод очищающий таблицу со списком контактов.'''
+        self.session.query(self.Contacts).delete()
+
     def db_get_contacts(self):
         contacts_items = self.session.query(self.Contacts.contact_name).all()
         # print(f'ocntacts: {contacts_items}')

@@ -1,4 +1,5 @@
 import datetime
+import logging
 import time
 
 from sqlalchemy import create_engine, Table, Column, \
@@ -7,6 +8,7 @@ from sqlalchemy.orm import mapper, sessionmaker
 
 from server.server_variables import FROM, TO, ACTION, MESSAGE, TIME, MESSAGE_TEXT
 # from common.server_utils import send_message
+LOGGER = logging.getLogger('server_logger')
 
 class ServerStorage:
 
@@ -28,7 +30,7 @@ class ServerStorage:
             self.login_time = login_time
 
     class LoginHistory:
-        def __init__(self, user_id, date, ip_address, port):
+        def __init__(self, user_id, ip_address, port):
             self.id = None
             self.user_id = user_id
             self.date_time = datetime.datetime.now()
@@ -132,31 +134,46 @@ class ServerStorage:
         self.session.query(self.ActiveUsers).delete()
         self.session.commit()
 
+    def db_add_user(self, user_name, passwd_hash):
+        new_user = self.session.query(self.AllUsers).\
+            filter_by(name=user_name).first()
+        if new_user:
+            LOGGER.info(f'user {user_name} already exists')
+            return
+        new_user = self.AllUsers(user_name, passwd_hash)
+        self.session.add(new_user)
+        self.session.commit()
+
+    def db_remove_user(self, user_name):
+        user = self.session.query(self.AllUsers).filter_by(name=user_name).first()
+        self.session.query(self.ActiveUsers).filter_by(user_id=user.id).delete()
+        self.session.query(self.LoginHistory).filter_by(user_id=user.id).delete()
+        self.session.query(self.UserContacts).filter_by(user_id=user.id).delete()
+        self.session.query(self.UserContacts).filter_by(contact_id=user.id).delete()
+        self.session.query(self.MessageCounter).filter_by(msgs_counter_user_id=user.id).delete()
+        self.session.query(self.MessageRegister).filter_by(msgs_reg_from_id=user.id).delete()
+        self.session.query(self.MessageRegister).filter_by(msgs_reg_to_id=user.id).delete()
+        self.session.query(self.AllUsers).filter_by(name=user_name).delete()
+        self.session.commit()
+
     def db_user_login(self, username, ip_address, port, public_key):
         print(f'db_login username: {username},  ip: {ip_address},  port : {port}')
-        check_all_users = self.session.query(self.AllUsers).filter_by(name=username)
-        # if   if_user is in AllUsers
-        if check_all_users.count():
-            user = check_all_users.first()
-            user.last_login = datetime.datetime.now()
-        else:
-            # create inctance of AllUsers class
-            new_user = self.AllUsers(username)
-            self.session.add(new_user)
-            self.session.commit()
-
-        #                 functional class here
-        check_active_user = self.session.query(self.ActiveUsers).join(self.AllUsers).filter_by(name=username).first()
-        if not check_active_user:
-            user = self.session.query(self.AllUsers).filter_by(name=username).first()
-            new_active_user = self.ActiveUsers(user.id, ip_address, port, datetime.datetime.now())
-            self.session.add(new_active_user)
-            self.session.commit()
-
-        # -----------------  create record in logon history -------------
         user = self.session.query(self.AllUsers).filter_by(name=username).first()
-        history = self.LoginHistory(user.id, datetime.datetime.now(), ip_address, port)
-        self.session.add(history)
+        # if   if_user is in AllUsers
+        if user:
+            user.last_login = datetime.datetime.now()
+            if user.pubkey != public_key:
+                user.pubkey = public_key
+        else:
+            raise ValueError("User isn't registered")
+        new_active_user = self.ActiveUsers(user.id, ip_address, port, datetime.datetime.now())
+        self.session.add(new_active_user)
+
+        # и сохранить в историю входов
+        new_history = self.LoginHistory(user.id, ip_address, port)
+        self.session.add(new_history)
+
+        # Сохрраняем изменения
         self.session.commit()
 
     def db_user_logout(self, username):
@@ -165,6 +182,13 @@ class ServerStorage:
         # delete record from ActiveUsers(functional class)
         self.session.query(self.ActiveUsers).filter_by(user_id=user.id).delete()
         self.session.commit()
+
+    def db_check_user(self, username):
+        # take from AllUsers(functional) record for user
+        user = self.session.query(self.AllUsers).filter_by(name=username).first()
+        if user:
+            return True
+        return False
 
     def db_all_users_list(self):
         query = self.session.query(
@@ -196,26 +220,26 @@ class ServerStorage:
     def db_message_counter_update(self, message):
         sender = self.session.query(self.AllUsers).filter_by(name=message[FROM]).first()
         sender_raw = self.session.query(self.MessageCounter).\
-            filter_by(messages_count_user_id=sender.id).first()
+            filter_by(msgs_counter_user_id=sender.id).first()
 
         if sender_raw:
-            sender_raw.messages_count_sent += 1
+            sender_raw.msgs_counter_sent += 1
             self.session.commit()
         else:
             record = self.MessageCounter(sender.id)
-            record.messages_count_sent += 1
+            record.msgs_counter_sent += 1
             self.session.add(record)
             self.session.commit()
 
         receiver = self.session.query(self.AllUsers).filter_by(name=message[TO]).first()
-        receiver_raw = self.session.query(self.MessageCounter).filter_by(messages_count_user_id=receiver.id).first()
+        receiver_raw = self.session.query(self.MessageCounter).filter_by(msgs_counter_user_id=receiver.id).first()
 
         if receiver_raw:
-            receiver_raw.messages_count_received += 1
+            receiver_raw.msgs_counter_received += 1
             self.session.commit()
         else:
             record = self.MessageCounter(receiver.id)
-            record.messages_count_received += 1
+            record.msgs_counter_received += 1
             self.session.add(record)
             self.session.commit()
 
@@ -223,8 +247,8 @@ class ServerStorage:
         query = self.session.query(
             self.AllUsers.name,
             self.AllUsers.last_login,
-            self.MessageCounter.messages_count_sent,
-            self.MessageCounter.messages_count_received,
+            self.MessageCounter.msgs_counter_sent,
+            self.MessageCounter.msgs_counter_received,
         ).join(self.AllUsers)
         return query.all()
 
@@ -293,6 +317,16 @@ class ServerStorage:
             # ).join(self.AllUsers.name)
 
             return query.all()
+
+    def db_get_hash(self, name):
+        '''Метод получения хэша пароля пользователя.'''
+        user = self.session.query(self.AllUsers).filter_by(name=name).first()
+        return user.passwd_hash
+
+    def db_get_pubkey(self, name):
+        '''Метод получения публичного ключа пользователя.'''
+        user = self.session.query(self.AllUsers).filter_by(name=name).first()
+        return user.pubkey
 
 
 # ------------- Testing -----------------

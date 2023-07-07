@@ -5,7 +5,7 @@ from PyQt5.QtCore import QTimer
 from server.stat_window import StatWindow
 from server.config_window import ConfigWindow
 from server.add_user import RegisterUser
-from server.remove_user import DelUserDialog
+from server.remove_user import RemUserDialog
 
 
 class MainWindow(QMainWindow):
@@ -22,7 +22,7 @@ class MainWindow(QMainWindow):
         self.config = config
 
         # Ярлык выхода
-        self.exitAction = QAction('Выход', self)
+        self.exitAction = QAction('Exit', self)
         self.exitAction.setShortcut('Ctrl+Q')
         self.exitAction.triggered.connect(qApp.quit)
 
@@ -33,10 +33,10 @@ class MainWindow(QMainWindow):
         self.config_btn = QAction('Server Settings', self)
 
         # Кнопка регистрации пользователя
-        self.register_btn = QAction('User registration', self)
+        self.usr_register_btn = QAction('User registration', self)
 
         # Кнопка удаления пользователя
-        self.remove_btn = QAction('User removal', self)
+        self.usr_remove_btn = QAction('User removal', self)
 
         # Кнопка вывести историю сообщений
         self.show_history_button = QAction('Users History', self)
@@ -79,14 +79,14 @@ class MainWindow(QMainWindow):
         self.refresh_button.triggered.connect(self.create_users_model)
         self.show_history_button.triggered.connect(self.show_statistics)
         self.config_btn.triggered.connect(self.server_config)
-        self.register_btn.triggered.connect(self.reg_user)
-        self.remove_btn.triggered.connect(self.rem_user)
+        self.usr_register_btn.triggered.connect(self.reg_user)
+        self.usr_remove_btn.triggered.connect(self.remove_user)
 
         # Последним параметром отображаем окно.
         self.show()
 
     def create_users_model(self):
-        '''Метод заполняющий таблицу активных пользователей.'''
+        '''Метод заполняющий таблицу зарегистрированных пользователей.'''
         list_users = self.database.db_active_users_list()
         list = QStandardItemModel()
         list.setHorizontalHeaderLabels(
@@ -121,8 +121,15 @@ class MainWindow(QMainWindow):
         reg_window = RegisterUser(self.database, self.server_thread)
         reg_window.show()
 
-    def del_user(self):
+    def remove_user(self):
         '''Метод создающий окно удаления пользователя.'''
         global rem_window
-        del_window = DelUserDialog(self.database, self.server_thread)
-        del_window.show()
+        rem_window = RemUserDialog(self.database, self.server_thread)
+        rem_window.show()
+
+
+    def show_statistics(self):
+        '''Метод создающий окно со статистикой клиентов.'''
+        global stat_window
+        stat_window = StatWindow(self.database)
+        stat_window.show()

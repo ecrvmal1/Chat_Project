@@ -43,18 +43,18 @@ def login_required(func):
     '''
 
     def checker(*args, **kwargs):
-        # проверяем, что первый аргумент - экземпляр MessageProcessor
+        # проверяем, что первый аргумент - экземпляр ServerMessageProcessor
         # Импортить необходимо тут, иначе ошибка рекурсивного импорта.
-        from server.core import MessageProcessor
-        from common.variables import ACTION, PRESENCE
-        if isinstance(args[0], MessageProcessor):
+        from server.server_core import ServerMessageProcessor
+        from server.server_variables import ACTION, PRESENCE
+        if isinstance(args[0], ServerMessageProcessor):
             found = False
             for arg in args:
                 if isinstance(arg, socket.socket):
-                    # Проверяем, что данный сокет есть в списке names класса
-                    # MessageProcessor
-                    for client in args[0].names:
-                        if args[0].names[client] == arg:
+                    # Проверяем, что данный сокет есть в списке user_list класса
+                    # ServerMessageProcessor
+                    for client in args[0].user_list:
+                        if args[0].user_list[client] == arg:
                             found = True
 
             # Теперь надо проверить, что передаваемые аргументы не presence
