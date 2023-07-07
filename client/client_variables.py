@@ -27,7 +27,7 @@ RESPONSE = 'response'
 ERROR = 'error'
 STATUS = 'status'
 TYPE = 'type'
-
+PUBLIC_KEY = 'public_key'
 
 # Logging
 # Logging levels
@@ -39,9 +39,12 @@ CONTACT = 'contact'
 USERS_REQUEST = 'users_request'
 REMOVE_CONTACT = 'remove_contact'
 DATA_LIST = 'data_list'
+DATA = 'data'
 
 
 RESPONSE_200 = {'action': 'response', 'response': 200}
 RESPONSE_202 = {'action': 'response', 'response': 202}
 # 400
 RESPONSE_400 = {'action': 'response', 'response': 400, 'error': 'bad request'}
+RESPONSE_511 = {'action': 'response', RESPONSE: 511}
+

@@ -61,15 +61,19 @@ class RegisterUser(QDialog):
         '''
         if not self.client_name.text():
             self.messages.critical(
-                self, 'Ошибка', 'Не указано имя пользователя.')
+                self, 'Error', 'Username must be set.')
+            return
+        elif not self.client_passwd.text() :
+            self.messages.critical(
+                self, 'Error', 'Password must be set.')
             return
         elif self.client_passwd.text() != self.client_conf.text():
             self.messages.critical(
-                self, 'Ошибка', 'Введённые пароли не совпадают.')
+                self, 'Error', 'Passwords are not the same')
             return
-        elif self.database.check_user(self.client_name.text()):
+        elif self.database.db_check_user(self.client_name.text()):
             self.messages.critical(
-                self, 'Ошибка', 'Пользователь уже существует.')
+                self, 'Error', 'The user exists.')
             return
         else:
             # Генерируем хэш пароля, в качестве соли будем использовать логин в
@@ -78,11 +82,10 @@ class RegisterUser(QDialog):
             salt = self.client_name.text().lower().encode('utf-8')
             passwd_hash = hashlib.pbkdf2_hmac(
                 'sha512', passwd_bytes, salt, 10000)
-            self.database.add_user(
-                self.client_name.text(),
-                binascii.hexlify(passwd_hash))
+            self.database.db_add_user(self.client_name.text(),
+                                      binascii.hexlify(passwd_hash))
             self.messages.information(
-                self, 'Успех', 'Пользователь успешно зарегистрирован.')
+                self, 'Registration Complete', 'User has been registered.')
             # Рассылаем клиентам сообщение о необходимости обновить справичники
             self.server.service_update_lists()
             self.close()

@@ -8,6 +8,7 @@ import hmac
 import binascii
 import os
 
+from common.errors import IncorrectDataRecivedError, JSONDecodeError
 from server.server_decos import login_required
 
 sys.path.append('../')
@@ -20,7 +21,7 @@ from server.server_utils import send_message, get_message
 LOGGER = logging.getLogger('server')
 
 
-class Server_Message_Processor(threading.Thread):
+class ServerMessageProcessor(threading.Thread):
     '''
     Основной класс сервера. Принимает содинения, словари - пакеты
     от клиентов, обрабатывает поступающие сообщения.
@@ -68,7 +69,7 @@ class Server_Message_Processor(threading.Thread):
             except OSError:
                 pass
             else:
-                logger.info(f'Установлено соедение с ПК {client_address}')
+                LOGGER.info(f'Установлено соедение с ПК {client_address}')
                 client.settimeout(5)
                 self.clients.append(client)
 
@@ -81,11 +82,11 @@ class Server_Message_Processor(threading.Thread):
                     recv_data_lst, self.listen_sockets, self.error_sockets = select.select(
                         self.clients, self.clients, [], 0)
             except OSError as err:
-                logger.error(f'Ошибка работы с сокетами: {err.errno}')
+                LOGGER.error(f'Ошибка работы с сокетами: {err.errno}')
 
             # принимаем сообщения и если ошибка, исключаем клиента.
             if recv_data_lst:
-                for client_with_message in recv_data_lst:
+                for client in recv_data_lst:
                     try:
                         # print(f' trying get message from {client_with_message}')
                         new_message = get_message(client)
@@ -110,7 +111,7 @@ class Server_Message_Processor(threading.Thread):
         Метод обработчик клиента с которым прервана связь.
         Ищет клиента и удаляет его из списков и базы:
         '''
-        logger.info(f'Клиент {client.getpeername()} отключился от сервера.')
+        LOGGER.info(f'Клиент {client.getpeername()} отключился от сервера.')
         for name in self.user_list:
             if self.user_list[name] == client:
                 self.database.user_logout(name)
@@ -132,7 +133,7 @@ class Server_Message_Processor(threading.Thread):
         self.sock = transport
         self.sock.listen(MAX_CONNECTIONS)
 
-    @login_required
+    # @login_required
     def forward_text_message(self, message, listen_socks):
         print(f'forward test message {message}')
         if message[TO] in self.user_list \
@@ -155,7 +156,8 @@ class Server_Message_Processor(threading.Thread):
             LOGGER.error(
                 f'User "{message[TO]}" has not registered, Message can not be sent.')\
 
-    @login_required
+
+    # @login_required
     def process_incoming_message(self, message, client):
         """
         Обработчик сообщений от клиентов, принимает словарь - сообщение от клинта,
@@ -176,7 +178,7 @@ class Server_Message_Processor(threading.Thread):
                 and message[ACTION] == PRESENCE \
                 and TIME in message \
                 and FROM in message:
-            self.autorize_user(message, client)
+            self.authorize_user(message, client)
             return
 
         # MESSAGE
@@ -188,7 +190,7 @@ class Server_Message_Processor(threading.Thread):
                 and MESSAGE_TEXT in message\
                 and self.user_list[message[FROM]] in self.clients :
             if message[TO] in self.user_list:
-                self.forward_text_message(message)
+                self.forward_text_message(message, self.listen_sockets)
                 self.database.db_message_register_update(message)
                 self.database.db_message_counter_update(message)
 
@@ -283,10 +285,12 @@ class Server_Message_Processor(threading.Thread):
             and message[ACTION] == PUBLIC_KEY_REQUEST \
             and FROM in message:
                 response = RESPONSE_511
-                response[DATA] = self.database.get_pubkey(message[ACCOUNT_NAME])
+                # if "data" in response:
+                #     del response['data']
+                response['pub_key'] = self.database.db_get_pubkey(message['target'])
                 # может быть, что ключа ещё нет (пользователь никогда не логинился,
                 # тогда шлём 400)
-                if response[DATA]:
+                if response['pub_key']:
                     try:
                         send_message(client, response)
                     except OSError:
@@ -311,7 +315,7 @@ class Server_Message_Processor(threading.Thread):
                 self.remove_client(client)
 
 
-    def autorize_user(self, message, client):
+    def authorize_user(self, message, client):
         '''Метод реализующий авторизцию пользователей.'''
         # Если имя пользователя уже занято то возвращаем 400
         LOGGER.debug(f'Start auth process for {message[FROM]}')
@@ -348,7 +352,7 @@ class Server_Message_Processor(threading.Thread):
             message_auth[DATA] = random_str.decode('ascii')
             # Создаём хэш пароля и связки с рандомной строкой, сохраняем
             # серверную версию ключа
-            hash = hmac.new(self.database.get_hash(message[USER][ACCOUNT_NAME]), random_str, 'MD5')
+            hash = hmac.new(self.database.db_get_hash(message[FROM]), random_str, 'MD5')
             digest = hash.digest()
             LOGGER.debug(f'Auth message = {message_auth}')
             try:
@@ -372,9 +376,9 @@ class Server_Message_Processor(threading.Thread):
                     self.remove_client(message[FROM])
                 # добавляем пользователя в список активных и если у него изменился открытый ключ
                 # сохраняем новый
-                self.database.user_login(
+                self.database.db_user_login(
                     message[FROM], client_ip, client_port,
-                    message[PUBLIC_KEY])
+                    message['public_key'])
             else:
                 response = RESPONSE_400
                 response[ERROR] = 'Неверный пароль.'
