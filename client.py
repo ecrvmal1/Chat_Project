@@ -33,6 +33,10 @@ LOGGER = logging.getLogger('client_logger')
 
 @log
 def arg_parser():
+    """
+    the function for parsing command line
+    :return:
+    """
     '''
     Парсер аргументов командной строки, возвращает кортеж из 4 элементов
     адрес сервера, порт, имя пользователя, пароль.
@@ -40,7 +44,11 @@ def arg_parser():
     '''
     parser = argparse.ArgumentParser()
     parser.add_argument('addr', default=DEFAULT_CLIENT_IP_ADDRESS, nargs='?')
-    parser.add_argument('port', default=DEFAULT_CLIENT_PORT, type=int, nargs='?')
+    parser.add_argument(
+        'port',
+        default=DEFAULT_CLIENT_PORT,
+        type=int,
+        nargs='?')
     parser.add_argument('-n', '--name', default=None, nargs='?')
     parser.add_argument('-p', '--password', default='', nargs='?')
     namespace = parser.parse_args(sys.argv[1:])
@@ -62,7 +70,6 @@ def main():
     # Загружаем параметы коммандной строки
     server_address, server_port, client_name, client_passwd = arg_parser()
 
-
     # Создаём клиентокое приложение
     client_app = QApplication(sys.argv)
 
@@ -75,7 +82,8 @@ def main():
         if start_dialog.ok_pressed:
             client_name = start_dialog.client_name.text()
             client_passwd = start_dialog.client_passwd.text()
-            LOGGER.debug(f'Using USERNAME = {client_name}, PASSWD = {client_passwd}.')
+            LOGGER.debug(
+                f'Using USERNAME = {client_name}, PASSWD = {client_passwd}.')
         else:
             exit(0)
 
@@ -95,7 +103,7 @@ def main():
         with open(key_file, 'rb') as key:
             keys = RSA.import_key(key.read())
 
-    #!!!keys.publickey().export_key()
+    # !!!keys.publickey().export_key()
     LOGGER.debug("Keys sucsessfully loaded.")
     # Создаём объект базы данных
     database = ClientDatabase(client_name)
@@ -132,7 +140,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
-

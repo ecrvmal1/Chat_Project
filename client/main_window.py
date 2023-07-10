@@ -123,13 +123,15 @@ class ClientMainWindow(QMainWindow):
         for i in range(start_index, length):
             item = filtered_list[i]
             if item[1] == self.transport.username:
-                mess = QStandardItem(f'Incoming from {item[0]} at {item[2].replace(microsecond=0)}:\n {item[3]}')
+                mess = QStandardItem(
+                    f'Incoming from {item[0]} at {item[2].replace(microsecond=0)}:\n {item[3]}')
                 mess.setEditable(False)
                 mess.setBackground(QBrush(QColor(255, 213, 213)))
                 mess.setTextAlignment(Qt.AlignLeft)
                 self.history_model.appendRow(mess)
             else:
-                mess = QStandardItem(f'Outgoing to {item[1]} at {item[2].replace(microsecond=0)}:\n {item[3]}')
+                mess = QStandardItem(
+                    f'Outgoing to {item[1]} at {item[2].replace(microsecond=0)}:\n {item[3]}')
                 mess.setEditable(False)
                 mess.setTextAlignment(Qt.AlignRight)
                 mess.setBackground(QBrush(QColor(204, 255, 204)))
@@ -148,7 +150,8 @@ class ClientMainWindow(QMainWindow):
         '''Метод активации чата с собеседником.'''
         # Запрашиваем публичный ключ пользователя и создаём объект шифрования
         try:
-            self.current_chat_key = self.transport.key_request(self.current_chat)
+            self.current_chat_key = self.transport.key_request(
+                self.current_chat)
             LOGGER.debug(f'Загружен открытый ключ для {self.current_chat}')
             if self.current_chat_key:
                 self.encryptor = PKCS1_OAEP.new(
@@ -293,7 +296,8 @@ class ClientMainWindow(QMainWindow):
                 self, 'Ошибка', 'Потеряно соединение с сервером!')
             self.close()
         else:
-            self.database.db_message_register(self.transport.username,self.current_chat, message_text)
+            self.database.db_message_register(
+                self.transport.username, self.current_chat, message_text)
             LOGGER.debug(
                 f'Отправлено сообщение для {self.current_chat}: {message_text}')
             self.history_list_update()
@@ -332,10 +336,10 @@ class ClientMainWindow(QMainWindow):
                 # Если есть, спрашиваем и желании открыть с ним чат и открываем
                 # при желании
                 if self.messages.question(
-                    self,
-                    'Новое сообщение',
-                    f'Получено новое сообщение от {sender}, открыть чат с ним?',
-                    QMessageBox.Yes,
+                        self,
+                        'Новое сообщение',
+                        f'Получено новое сообщение от {sender}, открыть чат с ним?',
+                        QMessageBox.Yes,
                         QMessageBox.No) == QMessageBox.Yes:
                     self.current_chat = sender
                     self.set_active_user()
@@ -343,18 +347,19 @@ class ClientMainWindow(QMainWindow):
                 print('NO')
                 # Раз нету,спрашиваем хотим ли добавить юзера в контакты.
                 if self.messages.question(
-                    self,
-                    'Новое сообщение',
-                    f'Получено новое сообщение от {sender}.\n Данного пользователя нет в вашем контакт-листе.\n Добавить в контакты и открыть чат с ним?',
-                    QMessageBox.Yes,
+                        self,
+                        'Новое сообщение',
+                        f'Получено новое сообщение от {sender}.\n Данного пользователя нет в вашем контакт-листе.\n Добавить в контакты и открыть чат с ним?',
+                        QMessageBox.Yes,
                         QMessageBox.No) == QMessageBox.Yes:
                     self.add_contact(sender)
                     self.current_chat = sender
                     # Нужно заново сохранить сообщение, иначе оно будет потеряно,
                     # т.к. на момент предыдущего вызова контакта не было.
-                    self.database.db_message_register(self.transport.username,
-                                                      self.current_chat,
-                                                      decrypted_message.decode('utf8'))
+                    self.database.db_message_register(
+                        self.transport.username,
+                        self.current_chat,
+                        decrypted_message.decode('utf8'))
                     self.set_active_user()
 
     @pyqtSlot()

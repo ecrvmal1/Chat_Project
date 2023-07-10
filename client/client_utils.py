@@ -61,6 +61,11 @@ def send_message(sock, message):
 
 
 def pid_used_port(port_numb):
+    """
+    the function indicates number of port which occupies port 7777
+    :param port_numb:
+    :return:
+    """
     params = str()
     cmd = ['netstat', '-ntlp']
     param = []
