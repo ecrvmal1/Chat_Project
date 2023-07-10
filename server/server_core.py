@@ -1,3 +1,7 @@
+from server.server_utils import send_message, get_message
+from server.server_variables import *
+from common.descriptors import Port
+from common.metaclasses import ServerMaker
 import sys
 import threading
 import logging
@@ -8,14 +12,13 @@ import hmac
 import binascii
 import os
 
+sys.path.append('../')
 from common.errors import IncorrectDataRecivedError, JSONDecodeError
 from server.server_decos import login_required
+from server.server_utils import send_message, get_message, pid_used_port, print_cli_help
 
-sys.path.append('../')
-from common.metaclasses import ServerMaker
-from common.descriptors import Port
-from server.server_variables import *
-from server.server_utils import send_message, get_message
+
+
 
 # Загрузка логера
 LOGGER = logging.getLogger('server')
@@ -96,11 +99,12 @@ class ServerMessageProcessor(threading.Thread):
                         print(f'Message decoding Error : {err}')
                         continue
                     except (OSError, JSONDecodeError):
-                        LOGGER.info(f'Client {client.getpeername} disconnected from server')
-                        usr_to_del =""
+                        LOGGER.info(
+                            f'Client {client.getpeername} disconnected from server')
+                        usr_to_del = ""
                         for usr in self.user_list:
                             if self.user_list[usr] == client:
-                                usr_to_del= usr
+                                usr_to_del = usr
                         self.database.db_user_logout(usr_to_del)
                         self.clients.remove(client)
                         del self.user_list[usr_to_del]
@@ -135,11 +139,18 @@ class ServerMessageProcessor(threading.Thread):
 
     # @login_required
     def forward_text_message(self, message, listen_socks):
+        """
+        The method forwards text message ot another user
+        :param message:
+        :param listen_socks:
+        :return:
+        """
         print(f'forward test message {message}')
         if message[TO] in self.user_list \
                 and self.user_list[message[TO]] in listen_socks:
             send_message(self.user_list[message[TO]], message)
-            LOGGER.info(f'The message  forwarded to user "{message[TO]}" from user "{message[FROM]}".')
+            LOGGER.info(
+                f'The message  forwarded to user "{message[TO]}" from user "{message[FROM]}".')
         elif message[TO] in self.user_list and self.user_list[message[TO]] not in listen_socks:
             print(f" user {message[TO]}  is inactive")
             response = {}
@@ -154,8 +165,7 @@ class ServerMessageProcessor(threading.Thread):
             response[ERROR] = 'User is inactive'
             send_message(self.user_list[message[FROM]], response)
             LOGGER.error(
-                f'User "{message[TO]}" has not registered, Message can not be sent.')\
-
+                f'User "{message[TO]}" has not registered, Message can not be sent.')
 
     # @login_required
     def process_incoming_message(self, message, client):
@@ -187,8 +197,8 @@ class ServerMessageProcessor(threading.Thread):
                 and TIME in message \
                 and FROM in message \
                 and TO in message \
-                and MESSAGE_TEXT in message\
-                and self.user_list[message[FROM]] in self.clients :
+                and MESSAGE_TEXT in message \
+                and self.user_list[message[FROM]] in self.clients:
             if message[TO] in self.user_list:
                 self.forward_text_message(message, self.listen_sockets)
                 self.database.db_message_register_update(message)
@@ -207,17 +217,17 @@ class ServerMessageProcessor(threading.Thread):
                     pass
             return
 
-
         #  ACTION EXIT
         elif ACTION in message \
-            and message[ACTION] == EXIT \
-            and FROM in message \
-            and message[FROM] in self.user_list.keys():
+                and message[ACTION] == EXIT \
+                and FROM in message \
+                and message[FROM] in self.user_list.keys():
             print(f'exiting {message[FROM]}')
             self.clients.remove(self.user_list[message[FROM]])
             del self.user_list[message[FROM]]
             self.database.db_user_logout(message[FROM])
-            LOGGER.info(f'client {message[FROM]} disconnected from server correctly')
+            LOGGER.info(
+                f'client {message[FROM]} disconnected from server correctly')
             # with connflag_lock:
             #     new_connection = True
             return
@@ -272,36 +282,37 @@ class ServerMessageProcessor(threading.Thread):
                 and FROM in message \
                 and self.user_list[message[FROM]] == client:
             response = RESPONSE_202
-            response['user_list'] = [user.name for user in self.database.db_all_users_list()]
+            response['user_list'] = [
+                user.name for user in self.database.db_all_users_list()]
             if "contact_list" in response:
                 del response["contact_list"]
             send_message(client, response)
 
             # Else send  Bad request
 
-
         # Если это запрос публичного ключа пользователя
-        elif ACTION in message  \
-            and message[ACTION] == PUBLIC_KEY_REQUEST \
-            and FROM in message:
-                response = RESPONSE_511
-                # if "data" in response:
-                #     del response['data']
-                response['pub_key'] = self.database.db_get_pubkey(message['target'])
-                # может быть, что ключа ещё нет (пользователь никогда не логинился,
-                # тогда шлём 400)
-                if response['pub_key']:
-                    try:
-                        send_message(client, response)
-                    except OSError:
-                        self.remove_client(client)
-                else:
-                    response = RESPONSE_400
-                    response[ERROR] = 'Нет публичного ключа для данного пользователя'
-                    try:
-                        send_message(client, response)
-                    except OSError:
-                        self.remove_client(client)
+        elif ACTION in message \
+                and message[ACTION] == PUBLIC_KEY_REQUEST \
+                and FROM in message:
+            response = RESPONSE_511
+            # if "data" in response:
+            #     del response['data']
+            response['pub_key'] = self.database.db_get_pubkey(
+                message['target'])
+            # может быть, что ключа ещё нет (пользователь никогда не логинился,
+            # тогда шлём 400)
+            if response['pub_key']:
+                try:
+                    send_message(client, response)
+                except OSError:
+                    self.remove_client(client)
+            else:
+                response = RESPONSE_400
+                response[ERROR] = 'Нет публичного ключа для данного пользователя'
+                try:
+                    send_message(client, response)
+                except OSError:
+                    self.remove_client(client)
 
         # Иначе отдаём Bad request
 
@@ -313,7 +324,6 @@ class ServerMessageProcessor(threading.Thread):
                 send_message(client, response)
             except OSError:
                 self.remove_client(client)
-
 
     def authorize_user(self, message, client):
         '''Метод реализующий авторизцию пользователей.'''
@@ -352,7 +362,9 @@ class ServerMessageProcessor(threading.Thread):
             message_auth[DATA] = random_str.decode('ascii')
             # Создаём хэш пароля и связки с рандомной строкой, сохраняем
             # серверную версию ключа
-            hash = hmac.new(self.database.db_get_hash(message[FROM]), random_str, 'MD5')
+            hash = hmac.new(
+                self.database.db_get_hash(
+                    message[FROM]), random_str, 'MD5')
             digest = hash.digest()
             LOGGER.debug(f'Auth message = {message_auth}')
             try:

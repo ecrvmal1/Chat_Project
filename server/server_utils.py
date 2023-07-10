@@ -1,14 +1,15 @@
 
+from server.server_decos import log
+from server.server_variables import *
+from common.errors import NonDictInputError, IncorrectDataRecivedError, JSONDecodeError
+sys.path.append('../')
+import log.server_log_config
 import json
 import sys
 import subprocess
 import socket
 
-sys.path.append('../')
-import log.server_log_config
-from common.errors import NonDictInputError, IncorrectDataRecivedError, JSONDecodeError
-from server.server_variables import *
-from server.server_decos import log
+
 
 # Инициализация логирования сервера.
 LOGGER = logging.getLogger('server_logger')
@@ -61,6 +62,11 @@ def send_message(sock, message):
 
 
 def pid_used_port(port_numb):
+    """
+    The method returns number of pid process which occupies port 7777
+    :param port_numb:
+    :return:
+    """
     params = str()
     cmd = ['netstat', '-ntlp']
     param = []
@@ -84,6 +90,10 @@ def pid_used_port(port_numb):
 
 
 def print_cli_help():
+    """
+    the method prints help menu
+    :return:
+    """
     print('Поддерживаемые комманды:')
     print('users - список известных пользователей')
     print('connected - список подключенных пользователей')
@@ -94,15 +104,3 @@ def print_cli_help():
 
 if __name__ == '__main__':
     print(f'pid = {pid_used_port(7777)}')
-
-
-
-
-
-
-
-
-
-
-
-

@@ -108,7 +108,6 @@ class MainWindow(QMainWindow):
         self.active_clients_table.resizeColumnsToContents()
         self.active_clients_table.resizeRowsToContents()
 
-
     def server_config(self):
         '''Метод создающий окно с настройками сервера.'''
         global config_window
@@ -126,7 +125,6 @@ class MainWindow(QMainWindow):
         global rem_window
         rem_window = RemUserDialog(self.database, self.server_thread)
         rem_window.show()
-
 
     def show_statistics(self):
         '''Метод создающий окно со статистикой клиентов.'''

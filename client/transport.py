@@ -1,3 +1,5 @@
+from common.errors import ServerError
+from client.client_variables import *
 import os
 import socket
 import sys
@@ -14,8 +16,6 @@ from client.client_utils import send_message, get_message
 
 sys.path.append('../')
 # from common.client_utils import *
-from client.client_variables import *
-from common.errors import ServerError
 
 # Логер и объект блокировки для работы с сокетом.
 LOGGER = logging.getLogger('client_logger')
@@ -112,9 +112,9 @@ class ClientTransport(threading.Thread, QObject):
             presence_msg = {
                 ACTION: PRESENCE,
                 TIME: time.time(),
-                FROM:  self.username,
+                FROM: self.username,
                 PUBLIC_KEY: pubkey
-                }
+            }
             LOGGER.debug(f"Presense message = {presence_msg}")
             # Отправляем серверу приветственное сообщение.
             try:
@@ -129,7 +129,8 @@ class ClientTransport(threading.Thread, QObject):
                         # Если всё нормально, то продолжаем процедуру
                         # авторизации.
                         ans_data = ans[DATA]
-                        hash = hmac.new(passwd_hash_string, ans_data.encode('utf-8'), 'MD5')
+                        hash = hmac.new(
+                            passwd_hash_string, ans_data.encode('utf-8'), 'MD5')
                         digest = hash.digest()
                         my_ans = RESPONSE_511
                         my_ans[DATA] = binascii.b2a_base64(
