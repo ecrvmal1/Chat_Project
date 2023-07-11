@@ -1,15 +1,15 @@
-
+import sys
 from server.server_decos import log
 from server.server_variables import *
 from common.errors import NonDictInputError, IncorrectDataRecivedError, JSONDecodeError
 sys.path.append('../')
 import log.server_log_config
 import json
-import sys
+
+from server.server_decos import log
+
 import subprocess
 import socket
-
-
 
 # Инициализация логирования сервера.
 LOGGER = logging.getLogger('server_logger')
