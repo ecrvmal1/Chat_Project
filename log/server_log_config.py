@@ -10,8 +10,8 @@ from server.server_variables import FILE_LOGGING_LEVEL, TERMINAL_LOGGING_LEVEL
 
 # formatting depending on logging.LEVEL below:
 
-LOG_FILE_PATH = os.path.dirname(os.path.abspath(__file__))
-LOG_FILE_NAME = os.path.join(LOG_FILE_PATH, 'logs', 'server', 'server.log')
+LOG_FILE_PATH = os.getcwd()
+LOG_FILE_NAME = os.path.join(LOG_FILE_PATH, 'log', 'logs', 'server', 'server.log')
 
 LOGGER = logging.getLogger('server_logger')
 

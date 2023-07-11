@@ -61,7 +61,7 @@ def arg_parser():
     if not 1023 < server_port < 65536:
         LOGGER.critical(
             f'Попытка запуска клиента с неподходящим номером порта: {server_port}. Допустимы адреса с 1024 до 65535. Клиент завершается.')
-        exit(1)
+        sys.exit(1)
 
     return server_address, server_port, client_name, client_passwd
 
@@ -85,7 +85,7 @@ def main():
             LOGGER.debug(
                 f'Using USERNAME = {client_name}, PASSWD = {client_passwd}.')
         else:
-            exit(0)
+            sys.exit(0)
 
     LOGGER.info(f'client run with ip : {server_address}, '
                 f'port: {server_port}, '
@@ -93,7 +93,7 @@ def main():
                 f'passwrd: {client_passwd}')
 
     # Загружаем ключи с файла, если же файла нет, то генерируем новую пару.
-    dir_path = os.path.dirname(os.path.realpath(__file__))
+    dir_path = os.getcwd()
     key_file = os.path.join(dir_path, f'{client_name}.key')
     if not os.path.exists(key_file):
         keys = RSA.generate(2048, os.urandom)
@@ -120,7 +120,7 @@ def main():
     except ServerError as error:
         message = QMessageBox()
         message.critical(start_dialog, 'Ошибка сервера', error.text)
-        exit(1)
+        sys.exit(1)
     transport.setDaemon(True)
     transport.start()
 

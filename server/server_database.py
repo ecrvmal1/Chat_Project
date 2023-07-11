@@ -5,6 +5,7 @@ import time
 from sqlalchemy import create_engine, Table, Column, \
     Integer, String, MetaData, ForeignKey, DateTime, Text
 from sqlalchemy.orm import mapper, sessionmaker
+from sqlalchemy.sql import default_comparator
 
 from server.server_variables import FROM, TO, ACTION, MESSAGE, TIME, MESSAGE_TEXT
 

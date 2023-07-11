@@ -62,7 +62,7 @@ def arg_parser(default_ip=None, default_port=None):
 def config_load():
     '''Парсер конфигурационного ini файла.'''
     config = configparser.ConfigParser()
-    config_path = os.path.dirname(os.path.realpath(__file__))
+    config_path = os.getcwd()
     config_file = os.path.join(config_path, 'server.ini')
     config.read(config_file)
     # Если конфиг файл загружен правильно, запускаемся, иначе конфиг по

@@ -6,6 +6,7 @@ import logging
 
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, DateTime, or_
 from sqlalchemy.orm import mapper, sessionmaker
+from sqlalchemy.sql import default_comparator
 
 sys.path.append('../')
 
