@@ -3,6 +3,7 @@
 import sys
 import os
 import logging.handlers
+import logging
 
 sys.path.append('../Lesson3/')
 from client.client_variables import FILE_LOGGING_LEVEL, TERMINAL_LOGGING_LEVEL
@@ -11,8 +12,8 @@ from client.client_variables import FILE_LOGGING_LEVEL, TERMINAL_LOGGING_LEVEL
 # formatting depending on logging.LEVEL below:
 
 
-LOG_FILE_PATH = os.path.dirname(os.path.abspath(__file__))
-LOG_FILE_NAME = os.path.join(LOG_FILE_PATH, 'logs', 'client', 'client.log')
+LOG_FILE_PATH = os.getcwd()
+LOG_FILE_NAME = os.path.join(LOG_FILE_PATH, 'log', 'logs', 'client', 'client.log')
 
 LOGGER = logging.getLogger('client_logger')
 

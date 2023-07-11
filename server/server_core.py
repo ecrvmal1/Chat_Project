@@ -1,7 +1,3 @@
-from server.server_utils import send_message, get_message
-from server.server_variables import *
-from common.descriptors import Port
-from common.metaclasses import ServerMaker
 import sys
 import threading
 import logging
@@ -13,6 +9,15 @@ import binascii
 import os
 
 sys.path.append('../')
+from server.server_utils import send_message, get_message
+from server.server_variables import *
+from common.descriptors import Port
+from common.metaclasses import ServerMaker
+from server.server_decos import *
+
+
+
+
 from common.errors import IncorrectDataRecivedError, JSONDecodeError
 from server.server_decos import login_required
 from server.server_utils import send_message, get_message, pid_used_port, print_cli_help
