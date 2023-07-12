@@ -1,0 +1,1 @@
+2023-07-12 20:21:05,485 DEBUG      server_decos.py        server_decos   log_saver  Called function: get_message with params: (<socket.socket fd=1668, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 54549)>,) , {}. Call from Module server.server_utils

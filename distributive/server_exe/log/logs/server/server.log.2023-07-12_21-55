@@ -1,0 +1,3 @@
+2023-07-12 21:55:55,286 DEBUG      server_decos.py        server_decos   log_saver  Called function: main with params: () , {}. Call from Module __main__
+2023-07-12 21:55:55,288 DEBUG      server_decos.py        server_decos   log_saver  Called function: config_load with params: () , {}. Call from Module __main__
+2023-07-12 21:55:55,289 DEBUG      server_decos.py        server_decos   log_saver  Called function: arg_parser with params: ('', '7777') , {}. Call from Module __main__
