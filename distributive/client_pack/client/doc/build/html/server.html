@@ -1,0 +1,478 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Server module &#8212; chat 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Common package" href="common.html" />
+    <link rel="prev" title="Client module documentation" href="client.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="server-module">
+<h1>Server module<a class="headerlink" href="#server-module" title="Permalink to this heading">¶</a></h1>
+<p>Messenger server module.
+Processes dictionaries - messages, stores public keys of clients.</p>
+<p>Usage</p>
+<p>The module supports command-side argent:</p>
+<ol class="arabic simple">
+<li><p>-p - Port on which connections are received</p></li>
+<li><p>-a - Address from which connections are accepted.</p></li>
+<li><p>–no_gui Start only basic functions, without graphical shell.</p></li>
+</ol>
+<ul class="simple">
+<li><p>Only 1 command is supported in this mode: “exit” for  exit.</p></li>
+</ul>
+<p>Examples of use:</p>
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">server.py</span> <span class="pre">-p</span> <span class="pre">8080</span></code></p>
+<ul class="simple">
+<li><p>Start a server on port 8080.*</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">server.py</span> <span class="pre">-a</span> <span class="pre">localhost</span></code></p>
+<p><em>Start a server accepting only localhost connections.</em></p>
+<p><code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">server.py</span> <span class="pre">--no-gui</span></code></p>
+<p><em>Run without a graphical shell</em></p>
+<section id="server-py">
+<h2>server.py<a class="headerlink" href="#server-py" title="Permalink to this heading">¶</a></h2>
+<section id="module-server">
+<span id="id1"></span><h3>Скрипт server.py<a class="headerlink" href="#module-server" title="Permalink to this heading">¶</a></h3>
+</section>
+</section>
+<section id="server-core-py">
+<h2>server_core.py<a class="headerlink" href="#server-core-py" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="database-py">
+<h2>database.py<a class="headerlink" href="#database-py" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">server.server_database.</span></span><span class="sig-name descname"><span class="pre">ServerStorage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database class</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.ActiveUsers">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ActiveUsers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">login_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.ActiveUsers" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database class Active Users</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.AllUsers">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AllUsers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">passwrd_hash</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.AllUsers" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database class AllUsers</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.LoginHistory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LoginHistory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.LoginHistory" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database class Login History</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.MessageCounter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MessageCounter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.MessageCounter" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database class MessageCounter</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.MessageRegister">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MessageRegister</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.MessageRegister" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database class Message Register</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.UserContacts">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UserContacts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contact</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.UserContacts" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database class UserContacts</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.db_active_users_list">
+<span class="sig-name descname"><span class="pre">db_active_users_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.db_active_users_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database method for getting active user list
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.db_add_user">
+<span class="sig-name descname"><span class="pre">db_add_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">passwd_hash</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.db_add_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database method for adding user
+:param user_name:
+:param passwd_hash:
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.db_all_users_list">
+<span class="sig-name descname"><span class="pre">db_all_users_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.db_all_users_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database method for getting user list
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.db_check_user">
+<span class="sig-name descname"><span class="pre">db_check_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.db_check_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database method for cheking user
+:param username:
+:return:  False / True</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.db_contacts_add">
+<span class="sig-name descname"><span class="pre">db_contacts_add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contact_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.db_contacts_add" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database method for adding contact
+:param user_name:
+:param contact_name:
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.db_contacts_list">
+<span class="sig-name descname"><span class="pre">db_contacts_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.db_contacts_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database method for getting contact list
+:param username:
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.db_contacts_remove">
+<span class="sig-name descname"><span class="pre">db_contacts_remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">contact_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.db_contacts_remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database method for contact remove
+:param user_name:
+:param contact_name:
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.db_get_hash">
+<span class="sig-name descname"><span class="pre">db_get_hash</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.db_get_hash" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database method for getting hash
+:param name:
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.db_get_pubkey">
+<span class="sig-name descname"><span class="pre">db_get_pubkey</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.db_get_pubkey" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database method for getting pubkey
+:param name:
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.db_login_history_list">
+<span class="sig-name descname"><span class="pre">db_login_history_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.db_login_history_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database method for getting logun history list
+:param username:
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.db_message_counter_list">
+<span class="sig-name descname"><span class="pre">db_message_counter_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.db_message_counter_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database method for message counter list
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.db_message_counter_update">
+<span class="sig-name descname"><span class="pre">db_message_counter_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.db_message_counter_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database method for message counter update
+:param message:
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.db_message_register_list">
+<span class="sig-name descname"><span class="pre">db_message_register_list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.db_message_register_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database methodfor getting message register list
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.db_message_register_update">
+<span class="sig-name descname"><span class="pre">db_message_register_update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.db_message_register_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database method for message register update
+:param message:
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.db_remove_user">
+<span class="sig-name descname"><span class="pre">db_remove_user</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.db_remove_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database method for removing user
+:param user_name:
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.db_user_login">
+<span class="sig-name descname"><span class="pre">db_user_login</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">public_key</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.db_user_login" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database method for user login
+:param username:
+:param ip_address:
+:param port:
+:param public_key:
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.server_database.ServerStorage.db_user_logout">
+<span class="sig-name descname"><span class="pre">db_user_logout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.server_database.ServerStorage.db_user_logout" title="Permalink to this definition">¶</a></dt>
+<dd><p>The server database method for user logout
+:param username:
+:return:</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="s-main-window-py">
+<h2>s_main_window.py<a class="headerlink" href="#s-main-window-py" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="server.s_main_window.MainWindow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">server.s_main_window.</span></span><span class="sig-name descname"><span class="pre">MainWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.s_main_window.MainWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Класс - основное окно сервера.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="server.s_main_window.MainWindow.create_users_model">
+<span class="sig-name descname"><span class="pre">create_users_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.s_main_window.MainWindow.create_users_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Метод заполняющий таблицу зарегистрированных пользователей.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.s_main_window.MainWindow.reg_user">
+<span class="sig-name descname"><span class="pre">reg_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.s_main_window.MainWindow.reg_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Метод создающий окно регистрации пользователя.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.s_main_window.MainWindow.remove_user">
+<span class="sig-name descname"><span class="pre">remove_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.s_main_window.MainWindow.remove_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Метод создающий окно удаления пользователя.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.s_main_window.MainWindow.server_config">
+<span class="sig-name descname"><span class="pre">server_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.s_main_window.MainWindow.server_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Метод создающий окно с настройками сервера.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.s_main_window.MainWindow.show_statistics">
+<span class="sig-name descname"><span class="pre">show_statistics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.s_main_window.MainWindow.show_statistics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Метод создающий окно со статистикой клиентов.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="add-user-py">
+<h2>add_user.py<a class="headerlink" href="#add-user-py" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="server.add_user.RegisterUser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">server.add_user.</span></span><span class="sig-name descname"><span class="pre">RegisterUser</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.add_user.RegisterUser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Класс диалог регистрации пользователя на сервере.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="server.add_user.RegisterUser.save_data">
+<span class="sig-name descname"><span class="pre">save_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.add_user.RegisterUser.save_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Метод проверки правильности ввода и сохранения в базу нового пользователя.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="remove-user-py">
+<h2>remove_user.py<a class="headerlink" href="#remove-user-py" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="server.remove_user.RemUserDialog">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">server.remove_user.</span></span><span class="sig-name descname"><span class="pre">RemUserDialog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.remove_user.RemUserDialog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Класс - диалог выбора контакта для удаления.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="server.remove_user.RemUserDialog.all_users_fill">
+<span class="sig-name descname"><span class="pre">all_users_fill</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.remove_user.RemUserDialog.all_users_fill" title="Permalink to this definition">¶</a></dt>
+<dd><p>Метод заполняющий список пользователей.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.remove_user.RemUserDialog.remove_user">
+<span class="sig-name descname"><span class="pre">remove_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.remove_user.RemUserDialog.remove_user" title="Permalink to this definition">¶</a></dt>
+<dd><p>Метод - обработчик удаления пользователя.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="config-window-py">
+<h2>config_window.py<a class="headerlink" href="#config-window-py" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="server.config_window.ConfigWindow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">server.config_window.</span></span><span class="sig-name descname"><span class="pre">ConfigWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.config_window.ConfigWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Класс окно настроек.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="server.config_window.ConfigWindow.initUI">
+<span class="sig-name descname"><span class="pre">initUI</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.config_window.ConfigWindow.initUI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Настройки окна</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.config_window.ConfigWindow.open_file_dialog">
+<span class="sig-name descname"><span class="pre">open_file_dialog</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.config_window.ConfigWindow.open_file_dialog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Метод обработчик открытия окна выбора папки.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="server.config_window.ConfigWindow.save_server_config">
+<span class="sig-name descname"><span class="pre">save_server_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.config_window.ConfigWindow.save_server_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Метод сохранения настроек.
+Проверяет правильность введённых данных и
+если всё правильно сохраняет ini файл.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="stat-window-py">
+<h2>stat_window.py<a class="headerlink" href="#stat-window-py" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="server.stat_window.StatWindow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">server.stat_window.</span></span><span class="sig-name descname"><span class="pre">StatWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">database</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#server.stat_window.StatWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Класс - окно со статистикой пользователей</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="server.stat_window.StatWindow.create_stat_model">
+<span class="sig-name descname"><span class="pre">create_stat_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#server.stat_window.StatWindow.create_stat_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Метод реализующий заполнение таблицы статистикой сообщений.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">chat</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="start.html">Start module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="client.html">Client module documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Server module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#server-py">server.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-server">Скрипт server.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#server-core-py">server_core.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#database-py">database.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#server.server_database.ServerStorage"><code class="docutils literal notranslate"><span class="pre">ServerStorage</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#s-main-window-py">s_main_window.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#server.s_main_window.MainWindow"><code class="docutils literal notranslate"><span class="pre">MainWindow</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#add-user-py">add_user.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#server.add_user.RegisterUser"><code class="docutils literal notranslate"><span class="pre">RegisterUser</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#remove-user-py">remove_user.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#server.remove_user.RemUserDialog"><code class="docutils literal notranslate"><span class="pre">RemUserDialog</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#config-window-py">config_window.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#server.config_window.ConfigWindow"><code class="docutils literal notranslate"><span class="pre">ConfigWindow</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#stat-window-py">stat_window.py</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#server.stat_window.StatWindow"><code class="docutils literal notranslate"><span class="pre">StatWindow</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="common.html">Common package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logs.html">Logs package</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="client.html" title="previous chapter">Client module documentation</a></li>
+      <li>Next: <a href="common.html" title="next chapter">Common package</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Vladimir Malchevskiy.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/server.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
