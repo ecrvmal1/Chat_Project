@@ -10,6 +10,16 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_MainClientWindow(object):
     def setupUi(self, MainClientWindow):
+
+        """
+        The setupUi function is a function that creates the user interface.
+        It takes one argument, which is the window to create the UI in.
+        The setupUi function does not return anything.
+
+        :param self: Represent the instance of the class
+        :param MainClientWindow: Set the parent of the widget
+        :return: Nothing
+        """
         MainClientWindow.setObjectName("MainClientWindow")
         MainClientWindow.resize(756, 534)
         MainClientWindow.setMinimumSize(QtCore.QSize(756, 534))
@@ -75,6 +85,16 @@ class Ui_MainClientWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainClientWindow)
 
     def retranslateUi(self, MainClientWindow):
+        """
+        The retranslateUi function is a QtCore.Qt function that allows you
+        to translate the text of your GUI into different languages.
+        The first argument is the name of your main window class,
+        and the second argument is an instance of that class.
+
+        :param self: Represent the instance of the class
+        :param MainClientWindow: Access the mainclientwindow object
+        :return: The following:
+        """
         _translate = QtCore.QCoreApplication.translate
         MainClientWindow.setWindowTitle(_translate("MainClientWindow", "Чат Программа alpha release"))
         self.label_contacts.setText(_translate("MainClientWindow", "Список контактов:"))

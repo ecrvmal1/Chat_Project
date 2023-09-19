@@ -18,6 +18,11 @@ logo_filename = os.path.join(dir_path, 'client' , "logo.jpg")
 
 class Ui_MainClientWindow(object):
     def setupUi(self, MainClientWindow):
+        """
+        The function creates main GUI window
+        :param MainClientWindow:
+        :return:
+        """
         MainClientWindow.setObjectName("MainClientWindow")
         MainClientWindow.resize(756, 534)
         MainClientWindow.setMinimumSize(QtCore.QSize(756, 534))
