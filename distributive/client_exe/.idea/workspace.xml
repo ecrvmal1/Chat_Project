@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="46b0b0ef-7bd4-441a-8e84-c8c752010a17" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/add_contact.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/client_database.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/client_gui1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/client_gui1.ui" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/client_start_dialog.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/client_test1.db3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/client_use.db3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/client_user1.db3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/client_user2.db3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/client_user3.db3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/client_user4.db3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/client_user5.db3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/client_user6.db3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/client_user7.db3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/client_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/client_variables.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/decos.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/del_contact.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/main_window.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/main_window_conv.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/start_dialog.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/transport.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/descriptors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/errors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/metaclasses.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/doctrees/client.doctree" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/doctrees/common.doctree" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/doctrees/environment.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/doctrees/index.doctree" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/doctrees/logs.doctree" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/doctrees/server.doctree" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/doctrees/start.doctree" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/.buildinfo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_sources/client.rst.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_sources/common.rst.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_sources/index.rst.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_sources/logs.rst.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_sources/server.rst.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_sources/start.rst.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_static/_sphinx_javascript_frameworks_compat.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_static/alabaster.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_static/basic.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_static/custom.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_static/doctools.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_static/documentation_options.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_static/file.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_static/jquery-3.6.0.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_static/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_static/language_data.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_static/minus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_static/plus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_static/pygments.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_static/searchtools.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_static/sphinx_highlight.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_static/underscore-1.13.1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/_static/underscore.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/client.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/common.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/genindex.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/logs.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/objects.inv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/py-modindex.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/search.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/searchindex.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/server.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/build/html/start.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/make.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/source/client.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/source/common.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/source/conf.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/source/index.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/source/logs.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/source/server.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/doc/source/start.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/log/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/log/client_log_config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/log/logs/client/client.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unit_tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unit_tests/test_client_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unit_tests/test_send_recv.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/unit_tests/test_server_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/add_contact.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/client_database.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/client_gui1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/client_start_dialog.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/client_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/client_variables.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/decos.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/del_contact.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/main_window.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/main_window_conv.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/start_dialog.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/transport.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/common/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/common/descriptors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/common/errors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/common/metaclasses.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/log/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/log/client_log_config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/unit_tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/unit_tests/test_client_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/unit_tests/test_send_recv.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/unit_tests/test_server_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/dist/mess_client-1.0.0.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/dist/messaging_client-1.0.0-py3-none-any.whl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/dist/messaging_client-1.0.0.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/dist/msg_client-1.0.0-py3-none-any.whl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/dist/msg_client-1.0.0.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/dist/msnger_client-1.0.0-py3-none-any.whl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/dist/msnger_client-1.0.0.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/mess_client.egg-info/PKG-INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/mess_client.egg-info/SOURCES.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/mess_client.egg-info/dependency_links.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/mess_client.egg-info/requires.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/mess_client.egg-info/top_level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/messaging_client.egg-info/PKG-INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/messaging_client.egg-info/SOURCES.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/messaging_client.egg-info/dependency_links.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/messaging_client.egg-info/requires.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/messaging_client.egg-info/top_level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/msg_client.egg-info/PKG-INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/msg_client.egg-info/SOURCES.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/msg_client.egg-info/dependency_links.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/msg_client.egg-info/requires.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/msg_client.egg-info/top_level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/msnger_client.egg-info/PKG-INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/msnger_client.egg-info/SOURCES.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/msnger_client.egg-info/dependency_links.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/msnger_client.egg-info/requires.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/msnger_client.egg-info/top_level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/setup_client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../launcher_pack/__init__/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/common/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/common/descriptors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/common/errors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/common/metaclasses.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/doctrees/client.doctree" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/doctrees/common.doctree" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/doctrees/environment.pickle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/doctrees/index.doctree" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/doctrees/logs.doctree" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/doctrees/server.doctree" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/doctrees/start.doctree" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/.buildinfo" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_sources/client.rst.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_sources/common.rst.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_sources/index.rst.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_sources/logs.rst.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_sources/server.rst.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_sources/start.rst.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_static/_sphinx_javascript_frameworks_compat.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_static/alabaster.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_static/basic.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_static/custom.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_static/doctools.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_static/documentation_options.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_static/file.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_static/jquery-3.6.0.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_static/jquery.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_static/language_data.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_static/minus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_static/plus.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_static/pygments.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_static/searchtools.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_static/sphinx_highlight.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_static/underscore-1.13.1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/_static/underscore.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/client.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/common.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/genindex.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/logs.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/objects.inv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/py-modindex.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/search.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/searchindex.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/server.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/build/html/start.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/make.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/source/client.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/source/common.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/source/conf.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/source/index.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/source/logs.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/source/server.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/doc/source/start.rst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/log/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/log/logs/server/server.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/log/logs/server/server.log.2023-07-07_14-43" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/log/logs/server/server.log.2023-07-07_14-45" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/log/logs/server/server.log.2023-07-07_14-46" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/log/logs/server/server.log.2023-07-07_14-59" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/log/logs/server/server.log.2023-07-07_15-00" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/log/logs/server/server.log.2023-07-07_15-02" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/log/logs/server/server.log.2023-07-07_15-11" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/log/logs/server/server.log.2023-07-11_07-44" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/log/logs/server/server.log.2023-07-11_08-37" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/log/logs/server/server.log.2023-07-11_08-53" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/log/server_log_config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/server.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/server.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/server/1server.db3" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/server/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/server/add_user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/server/config_window.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/server/remove_user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/server/s_main_window.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/server/server_core.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/server/server_database.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/server/server_decos.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/server/server_gui_not in use.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/server/server_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/server/server_variables.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/server/stat_window.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/unit_tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/unit_tests/test_client_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/unit_tests/test_send_recv.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_exe/unit_tests/test_server_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_pack/server/doc/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server_pack/setup_server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../requirements.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="2SRRx6ARb4KwlgYHO2cjARpFI0z" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Lesson16",
+    "last_opened_file_path": "/home/user1/Desktop/chat",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="46b0b0ef-7bd4-441a-8e84-c8c752010a17" name="Changes" comment="" />
+      <created>1689107650852</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1689107650852</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0873571f-89fc-4a87-8991-9b73f8c741e7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/add_contact.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/client_database.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/client_gui1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/client_start_dialog.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/client_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/client_variables.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/decos.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/del_contact.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/main_window.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/main_window_conv.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/start_dialog.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/client/transport.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/common/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/common/descriptors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/common/errors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/common/metaclasses.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/log/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/log/client_log_config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/unit_tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/unit_tests/test_client_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/unit_tests/test_send_recv.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/build/lib/client/unit_tests/test_server_utils.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/dist/mess_client-1.0.0.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/dist/messaging_client-1.0.0-py3-none-any.whl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/dist/messaging_client-1.0.0.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/dist/msg_client-1.0.0-py3-none-any.whl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/dist/msg_client-1.0.0.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/dist/msnger_client-1.0.0-py3-none-any.whl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/dist/msnger_client-1.0.0.tar.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/mess_client.egg-info/PKG-INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/mess_client.egg-info/SOURCES.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/mess_client.egg-info/dependency_links.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/mess_client.egg-info/requires.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/mess_client.egg-info/top_level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/messaging_client.egg-info/PKG-INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/messaging_client.egg-info/SOURCES.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/messaging_client.egg-info/dependency_links.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/messaging_client.egg-info/requires.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/messaging_client.egg-info/top_level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/msg_client.egg-info/PKG-INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/msg_client.egg-info/SOURCES.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/msg_client.egg-info/dependency_links.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/msg_client.egg-info/requires.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/msg_client.egg-info/top_level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/msnger_client.egg-info/PKG-INFO" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/msnger_client.egg-info/SOURCES.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/msnger_client.egg-info/dependency_links.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/msnger_client.egg-info/requires.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/msnger_client.egg-info/top_level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client_pack/setup_client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../launcher_pack/__init__/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/doc/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/setup_server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../requirements.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="2SRIGDUH79WGFzYVN8QA2LRgjuO" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Lesson16",
+    "last_opened_file_path": "/home/user1/Desktop/chat/distributive"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0873571f-89fc-4a87-8991-9b73f8c741e7" name="Changes" comment="" />
+      <created>1689102868876</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1689102868876</updated>
+    </task>
+    <servers />
+  </component>
+</project>
